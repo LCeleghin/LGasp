@@ -1,0 +1,4505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="i_lista_compilata" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">azzerabuffer riordino e comincia a riordinare</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">azzerabuffer riordino e comincia a riordinare</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="i_reset" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="i_richTrasfListaPrd" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">richiesta trasferimento lista produzione da PC</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="i_correttore" Datatype="LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1.0</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="o_DatiProdOK" Datatype="Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Lunghezze presenti in tabella di produzione</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="o_OkTrasfListaPrd" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="o_AlmFinePezzi" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="o_LunghezzaAttuale" Datatype="LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Lunghezza pezzo attuale [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="o_LunghezzaSuccessiva" Datatype="LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Lunghezza pezzo successivo [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="o_MaterialeNecessario" Datatype="LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Materiale necessario alla lista di produzione [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="InOut">
+    <Member Name="io_PezzoEseguito" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">cancella quota in lavoro</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">cancella quota in lavoro</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="io_cancella_pezzi" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">cmdbool00[8]</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">cmdbool00[8]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="io_cancellazioneTotale" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">cmdbool00[11]</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">cmdbool00[11]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="io_rich_nuovo_trasferimento" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">richiesta nuovo trasferimento all'avvio</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="io_ListaProduzionePC" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of &quot;LGasp_typeRigaProdfromPC&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="piecestodo" Datatype="DInt" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="tipoarticolo" Datatype="DInt" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+            <Member Name="IDERP" Datatype="DInt" />
+          </Member>
+          <Member Name="article" Datatype="&quot;LGasp_typeArticolo&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="name" Datatype="WString[30]" />
+                      <Member Name="lenght" Datatype="LReal" />
+                      <Member Name="nominal_lenght" Datatype="LReal" />
+                      <Member Name="cutoffset" Datatype="LReal" />
+                      <Member Name="options" Datatype="Array[1..16] of Bool" />
+                      <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                      <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                      <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="prepunchingquota" Datatype="Array[1..&quot;NumPunzonateArticolo&quot;] of &quot;LGasp_typeQuota&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="quotax" Datatype="LReal" />
+                      <Member Name="quotay" Datatype="LReal" />
+                      <Member Name="rifcor_y" Datatype="Int" />
+                      <Member Name="quotaz" Datatype="LReal" />
+                      <Member Name="gradi" Datatype="LReal" />
+                      <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                      <Member Name="state" Datatype="Struct">
+                        <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                        <Member Name="quotavalida" Datatype="Bool" />
+                        <Member Name="quotataglio" Datatype="Bool" />
+                        <Member Name="quotatagliocoda" Datatype="Bool" />
+                        <Member Name="quotatagliotesta" Datatype="Bool" />
+                        <Member Name="bool_5" Datatype="Bool" />
+                        <Member Name="bool_6" Datatype="Bool" />
+                        <Member Name="bool_7" Datatype="Bool" />
+                        <Member Name="bool_8" Datatype="Bool" />
+                        <Member Name="bool_9" Datatype="Bool" />
+                        <Member Name="bool_10" Datatype="Bool" />
+                        <Member Name="bool_11" Datatype="Bool" />
+                        <Member Name="bool_12" Datatype="Bool" />
+                        <Member Name="bool_13" Datatype="Bool" />
+                        <Member Name="bool_14" Datatype="Bool" />
+                        <Member Name="bool_15" Datatype="Bool" />
+                        <Member Name="bool_16" Datatype="Bool" />
+                        <Member Name="bool_17" Datatype="Bool" />
+                        <Member Name="bool_18" Datatype="Bool" />
+                        <Member Name="bool_19" Datatype="Bool" />
+                        <Member Name="bool_20" Datatype="Bool" />
+                        <Member Name="bool_21" Datatype="Bool" />
+                        <Member Name="bool_22" Datatype="Bool" />
+                        <Member Name="bool_23" Datatype="Bool" />
+                        <Member Name="bool_24" Datatype="Bool" />
+                        <Member Name="bool_25" Datatype="Bool" />
+                        <Member Name="bool_26" Datatype="Bool" />
+                        <Member Name="bool_27" Datatype="Bool" />
+                        <Member Name="bool_28" Datatype="Bool" />
+                        <Member Name="bool_29" Datatype="Bool" />
+                        <Member Name="bool_30" Datatype="Bool" />
+                        <Member Name="bool_31" Datatype="Bool" />
+                      </Member>
+                      <Member Name="infinitystep" Datatype="Bool" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_myprodfromPC" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of &quot;LGasp_typeRigaProdfromPC&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="piecestodo" Datatype="DInt" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="tipoarticolo" Datatype="DInt" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+            <Member Name="IDERP" Datatype="DInt" />
+          </Member>
+          <Member Name="article" Datatype="&quot;LGasp_typeArticolo&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="name" Datatype="WString[30]" />
+                      <Member Name="lenght" Datatype="LReal" />
+                      <Member Name="nominal_lenght" Datatype="LReal" />
+                      <Member Name="cutoffset" Datatype="LReal" />
+                      <Member Name="options" Datatype="Array[1..16] of Bool" />
+                      <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                      <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                      <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="prepunchingquota" Datatype="Array[1..&quot;NumPunzonateArticolo&quot;] of &quot;LGasp_typeQuota&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="quotax" Datatype="LReal" />
+                      <Member Name="quotay" Datatype="LReal" />
+                      <Member Name="rifcor_y" Datatype="Int" />
+                      <Member Name="quotaz" Datatype="LReal" />
+                      <Member Name="gradi" Datatype="LReal" />
+                      <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                      <Member Name="state" Datatype="Struct">
+                        <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                        <Member Name="quotavalida" Datatype="Bool" />
+                        <Member Name="quotataglio" Datatype="Bool" />
+                        <Member Name="quotatagliocoda" Datatype="Bool" />
+                        <Member Name="quotatagliotesta" Datatype="Bool" />
+                        <Member Name="bool_5" Datatype="Bool" />
+                        <Member Name="bool_6" Datatype="Bool" />
+                        <Member Name="bool_7" Datatype="Bool" />
+                        <Member Name="bool_8" Datatype="Bool" />
+                        <Member Name="bool_9" Datatype="Bool" />
+                        <Member Name="bool_10" Datatype="Bool" />
+                        <Member Name="bool_11" Datatype="Bool" />
+                        <Member Name="bool_12" Datatype="Bool" />
+                        <Member Name="bool_13" Datatype="Bool" />
+                        <Member Name="bool_14" Datatype="Bool" />
+                        <Member Name="bool_15" Datatype="Bool" />
+                        <Member Name="bool_16" Datatype="Bool" />
+                        <Member Name="bool_17" Datatype="Bool" />
+                        <Member Name="bool_18" Datatype="Bool" />
+                        <Member Name="bool_19" Datatype="Bool" />
+                        <Member Name="bool_20" Datatype="Bool" />
+                        <Member Name="bool_21" Datatype="Bool" />
+                        <Member Name="bool_22" Datatype="Bool" />
+                        <Member Name="bool_23" Datatype="Bool" />
+                        <Member Name="bool_24" Datatype="Bool" />
+                        <Member Name="bool_25" Datatype="Bool" />
+                        <Member Name="bool_26" Datatype="Bool" />
+                        <Member Name="bool_27" Datatype="Bool" />
+                        <Member Name="bool_28" Datatype="Bool" />
+                        <Member Name="bool_29" Datatype="Bool" />
+                        <Member Name="bool_30" Datatype="Bool" />
+                        <Member Name="bool_31" Datatype="Bool" />
+                      </Member>
+                      <Member Name="infinitystep" Datatype="Bool" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_myprodfromPLC" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of &quot;LGasp_typeRigaProdfromPLC&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="pzfatti" Datatype="DInt" />
+          <Member Name="pzfattinopasso" Datatype="DInt" />
+          <Member Name="pzinseritinelriordinoquote" Datatype="DInt" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_myprodfromPCupdate" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of DInt" Accessibility="Public" />
+    <Member Name="io_QuotePunzonatura" Datatype="Array[1..&quot;NumQuotePunzonatura&quot;] of &quot;LGasp_typeBufferQuote&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="n_piece" Datatype="DInt" />
+          <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="nominal_lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="quota" Datatype="&quot;LGasp_typeQuota&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="quotax" Datatype="LReal" />
+                <Member Name="quotay" Datatype="LReal" />
+                <Member Name="rifcor_y" Datatype="Int" />
+                <Member Name="quotaz" Datatype="LReal" />
+                <Member Name="gradi" Datatype="LReal" />
+                <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                <Member Name="state" Datatype="Struct">
+                  <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                  <Member Name="quotavalida" Datatype="Bool" />
+                  <Member Name="quotataglio" Datatype="Bool" />
+                  <Member Name="quotatagliocoda" Datatype="Bool" />
+                  <Member Name="quotatagliotesta" Datatype="Bool" />
+                  <Member Name="bool_5" Datatype="Bool" />
+                  <Member Name="bool_6" Datatype="Bool" />
+                  <Member Name="bool_7" Datatype="Bool" />
+                  <Member Name="bool_8" Datatype="Bool" />
+                  <Member Name="bool_9" Datatype="Bool" />
+                  <Member Name="bool_10" Datatype="Bool" />
+                  <Member Name="bool_11" Datatype="Bool" />
+                  <Member Name="bool_12" Datatype="Bool" />
+                  <Member Name="bool_13" Datatype="Bool" />
+                  <Member Name="bool_14" Datatype="Bool" />
+                  <Member Name="bool_15" Datatype="Bool" />
+                  <Member Name="bool_16" Datatype="Bool" />
+                  <Member Name="bool_17" Datatype="Bool" />
+                  <Member Name="bool_18" Datatype="Bool" />
+                  <Member Name="bool_19" Datatype="Bool" />
+                  <Member Name="bool_20" Datatype="Bool" />
+                  <Member Name="bool_21" Datatype="Bool" />
+                  <Member Name="bool_22" Datatype="Bool" />
+                  <Member Name="bool_23" Datatype="Bool" />
+                  <Member Name="bool_24" Datatype="Bool" />
+                  <Member Name="bool_25" Datatype="Bool" />
+                  <Member Name="bool_26" Datatype="Bool" />
+                  <Member Name="bool_27" Datatype="Bool" />
+                  <Member Name="bool_28" Datatype="Bool" />
+                  <Member Name="bool_29" Datatype="Bool" />
+                  <Member Name="bool_30" Datatype="Bool" />
+                  <Member Name="bool_31" Datatype="Bool" />
+                </Member>
+                <Member Name="infinitystep" Datatype="Bool" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="quotaordinata" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_StoricoRigheProdEliminate" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of &quot;LGasp_typeRigheEliminate&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="pzfatti" Datatype="DInt" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_ListaProfila" Datatype="&quot;LGasp_typeHMI_ListaProf&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="lista_pezzi" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of &quot;LGasp_typePzoListaProfila&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="ID" Datatype="DInt" />
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="NumeroPezzo" Datatype="DInt" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="wastepiece" Datatype="Bool" />
+                <Member Name="info" Datatype="Struct">
+                  <Member Name="collo" Datatype="Int" />
+                  <Member Name="workorder" Datatype="DInt" />
+                </Member>
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="nome_articolo_pezzi" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of WString[30]" />
+          <Member Name="backup_lista_pezzi" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of &quot;LGasp_typePzoListaProfila&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="ID" Datatype="DInt" />
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="NumeroPezzo" Datatype="DInt" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="wastepiece" Datatype="Bool" />
+                <Member Name="info" Datatype="Struct">
+                  <Member Name="collo" Datatype="Int" />
+                  <Member Name="workorder" Datatype="DInt" />
+                </Member>
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="pezzo_fatto" Datatype="&quot;LGasp_typePzoListaProfila&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="ID" Datatype="DInt" />
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="NumeroPezzo" Datatype="DInt" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="wastepiece" Datatype="Bool" />
+                <Member Name="info" Datatype="Struct">
+                  <Member Name="collo" Datatype="Int" />
+                  <Member Name="workorder" Datatype="DInt" />
+                </Member>
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="abilitata" Datatype="Bool" />
+          <Member Name="io_togli_pzo" Datatype="Bool" />
+          <Member Name="io_cancella_lista" Datatype="Bool" />
+          <Member Name="io_inserisci_pzo_buono" Datatype="Bool" />
+          <Member Name="io_inserisci_pzo_scarto" Datatype="Bool" />
+          <Member Name="io_recupera_lista" Datatype="Bool" />
+          <Member Name="listaVuota" Datatype="Bool" />
+          <Member Name="listaPiena" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Static">
+    <Member Name="s_lista_compilata_old" Datatype="Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_inserire_pezzi_in_lista" Datatype="Bool" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">inserire pezzi in lista produzione</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="s_firstScan_Done" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">NON RITENTIVA</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="s_CambioRigaProduzione" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Cambio riga di produzione</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Cambio riga di produzione</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="s_ListaProduzione_ID_old" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_0" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_1" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_2" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_3" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_4" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_5" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_6" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_index_7" Datatype="DInt" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_RigaProduzione_in_lavoro" Datatype="DInt" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Indice riga di produzione in lavoro</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="s_QuotaNULL" Datatype="&quot;LGasp_typeQuota&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">tipo dato NULL</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="quotax" Datatype="LReal" />
+          <Member Name="quotay" Datatype="LReal" />
+          <Member Name="rifcor_y" Datatype="Int" />
+          <Member Name="quotaz" Datatype="LReal" />
+          <Member Name="gradi" Datatype="LReal" />
+          <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+          <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+          <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+          <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+          <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+          <Member Name="state" Datatype="Struct">
+            <Member Name="ultimaquotapezzo" Datatype="Bool" />
+            <Member Name="quotavalida" Datatype="Bool" />
+            <Member Name="quotataglio" Datatype="Bool" />
+            <Member Name="quotatagliocoda" Datatype="Bool" />
+            <Member Name="quotatagliotesta" Datatype="Bool" />
+            <Member Name="bool_5" Datatype="Bool" />
+            <Member Name="bool_6" Datatype="Bool" />
+            <Member Name="bool_7" Datatype="Bool" />
+            <Member Name="bool_8" Datatype="Bool" />
+            <Member Name="bool_9" Datatype="Bool" />
+            <Member Name="bool_10" Datatype="Bool" />
+            <Member Name="bool_11" Datatype="Bool" />
+            <Member Name="bool_12" Datatype="Bool" />
+            <Member Name="bool_13" Datatype="Bool" />
+            <Member Name="bool_14" Datatype="Bool" />
+            <Member Name="bool_15" Datatype="Bool" />
+            <Member Name="bool_16" Datatype="Bool" />
+            <Member Name="bool_17" Datatype="Bool" />
+            <Member Name="bool_18" Datatype="Bool" />
+            <Member Name="bool_19" Datatype="Bool" />
+            <Member Name="bool_20" Datatype="Bool" />
+            <Member Name="bool_21" Datatype="Bool" />
+            <Member Name="bool_22" Datatype="Bool" />
+            <Member Name="bool_23" Datatype="Bool" />
+            <Member Name="bool_24" Datatype="Bool" />
+            <Member Name="bool_25" Datatype="Bool" />
+            <Member Name="bool_26" Datatype="Bool" />
+            <Member Name="bool_27" Datatype="Bool" />
+            <Member Name="bool_28" Datatype="Bool" />
+            <Member Name="bool_29" Datatype="Bool" />
+            <Member Name="bool_30" Datatype="Bool" />
+            <Member Name="bool_31" Datatype="Bool" />
+          </Member>
+          <Member Name="infinitystep" Datatype="Bool" />
+          <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="testostampa" Datatype="WString[20]" />
+                <Member Name="layoutStampa" Datatype="WString[20]" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="s_BufferQuotaNULL" Datatype="&quot;LGasp_typeBufferQuote&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">tipo dato NULL</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="n_piece" Datatype="DInt" />
+          <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="nominal_lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="quota" Datatype="&quot;LGasp_typeQuota&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="quotax" Datatype="LReal" />
+                <Member Name="quotay" Datatype="LReal" />
+                <Member Name="rifcor_y" Datatype="Int" />
+                <Member Name="quotaz" Datatype="LReal" />
+                <Member Name="gradi" Datatype="LReal" />
+                <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                <Member Name="state" Datatype="Struct">
+                  <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                  <Member Name="quotavalida" Datatype="Bool" />
+                  <Member Name="quotataglio" Datatype="Bool" />
+                  <Member Name="quotatagliocoda" Datatype="Bool" />
+                  <Member Name="quotatagliotesta" Datatype="Bool" />
+                  <Member Name="bool_5" Datatype="Bool" />
+                  <Member Name="bool_6" Datatype="Bool" />
+                  <Member Name="bool_7" Datatype="Bool" />
+                  <Member Name="bool_8" Datatype="Bool" />
+                  <Member Name="bool_9" Datatype="Bool" />
+                  <Member Name="bool_10" Datatype="Bool" />
+                  <Member Name="bool_11" Datatype="Bool" />
+                  <Member Name="bool_12" Datatype="Bool" />
+                  <Member Name="bool_13" Datatype="Bool" />
+                  <Member Name="bool_14" Datatype="Bool" />
+                  <Member Name="bool_15" Datatype="Bool" />
+                  <Member Name="bool_16" Datatype="Bool" />
+                  <Member Name="bool_17" Datatype="Bool" />
+                  <Member Name="bool_18" Datatype="Bool" />
+                  <Member Name="bool_19" Datatype="Bool" />
+                  <Member Name="bool_20" Datatype="Bool" />
+                  <Member Name="bool_21" Datatype="Bool" />
+                  <Member Name="bool_22" Datatype="Bool" />
+                  <Member Name="bool_23" Datatype="Bool" />
+                  <Member Name="bool_24" Datatype="Bool" />
+                  <Member Name="bool_25" Datatype="Bool" />
+                  <Member Name="bool_26" Datatype="Bool" />
+                  <Member Name="bool_27" Datatype="Bool" />
+                  <Member Name="bool_28" Datatype="Bool" />
+                  <Member Name="bool_29" Datatype="Bool" />
+                  <Member Name="bool_30" Datatype="Bool" />
+                  <Member Name="bool_31" Datatype="Bool" />
+                </Member>
+                <Member Name="infinitystep" Datatype="Bool" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="quotaordinata" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="s_RigaProduzioneNULL" Datatype="&quot;LGasp_typeRigaProdfromPC&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">tipo dato NULL</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="piecestodo" Datatype="DInt" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="tipoarticolo" Datatype="DInt" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+            <Member Name="IDERP" Datatype="DInt" />
+          </Member>
+          <Member Name="article" Datatype="&quot;LGasp_typeArticolo&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="name" Datatype="WString[30]" />
+                      <Member Name="lenght" Datatype="LReal" />
+                      <Member Name="nominal_lenght" Datatype="LReal" />
+                      <Member Name="cutoffset" Datatype="LReal" />
+                      <Member Name="options" Datatype="Array[1..16] of Bool" />
+                      <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                      <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                      <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="prepunchingquota" Datatype="Array[1..&quot;NumPunzonateArticolo&quot;] of &quot;LGasp_typeQuota&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="quotax" Datatype="LReal" />
+                      <Member Name="quotay" Datatype="LReal" />
+                      <Member Name="rifcor_y" Datatype="Int" />
+                      <Member Name="quotaz" Datatype="LReal" />
+                      <Member Name="gradi" Datatype="LReal" />
+                      <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                      <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                      <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                      <Member Name="state" Datatype="Struct">
+                        <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                        <Member Name="quotavalida" Datatype="Bool" />
+                        <Member Name="quotataglio" Datatype="Bool" />
+                        <Member Name="quotatagliocoda" Datatype="Bool" />
+                        <Member Name="quotatagliotesta" Datatype="Bool" />
+                        <Member Name="bool_5" Datatype="Bool" />
+                        <Member Name="bool_6" Datatype="Bool" />
+                        <Member Name="bool_7" Datatype="Bool" />
+                        <Member Name="bool_8" Datatype="Bool" />
+                        <Member Name="bool_9" Datatype="Bool" />
+                        <Member Name="bool_10" Datatype="Bool" />
+                        <Member Name="bool_11" Datatype="Bool" />
+                        <Member Name="bool_12" Datatype="Bool" />
+                        <Member Name="bool_13" Datatype="Bool" />
+                        <Member Name="bool_14" Datatype="Bool" />
+                        <Member Name="bool_15" Datatype="Bool" />
+                        <Member Name="bool_16" Datatype="Bool" />
+                        <Member Name="bool_17" Datatype="Bool" />
+                        <Member Name="bool_18" Datatype="Bool" />
+                        <Member Name="bool_19" Datatype="Bool" />
+                        <Member Name="bool_20" Datatype="Bool" />
+                        <Member Name="bool_21" Datatype="Bool" />
+                        <Member Name="bool_22" Datatype="Bool" />
+                        <Member Name="bool_23" Datatype="Bool" />
+                        <Member Name="bool_24" Datatype="Bool" />
+                        <Member Name="bool_25" Datatype="Bool" />
+                        <Member Name="bool_26" Datatype="Bool" />
+                        <Member Name="bool_27" Datatype="Bool" />
+                        <Member Name="bool_28" Datatype="Bool" />
+                        <Member Name="bool_29" Datatype="Bool" />
+                        <Member Name="bool_30" Datatype="Bool" />
+                        <Member Name="bool_31" Datatype="Bool" />
+                      </Member>
+                      <Member Name="infinitystep" Datatype="Bool" />
+                      <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                        <Sections>
+                          <Section Name="None">
+                            <Member Name="testostampa" Datatype="WString[20]" />
+                            <Member Name="layoutStampa" Datatype="WString[20]" />
+                          </Section>
+                        </Sections>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="s_mem_trasf_lista_da_PC" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_ID_righe_produzione" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of DInt" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_count" Datatype="DInt" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="FP_PreFine" Datatype="R_TRIG" Version="1.0" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input">
+          <Member Name="CLK" Datatype="Bool" />
+        </Section>
+        <Section Name="Output">
+          <Member Name="Q" Datatype="Bool" />
+        </Section>
+        <Section Name="InOut" />
+        <Section Name="Static">
+          <Member Name="Stat_Bit" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="s_MaterialeNecessario" Datatype="Array[1..&quot;NumRigheProduzione&quot;] of LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_appMaterialeNec" Datatype="LReal" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="s_primoTrasferimentoEseguito" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>LGasp_ProdLunghezze</Name>
+      <Namespace />
+      <Number>10309</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text>
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22">================================================================================</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="24">
+    <Text UId="25"> Gasparini Spa</Text>
+  </LineComment>
+  <NewLine Num="1" UId="26" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="27">
+    <Text UId="28">--------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="29" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="30">
+    <Text UId="31"> Libreria: LGasp_ProdLunghezze</Text>
+  </LineComment>
+  <NewLine Num="1" UId="32" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="33">
+    <Text UId="34"> Funzionalità: Funzione globale per gestione riordino quote</Text>
+  </LineComment>
+  <NewLine Num="1" UId="35" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="36">
+    <Text UId="37"> Commessa in cui è stata testata: YYXXNNNNN</Text>
+  </LineComment>
+  <NewLine Num="1" UId="38" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="39">
+    <Text UId="40"> Programmatore di riferimento per test: XXXXXX</Text>
+  </LineComment>
+  <NewLine Num="1" UId="41" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="42">
+    <Text UId="43">--------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="44" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="45">
+    <Text UId="46"> Change log table:</Text>
+  </LineComment>
+  <NewLine Num="1" UId="47" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="48">
+    <Text UId="49"> Versione Data        Autore          Modifiche</Text>
+  </LineComment>
+  <NewLine Num="1" UId="50" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="51">
+    <Text UId="52"> 01.00.05 08/04/2021  Lcg             Rilascio funzione testata la prima volta su micron 305</Text>
+  </LineComment>
+  <NewLine Num="1" UId="53" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="54">
+    <Text UId="55"> 02.00.00 10.12.2021  Enzo            Aggiunto popolamento lista profila anche quando si ha solo lista lunghezza *210100057*</Text>
+  </LineComment>
+  <NewLine Num="1" UId="56" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="57">
+    <Text UId="58"> 02.00.01 01.04.2022  Lcg             Aggiunti due parametri di uscita, lunghezza successiva e quantità totale di materiale necessario </Text>
+  </LineComment>
+  <NewLine Num="1" UId="59" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="60">
+    <Text UId="61">                                      per eseguire la produzione impostata</Text>
+  </LineComment>
+  <NewLine Num="1" UId="62" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="63">
+    <Text UId="64"> 02.00.02 28.09.2022  Lcg             Inserito numero del pezzo in lista profila (Bito 210100099)</Text>
+  </LineComment>
+  <NewLine Num="1" UId="65" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="66">
+    <Text UId="67"> 02.00.03 06.10.2022  Lcg             Inserita la gestione delle nuove variabili "opzioni" personalizzabili a seconda della macchina (Bito 210100099)</Text>
+  </LineComment>
+  <NewLine Num="1" UId="68" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="69">
+    <Text UId="70"> 02.00.04 14/03/2023  Lcg             Corretto errore che all'avvio azzerava i pezzi fatti dopo uno snapshot di L1_prd (22010003)</Text>
+  </LineComment>
+  <NewLine Num="1" UId="71" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="72">
+    <Text UId="73"> 02.00.05 17/03/2023  Lcg             Corretto errore "Allarme fine pezzi" all'accensione, si attende il primo trasferimento.  </Text>
+  </LineComment>
+  <NewLine Num="1" UId="74" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="75">
+    <Text UId="76">-------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="77" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="78">
+    <Text UId="79">================================================================================</Text>
+  </LineComment>
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Descrizione</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <NewLine Num="2" UId="21" />
+  <Token Text="IF" UId="22" />
+  <Blank Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="i_richTrasfListaPrd" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text="THEN" UId="28" />
+  <NewLine Num="1" UId="29" />
+  <Blank Num="4" UId="30" />
+  <Access Scope="LocalVariable" UId="31">
+    <Symbol UId="32">
+      <Component Name="s_mem_trasf_lista_da_PC" UId="33" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="34" />
+  <Token Text=":=" UId="35" />
+  <Blank Num="1" UId="36" />
+  <Access Scope="LiteralConstant" UId="37">
+    <Constant UId="38">
+      <ConstantValue UId="40">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="41" />
+  <NewLine Num="1" UId="42" />
+  <Token Text="END_IF" UId="43" />
+  <Token Text=";" UId="44" />
+  <NewLine Num="1" UId="45" />
+  <Blank Num="4" UId="46" />
+  <NewLine Num="1" UId="47" />
+  <Token Text="IF" UId="48" />
+  <Blank Num="1" UId="49" />
+  <Token Text="NOT" UId="50" />
+  <Blank Num="1" UId="51" />
+  <Access Scope="LocalVariable" UId="52">
+    <Symbol UId="53">
+      <Component Name="i_richTrasfListaPrd" UId="54" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="55" />
+  <Token Text="AND" UId="56" />
+  <Blank Num="1" UId="57" />
+  <Access Scope="LocalVariable" UId="58">
+    <Symbol UId="59">
+      <Component Name="s_mem_trasf_lista_da_PC" UId="60" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="61" />
+  <Token Text="THEN" UId="62" />
+  <NewLine Num="1" UId="63" />
+  <Blank Num="4" UId="64" />
+  <Access Scope="LocalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="s_mem_trasf_lista_da_PC" UId="67" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="68" />
+  <Token Text=":=" UId="69" />
+  <Blank Num="1" UId="70" />
+  <Access Scope="LiteralConstant" UId="71">
+    <Constant UId="72">
+      <ConstantValue UId="74">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="75" />
+  <NewLine Num="1" UId="76" />
+  <Blank Num="4" UId="77" />
+  <Access Scope="LocalVariable" UId="78">
+    <Symbol UId="79">
+      <Component Name="io_myprodfromPC" UId="80" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank Num="2" UId="83" />
+  <Access Scope="LocalVariable" UId="84">
+    <Symbol UId="85">
+      <Component Name="io_ListaProduzionePC" UId="86" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="87" />
+  <NewLine Num="1" UId="88" />
+  <Token Text="END_IF" UId="89" />
+  <Token Text=";" UId="90" />
+  <NewLine Num="2" UId="91" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Appoggio Produzione dal PC sulla produzione del PLC</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Appoggio Produzione dal PC sulla produzione del PLC</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <Token Text="IF" UId="22" />
+  <Blank Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="io_cancellazioneTotale" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text="THEN" UId="28" />
+  <NewLine Num="1" UId="29" />
+  <Blank Num="8" UId="30" />
+  <NewLine Num="1" UId="31" />
+  <Blank Num="8" UId="32" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="33">
+    <Text UId="34">cancella quote punzonatura</Text>
+  </LineComment>
+  <NewLine Num="1" UId="35" />
+  <Blank Num="8" UId="36" />
+  <Token Text="FOR" UId="37" />
+  <Blank Num="1" UId="38" />
+  <Access Scope="LocalVariable" UId="39">
+    <Symbol UId="40">
+      <Component Name="s_index_1" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="42" />
+  <Token Text=":=" UId="43" />
+  <Blank Num="1" UId="44" />
+  <Access Scope="LiteralConstant" UId="45">
+    <Constant UId="46">
+      <ConstantValue UId="48">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="49" />
+  <Token Text="TO" UId="50" />
+  <Blank Num="1" UId="51" />
+  <Access Scope="GlobalConstant" UId="52">
+    <Constant Name="NumQuotePunzonatura" UId="53" />
+  </Access>
+  <Blank Num="1" UId="56" />
+  <Token Text="DO" UId="57" />
+  <Blank Num="1" UId="58" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="59">
+    <Text UId="60"> Statement section IF</Text>
+  </LineComment>
+  <NewLine Num="1" UId="61" />
+  <Blank Num="12" UId="62" />
+  <Access Scope="LocalVariable" UId="63">
+    <Symbol UId="64">
+      <Component Name="io_QuotePunzonatura" UId="65">
+        <Token Text="[" UId="66" />
+        <Access Scope="LocalVariable" UId="67">
+          <Symbol UId="68">
+            <Component Name="s_index_1" UId="69" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="70" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank Num="1" UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="s_BufferQuotaNULL" UId="76" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="77" />
+  <NewLine Num="1" UId="78" />
+  <Blank Num="8" UId="79" />
+  <Token Text="END_FOR" UId="80" />
+  <Token Text=";" UId="81" />
+  <NewLine Num="1" UId="82" />
+  <Blank Num="8" UId="83" />
+  <NewLine Num="1" UId="84" />
+  <Blank Num="8" UId="85" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="86">
+    <Text UId="87">cancello tutto</Text>
+  </LineComment>
+  <NewLine Num="1" UId="88" />
+  <Blank Num="8" UId="89" />
+  <Token Text="FOR" UId="90" />
+  <Blank Num="1" UId="91" />
+  <Access Scope="LocalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="s_index_1" UId="94" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="95" />
+  <Token Text=":=" UId="96" />
+  <Blank Num="1" UId="97" />
+  <Access Scope="LiteralConstant" UId="98">
+    <Constant UId="99">
+      <ConstantValue UId="101">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="102" />
+  <Token Text="TO" UId="103" />
+  <Blank Num="1" UId="104" />
+  <Access Scope="GlobalConstant" UId="105">
+    <Constant Name="NumRigheProduzione" UId="106" />
+  </Access>
+  <Blank Num="1" UId="109" />
+  <Token Text="DO" UId="110" />
+  <NewLine Num="1" UId="111" />
+  <Blank Num="12" UId="112" />
+  <Access Scope="LocalVariable" UId="113">
+    <Symbol UId="114">
+      <Component Name="io_myprodfromPLC" UId="115">
+        <Token Text="[" UId="116" />
+        <Access Scope="LocalVariable" UId="117">
+          <Symbol UId="118">
+            <Component Name="s_index_1" UId="119" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="120" />
+      </Component>
+      <Token Text="." UId="121" />
+      <Component Name="pzinseritinelriordinoquote" UId="122" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="123" />
+  <Token Text=":=" UId="124" />
+  <Blank Num="1" UId="125" />
+  <Access Scope="LiteralConstant" UId="126">
+    <Constant UId="127">
+      <ConstantValue UId="129">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="130" />
+  <NewLine Num="1" UId="131" />
+  <Blank Num="12" UId="132" />
+  <Access Scope="LocalVariable" UId="133">
+    <Symbol UId="134">
+      <Component Name="io_myprodfromPLC" UId="135">
+        <Token Text="[" UId="136" />
+        <Access Scope="LocalVariable" UId="137">
+          <Symbol UId="138">
+            <Component Name="s_index_1" UId="139" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="140" />
+      </Component>
+      <Token Text="." UId="141" />
+      <Component Name="pzfatti" UId="142" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="143" />
+  <Token Text=":=" UId="144" />
+  <Blank Num="1" UId="145" />
+  <Access Scope="LiteralConstant" UId="146">
+    <Constant UId="147">
+      <ConstantValue UId="149">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="150" />
+  <NewLine Num="1" UId="151" />
+  <Blank Num="12" UId="152" />
+  <NewLine Num="1" UId="153" />
+  <Blank Num="12" UId="154" />
+  <Access Scope="LocalVariable" UId="155">
+    <Symbol UId="156">
+      <Component Name="io_myprodfromPC" UId="157">
+        <Token Text="[" UId="158" />
+        <Access Scope="LocalVariable" UId="159">
+          <Symbol UId="160">
+            <Component Name="s_index_1" UId="161" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="162" />
+      </Component>
+      <Token Text="." UId="163" />
+      <Component Name="ID" UId="164" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="165" />
+  <Token Text=":=" UId="166" />
+  <Blank Num="1" UId="167" />
+  <Access Scope="LiteralConstant" UId="168">
+    <Constant UId="169">
+      <ConstantValue UId="171">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="172" />
+  <NewLine Num="1" UId="173" />
+  <Blank Num="12" UId="174" />
+  <Access Scope="LocalVariable" UId="175">
+    <Symbol UId="176">
+      <Component Name="io_myprodfromPC" UId="177">
+        <Token Text="[" UId="178" />
+        <Access Scope="LocalVariable" UId="179">
+          <Symbol UId="180">
+            <Component Name="s_index_1" UId="181" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="182" />
+      </Component>
+      <Token Text="." UId="183" />
+      <Component Name="piecestodo" UId="184" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="185" />
+  <Token Text=":=" UId="186" />
+  <Blank Num="1" UId="187" />
+  <Access Scope="LiteralConstant" UId="188">
+    <Constant UId="189">
+      <ConstantValue UId="191">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="192" />
+  <NewLine Num="1" UId="193" />
+  <Blank Num="12" UId="194" />
+  <Access Scope="LocalVariable" UId="195">
+    <Symbol UId="196">
+      <Component Name="io_myprodfromPC" UId="197">
+        <Token Text="[" UId="198" />
+        <Access Scope="LocalVariable" UId="199">
+          <Symbol UId="200">
+            <Component Name="s_index_1" UId="201" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="202" />
+      </Component>
+      <Token Text="." UId="203" />
+      <Component Name="tipoarticolo" UId="204" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="205" />
+  <Token Text=":=" UId="206" />
+  <Blank Num="1" UId="207" />
+  <Access Scope="LiteralConstant" UId="208">
+    <Constant UId="209">
+      <ConstantValue UId="211">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="212" />
+  <NewLine Num="1" UId="213" />
+  <Blank Num="12" UId="214" />
+  <NewLine Num="1" UId="215" />
+  <Blank Num="8" UId="216" />
+  <Token Text="END_FOR" UId="217" />
+  <Token Text=";" UId="218" />
+  <NewLine Num="1" UId="219" />
+  <Blank Num="8" UId="220" />
+  <NewLine Num="1" UId="221" />
+  <Blank Num="8" UId="222" />
+  <Access Scope="LocalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="io_cancellazioneTotale" UId="225" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="226" />
+  <Token Text=":=" UId="227" />
+  <Blank Num="1" UId="228" />
+  <Access Scope="LiteralConstant" UId="229">
+    <Constant UId="230">
+      <ConstantValue UId="232">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="233" />
+  <NewLine Num="1" UId="234" />
+  <Blank Num="4" UId="235" />
+  <Token Text="END_IF" UId="236" />
+  <Token Text=";" UId="237" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Cancellazione totale</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Cancellazione totale</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="FOR" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="s_index_1" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text=":=" UId="27" />
+  <Blank Num="1" UId="28" />
+  <Access Scope="LiteralConstant" UId="29">
+    <Constant UId="30">
+      <ConstantValue UId="32">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text="TO" UId="34" />
+  <Blank Num="1" UId="35" />
+  <Access Scope="GlobalConstant" UId="36">
+    <Constant Name="NumRigheProduzione" UId="37" />
+  </Access>
+  <Blank Num="1" UId="40" />
+  <Token Text="DO" UId="41" />
+  <NewLine Num="1" UId="42" />
+  <Blank Num="4" UId="43" />
+  <Token Text="IF" UId="44" />
+  <Blank Num="1" UId="45" />
+  <Access Scope="LocalVariable" UId="46">
+    <Symbol UId="47">
+      <Component Name="io_myprodfromPLC" UId="48">
+        <Token Text="[" UId="49" />
+        <Access Scope="LocalVariable" UId="50">
+          <Symbol UId="51">
+            <Component Name="s_index_1" UId="52" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="53" />
+      </Component>
+      <Token Text="." UId="54" />
+      <Component Name="pzfatti" UId="55" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="56" />
+  <Token Text="&lt;" UId="57" />
+  <Blank Num="1" UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="io_myprodfromPC" UId="61">
+        <Token Text="[" UId="62" />
+        <Access Scope="LocalVariable" UId="63">
+          <Symbol UId="64">
+            <Component Name="s_index_1" UId="65" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="66" />
+      </Component>
+      <Token Text="." UId="67" />
+      <Component Name="piecestodo" UId="68" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="69" />
+  <Token Text="THEN" UId="70" />
+  <NewLine Num="1" UId="71" />
+  <Blank Num="8" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="s_RigaProduzione_in_lavoro" UId="75" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="76" />
+  <Token Text=":=" UId="77" />
+  <Blank Num="1" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="s_index_1" UId="81" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="82" />
+  <NewLine Num="1" UId="83" />
+  <Blank Num="8" UId="84" />
+  <Token Text="EXIT" UId="85" />
+  <Token Text=";" UId="86" />
+  <NewLine Num="1" UId="87" />
+  <Blank Num="4" UId="88" />
+  <Token Text="END_IF" UId="89" />
+  <Token Text=";" UId="90" />
+  <NewLine Num="1" UId="91" />
+  <Token Text="END_FOR" UId="92" />
+  <Token Text=";" UId="93" />
+  <NewLine Num="1" UId="94" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Riga di produzione in lavoro</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22"> comando pezzo eseguito</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank Num="1" UId="25" />
+  <Access Scope="LocalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="io_PezzoEseguito" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="29" />
+  <Token Text="THEN" UId="30" />
+  <NewLine Num="1" UId="31" />
+  <Blank Num="4" UId="32" />
+  <NewLine Num="1" UId="33" />
+  <Blank Num="4" UId="34" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="35">
+    <Text UId="36"> incremento pezzi fatti</Text>
+  </LineComment>
+  <NewLine Num="1" UId="37" />
+  <Blank Num="4" UId="38" />
+  <Access Scope="LocalVariable" UId="39">
+    <Symbol UId="40">
+      <Component Name="io_myprodfromPLC" UId="41">
+        <Token Text="[" UId="42" />
+        <Access Scope="LocalVariable" UId="43">
+          <Symbol UId="44">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="45" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="46" />
+      </Component>
+      <Token Text="." UId="47" />
+      <Component Name="pzfatti" UId="48" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="49" />
+  <Token Text=":=" UId="50" />
+  <Blank Num="1" UId="51" />
+  <Access Scope="LocalVariable" UId="52">
+    <Symbol UId="53">
+      <Component Name="io_myprodfromPLC" UId="54">
+        <Token Text="[" UId="55" />
+        <Access Scope="LocalVariable" UId="56">
+          <Symbol UId="57">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="58" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="59" />
+      </Component>
+      <Token Text="." UId="60" />
+      <Component Name="pzfatti" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="62" />
+  <Token Text="+" UId="63" />
+  <Blank Num="1" UId="64" />
+  <Access Scope="LiteralConstant" UId="65">
+    <Constant UId="66">
+      <ConstantValue UId="68">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="69" />
+  <NewLine Num="1" UId="70" />
+  <Blank Num="4" UId="71" />
+  <NewLine Num="1" UId="72" />
+  <Blank Num="4" UId="73" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="74">
+    <Text UId="75"> Aggiorno lista profila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="76" />
+  <Blank Num="4" UId="77" />
+  <Token Text="IF" UId="78" />
+  <Blank Num="1" UId="79" />
+  <Access Scope="LocalVariable" UId="80">
+    <Symbol UId="81">
+      <Component Name="io_ListaProfila" UId="82" />
+      <Token Text="." UId="83" />
+      <Component Name="abilitata" UId="84" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="85" />
+  <Token Text="THEN" UId="86" />
+  <NewLine Num="1" UId="87" />
+  <Blank Num="8" UId="88" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="89">
+    <Text UId="90"> Popolo i campi del pezzo da inserire</Text>
+  </LineComment>
+  <NewLine Num="1" UId="91" />
+  <Blank Num="8" UId="92" />
+  <Access Scope="LocalVariable" UId="93">
+    <Symbol UId="94">
+      <Component Name="io_ListaProfila" UId="95" />
+      <Token Text="." UId="96" />
+      <Component Name="pezzo_fatto" UId="97" />
+      <Token Text="." UId="98" />
+      <Component Name="ID" UId="99" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="100" />
+  <Token Text=":=" UId="101" />
+  <Blank Num="1" UId="102" />
+  <Access Scope="LocalVariable" UId="103">
+    <Symbol UId="104">
+      <Component Name="io_myprodfromPC" UId="105">
+        <Token Text="[" UId="106" />
+        <Access Scope="LocalVariable" UId="107">
+          <Symbol UId="108">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="109" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="110" />
+      </Component>
+      <Token Text="." UId="111" />
+      <Component Name="ID" UId="112" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="113" />
+  <NewLine Num="1" UId="114" />
+  <Blank Num="8" UId="115" />
+  <Access Scope="LocalVariable" UId="116">
+    <Symbol UId="117">
+      <Component Name="io_ListaProfila" UId="118" />
+      <Token Text="." UId="119" />
+      <Component Name="pezzo_fatto" UId="120" />
+      <Token Text="." UId="121" />
+      <Component Name="lenght" UId="122" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="123" />
+  <Token Text=":=" UId="124" />
+  <Blank Num="1" UId="125" />
+  <Access Scope="LocalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="io_myprodfromPC" UId="128">
+        <Token Text="[" UId="129" />
+        <Access Scope="LocalVariable" UId="130">
+          <Symbol UId="131">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="132" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="133" />
+      </Component>
+      <Token Text="." UId="134" />
+      <Component Name="article" UId="135" />
+      <Token Text="." UId="136" />
+      <Component Name="general" UId="137" />
+      <Token Text="." UId="138" />
+      <Component Name="lenght" UId="139" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="140" />
+  <NewLine Num="1" UId="141" />
+  <Blank Num="8" UId="142" />
+  <Access Scope="LocalVariable" UId="143">
+    <Symbol UId="144">
+      <Component Name="io_ListaProfila" UId="145" />
+      <Token Text="." UId="146" />
+      <Component Name="pezzo_fatto" UId="147" />
+      <Token Text="." UId="148" />
+      <Component Name="cutoffset" UId="149" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="150" />
+  <Token Text=":=" UId="151" />
+  <Blank Num="1" UId="152" />
+  <Access Scope="LocalVariable" UId="153">
+    <Symbol UId="154">
+      <Component Name="io_myprodfromPC" UId="155">
+        <Token Text="[" UId="156" />
+        <Access Scope="LocalVariable" UId="157">
+          <Symbol UId="158">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="159" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="160" />
+      </Component>
+      <Token Text="." UId="161" />
+      <Component Name="article" UId="162" />
+      <Token Text="." UId="163" />
+      <Component Name="general" UId="164" />
+      <Token Text="." UId="165" />
+      <Component Name="cutoffset" UId="166" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="167" />
+  <NewLine Num="1" UId="168" />
+  <Blank Num="8" UId="169" />
+  <Access Scope="LocalVariable" UId="170">
+    <Symbol UId="171">
+      <Component Name="io_ListaProfila" UId="172" />
+      <Token Text="." UId="173" />
+      <Component Name="pezzo_fatto" UId="174" />
+      <Token Text="." UId="175" />
+      <Component Name="wastepiece" UId="176" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="177" />
+  <Token Text=":=" UId="178" />
+  <Blank Num="1" UId="179" />
+  <Access Scope="LiteralConstant" UId="180">
+    <Constant UId="181">
+      <ConstantValue UId="183">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="184" />
+  <NewLine Num="1" UId="185" />
+  <Blank Num="8" UId="186" />
+  <NewLine Num="1" UId="187" />
+  <Blank Num="8" UId="188" />
+  <Access Scope="LocalVariable" UId="189">
+    <Symbol UId="190">
+      <Component Name="io_ListaProfila" UId="191" />
+      <Token Text="." UId="192" />
+      <Component Name="pezzo_fatto" UId="193" />
+      <Token Text="." UId="194" />
+      <Component Name="options" UId="195" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="196" />
+  <Token Text=":=" UId="197" />
+  <Blank Num="1" UId="198" />
+  <Access Scope="LocalVariable" UId="199">
+    <Symbol UId="200">
+      <Component Name="io_myprodfromPC" UId="201">
+        <Token Text="[" UId="202" />
+        <Access Scope="LocalVariable" UId="203">
+          <Symbol UId="204">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="205" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="206" />
+      </Component>
+      <Token Text="." UId="207" />
+      <Component Name="article" UId="208" />
+      <Token Text="." UId="209" />
+      <Component Name="general" UId="210" />
+      <Token Text="." UId="211" />
+      <Component Name="options" UId="212" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="213" />
+  <NewLine Num="1" UId="214" />
+  <Blank Num="8" UId="215" />
+  <Access Scope="LocalVariable" UId="216">
+    <Symbol UId="217">
+      <Component Name="io_ListaProfila" UId="218" />
+      <Token Text="." UId="219" />
+      <Component Name="pezzo_fatto" UId="220" />
+      <Token Text="." UId="221" />
+      <Component Name="options_dint" UId="222" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="223" />
+  <Token Text=":=" UId="224" />
+  <Blank Num="1" UId="225" />
+  <Access Scope="LocalVariable" UId="226">
+    <Symbol UId="227">
+      <Component Name="io_myprodfromPC" UId="228">
+        <Token Text="[" UId="229" />
+        <Access Scope="LocalVariable" UId="230">
+          <Symbol UId="231">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="232" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="233" />
+      </Component>
+      <Token Text="." UId="234" />
+      <Component Name="article" UId="235" />
+      <Token Text="." UId="236" />
+      <Component Name="general" UId="237" />
+      <Token Text="." UId="238" />
+      <Component Name="options_dint" UId="239" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="240" />
+  <NewLine Num="1" UId="241" />
+  <Blank Num="8" UId="242" />
+  <Access Scope="LocalVariable" UId="243">
+    <Symbol UId="244">
+      <Component Name="io_ListaProfila" UId="245" />
+      <Token Text="." UId="246" />
+      <Component Name="pezzo_fatto" UId="247" />
+      <Token Text="." UId="248" />
+      <Component Name="options_lreal" UId="249" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="250" />
+  <Token Text=":=" UId="251" />
+  <Blank Num="1" UId="252" />
+  <Access Scope="LocalVariable" UId="253">
+    <Symbol UId="254">
+      <Component Name="io_myprodfromPC" UId="255">
+        <Token Text="[" UId="256" />
+        <Access Scope="LocalVariable" UId="257">
+          <Symbol UId="258">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="259" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="260" />
+      </Component>
+      <Token Text="." UId="261" />
+      <Component Name="article" UId="262" />
+      <Token Text="." UId="263" />
+      <Component Name="general" UId="264" />
+      <Token Text="." UId="265" />
+      <Component Name="options_lreal" UId="266" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="267" />
+  <NewLine Num="1" UId="268" />
+  <Blank Num="8" UId="269" />
+  <Access Scope="LocalVariable" UId="270">
+    <Symbol UId="271">
+      <Component Name="io_ListaProfila" UId="272" />
+      <Token Text="." UId="273" />
+      <Component Name="pezzo_fatto" UId="274" />
+      <Token Text="." UId="275" />
+      <Component Name="options_str" UId="276" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="277" />
+  <Blank Num="1" UId="278" />
+  <Access Scope="LocalVariable" UId="279">
+    <Symbol UId="280">
+      <Component Name="io_myprodfromPC" UId="281">
+        <Token Text="[" UId="282" />
+        <Access Scope="LocalVariable" UId="283">
+          <Symbol UId="284">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="285" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="286" />
+      </Component>
+      <Token Text="." UId="287" />
+      <Component Name="article" UId="288" />
+      <Token Text="." UId="289" />
+      <Component Name="general" UId="290" />
+      <Token Text="." UId="291" />
+      <Component Name="options_str" UId="292" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="293" />
+  <NewLine Num="1" UId="294" />
+  <Blank Num="5" UId="295" />
+  <NewLine Num="1" UId="296" />
+  <Blank Num="8" UId="297" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="298">
+    <Text UId="299">numerpo del pezzo per lista profila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="300" />
+  <Blank Num="8" UId="301" />
+  <Access Scope="LocalVariable" UId="302">
+    <Symbol UId="303">
+      <Component Name="io_ListaProfila" UId="304" />
+      <Token Text="." UId="305" />
+      <Component Name="pezzo_fatto" UId="306" />
+      <Token Text="." UId="307" />
+      <Component Name="NumeroPezzo" UId="308" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="309" />
+  <Token Text=":=" UId="310" />
+  <Blank Num="1" UId="311" />
+  <Access Scope="LocalVariable" UId="312">
+    <Symbol UId="313">
+      <Component Name="io_myprodfromPLC" UId="314">
+        <Token Text="[" UId="315" />
+        <Access Scope="LocalVariable" UId="316">
+          <Symbol UId="317">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="318" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="319" />
+      </Component>
+      <Token Text="." UId="320" />
+      <Component Name="pzfatti" UId="321" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="322" />
+  <NewLine Num="1" UId="323" />
+  <Blank Num="8" UId="324" />
+  <NewLine Num="1" UId="325" />
+  <Blank Num="8" UId="326" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="327">
+    <Text UId="328"> Inserimento pezzo in profila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="329" />
+  <Blank Num="8" UId="330" />
+  <Access Scope="LocalVariable" UId="331">
+    <Symbol UId="332">
+      <Component Name="io_ListaProfila" UId="333" />
+      <Token Text="." UId="334" />
+      <Component Name="io_inserisci_pzo_buono" UId="335" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="336" />
+  <Token Text=":=" UId="337" />
+  <Blank Num="1" UId="338" />
+  <Access Scope="LiteralConstant" UId="339">
+    <Constant UId="340">
+      <ConstantValue UId="342">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="343" />
+  <NewLine Num="1" UId="344" />
+  <Blank Num="8" UId="345" />
+  <NewLine Num="1" UId="346" />
+  <Blank Num="4" UId="347" />
+  <Token Text="END_IF" UId="348" />
+  <Token Text=";" UId="349" />
+  <NewLine Num="1" UId="350" />
+  <Blank Num="4" UId="351" />
+  <NewLine Num="1" UId="352" />
+  <Blank Num="4" UId="353" />
+  <NewLine Num="1" UId="354" />
+  <Blank Num="4" UId="355" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="356">
+    <Text UId="357">aggiorno anche pezzi in riordino per bloccare le modifiche nel PC della riga attualmente in lavoro in pagina di produzione</Text>
+  </LineComment>
+  <NewLine Num="1" UId="358" />
+  <Blank Num="4" UId="359" />
+  <Token Text="IF" UId="360" />
+  <Blank Num="1" UId="361" />
+  <Access Scope="LocalVariable" UId="362">
+    <Symbol UId="363">
+      <Component Name="io_myprodfromPLC" UId="364">
+        <Token Text="[" UId="365" />
+        <Access Scope="LocalVariable" UId="366">
+          <Symbol UId="367">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="368" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="369" />
+      </Component>
+      <Token Text="." UId="370" />
+      <Component Name="pzfatti" UId="371" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="372" />
+  <Token Text="&lt;" UId="373" />
+  <Blank Num="1" UId="374" />
+  <Access Scope="LocalVariable" UId="375">
+    <Symbol UId="376">
+      <Component Name="io_myprodfromPC" UId="377">
+        <Token Text="[" UId="378" />
+        <Access Scope="LocalVariable" UId="379">
+          <Symbol UId="380">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="381" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="382" />
+      </Component>
+      <Token Text="." UId="383" />
+      <Component Name="piecestodo" UId="384" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="385" />
+  <Token Text="THEN" UId="386" />
+  <NewLine Num="1" UId="387" />
+  <Blank Num="8" UId="388" />
+  <Access Scope="LocalVariable" UId="389">
+    <Symbol UId="390">
+      <Component Name="io_myprodfromPLC" UId="391">
+        <Token Text="[" UId="392" />
+        <Access Scope="LocalVariable" UId="393">
+          <Symbol UId="394">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="395" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="396" />
+      </Component>
+      <Token Text="." UId="397" />
+      <Component Name="pzinseritinelriordinoquote" UId="398" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="399" />
+  <Token Text=":=" UId="400" />
+  <Blank Num="1" UId="401" />
+  <Access Scope="LocalVariable" UId="402">
+    <Symbol UId="403">
+      <Component Name="io_myprodfromPLC" UId="404">
+        <Token Text="[" UId="405" />
+        <Access Scope="LocalVariable" UId="406">
+          <Symbol UId="407">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="408" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="409" />
+      </Component>
+      <Token Text="." UId="410" />
+      <Component Name="pzfatti" UId="411" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="412" />
+  <Token Text="+" UId="413" />
+  <Blank Num="1" UId="414" />
+  <Access Scope="LiteralConstant" UId="415">
+    <Constant UId="416">
+      <ConstantValue UId="418">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="419" />
+  <NewLine Num="1" UId="420" />
+  <Blank Num="4" UId="421" />
+  <Token Text="END_IF" UId="422" />
+  <Token Text=";" UId="423" />
+  <NewLine Num="1" UId="424" />
+  <Blank Num="4" UId="425" />
+  <NewLine Num="1" UId="426" />
+  <Blank Num="4" UId="427" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="428">
+    <Text UId="429">se nella riga c'è un pezzo solo pezzi in riordino uguale a pezzi fatti</Text>
+  </LineComment>
+  <NewLine Num="1" UId="430" />
+  <Blank Num="4" UId="431" />
+  <Token Text="IF" UId="432" />
+  <Blank Num="1" UId="433" />
+  <Access Scope="LocalVariable" UId="434">
+    <Symbol UId="435">
+      <Component Name="io_myprodfromPLC" UId="436">
+        <Token Text="[" UId="437" />
+        <Access Scope="LocalVariable" UId="438">
+          <Symbol UId="439">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="440" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="441" />
+      </Component>
+      <Token Text="." UId="442" />
+      <Component Name="pzfatti" UId="443" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="444" />
+  <Token Text="=" UId="445" />
+  <Blank Num="1" UId="446" />
+  <Access Scope="LocalVariable" UId="447">
+    <Symbol UId="448">
+      <Component Name="io_myprodfromPC" UId="449">
+        <Token Text="[" UId="450" />
+        <Access Scope="LocalVariable" UId="451">
+          <Symbol UId="452">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="453" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="454" />
+      </Component>
+      <Token Text="." UId="455" />
+      <Component Name="piecestodo" UId="456" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="457" />
+  <Token Text="AND" UId="458" />
+  <Blank Num="1" UId="459" />
+  <Access Scope="LocalVariable" UId="460">
+    <Symbol UId="461">
+      <Component Name="io_myprodfromPC" UId="462">
+        <Token Text="[" UId="463" />
+        <Access Scope="LocalVariable" UId="464">
+          <Symbol UId="465">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="466" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="467" />
+      </Component>
+      <Token Text="." UId="468" />
+      <Component Name="piecestodo" UId="469" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="470" />
+  <Token Text="=" UId="471" />
+  <Blank Num="1" UId="472" />
+  <Access Scope="LiteralConstant" UId="473">
+    <Constant UId="474">
+      <ConstantValue UId="476">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="477" />
+  <Token Text="THEN" UId="478" />
+  <NewLine Num="1" UId="479" />
+  <Blank Num="8" UId="480" />
+  <Access Scope="LocalVariable" UId="481">
+    <Symbol UId="482">
+      <Component Name="io_myprodfromPLC" UId="483">
+        <Token Text="[" UId="484" />
+        <Access Scope="LocalVariable" UId="485">
+          <Symbol UId="486">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="487" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="488" />
+      </Component>
+      <Token Text="." UId="489" />
+      <Component Name="pzinseritinelriordinoquote" UId="490" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="491" />
+  <Token Text=":=" UId="492" />
+  <Blank Num="1" UId="493" />
+  <Access Scope="LocalVariable" UId="494">
+    <Symbol UId="495">
+      <Component Name="io_myprodfromPLC" UId="496">
+        <Token Text="[" UId="497" />
+        <Access Scope="LocalVariable" UId="498">
+          <Symbol UId="499">
+            <Component Name="s_RigaProduzione_in_lavoro" UId="500" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="501" />
+      </Component>
+      <Token Text="." UId="502" />
+      <Component Name="pzfatti" UId="503" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="504" />
+  <NewLine Num="1" UId="505" />
+  <Blank Num="4" UId="506" />
+  <Token Text="END_IF" UId="507" />
+  <Token Text=";" UId="508" />
+  <NewLine Num="1" UId="509" />
+  <Blank Num="4" UId="510" />
+  <NewLine Num="1" UId="511" />
+  <Blank Num="4" UId="512" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="513">
+    <Text UId="514"> fine</Text>
+  </LineComment>
+  <NewLine Num="1" UId="515" />
+  <Blank Num="4" UId="516" />
+  <Access Scope="LocalVariable" UId="517">
+    <Symbol UId="518">
+      <Component Name="io_PezzoEseguito" UId="519" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="520" />
+  <Token Text=":=" UId="521" />
+  <Blank Num="1" UId="522" />
+  <Access Scope="LiteralConstant" UId="523">
+    <Constant UId="524">
+      <ConstantValue UId="526">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="527" />
+  <NewLine Num="1" UId="528" />
+  <Blank Num="4" UId="529" />
+  <NewLine Num="1" UId="530" />
+  <Token Text="END_IF" UId="531" />
+  <Token Text=";" UId="532" />
+  <NewLine Num="3" UId="533" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Lavorazione eseguita</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="i_reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="i_lista_compilata" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="o_AlmFinePezzi" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="i_lista_compilata" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="s_primoTrasferimentoEseguito" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="article" />
+        <Component Name="general" />
+        <Component Name="lenght" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>LReal</ConstantType>
+        <ConstantValue>-1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="29">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="o_DatiProdOK" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="32">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="o_AlmFinePezzi" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="34" />
+    <Part Name="Contact" UId="35">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="O" UId="36">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="37" />
+    <Part Name="Contact" UId="38" />
+    <Part Name="Contact" UId="39" />
+    <Part Name="Ne" UId="40">
+      <TemplateValue Name="SrcType" Type="Type">LReal</TemplateValue>
+    </Part>
+    <Part Name="Ne" UId="41">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="42" />
+    <Part Name="Eq" UId="43">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="SCoil" UId="44" />
+  </Parts>
+  <Wires>
+    <Wire UId="45">
+      <Powerrail />
+      <NameCon UId="34" Name="in" />
+      <NameCon UId="35" Name="in" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="21" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="36" Name="in1" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="22" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in2" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="23" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="24" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="25" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="40" Name="pre" />
+      <NameCon UId="43" Name="pre" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="26" />
+      <NameCon UId="40" Name="in1" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="27" />
+      <NameCon UId="40" Name="in2" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="pre" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="28" />
+      <NameCon UId="41" Name="in1" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="29" />
+      <NameCon UId="41" Name="in2" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="30" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="31" />
+      <NameCon UId="43" Name="in1" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="32" />
+      <NameCon UId="43" Name="in2" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="33" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Quote ok</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="s_mem_trasf_lista_da_PC" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="AND" UId="29" />
+  <Blank Num="1" UId="30" />
+  <Access Scope="LocalVariable" UId="31">
+    <Symbol UId="32">
+      <Component Name="s_primoTrasferimentoEseguito" UId="33" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="34" />
+  <Token Text="THEN" UId="35" />
+  <NewLine Num="1" UId="36" />
+  <Blank Num="4" UId="37" />
+  <NewLine Num="1" UId="38" />
+  <Blank Num="4" UId="39" />
+  <Token Text="IF" UId="40" />
+  <Blank Num="1" UId="41" />
+  <Token Text="(" UId="42" />
+  <Access Scope="LocalVariable" UId="43">
+    <Symbol UId="44">
+      <Component Name="io_myprodfromPLC" UId="45">
+        <Token Text="[" UId="46" />
+        <Access Scope="LiteralConstant" UId="47">
+          <Constant UId="48">
+            <ConstantValue UId="50">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="51" />
+      </Component>
+      <Token Text="." UId="52" />
+      <Component Name="pzfatti" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="54" />
+  <Token Text="&gt;=" UId="55" />
+  <Blank Num="1" UId="56" />
+  <Access Scope="LocalVariable" UId="57">
+    <Symbol UId="58">
+      <Component Name="io_myprodfromPC" UId="59">
+        <Token Text="[" UId="60" />
+        <Access Scope="LiteralConstant" UId="61">
+          <Constant UId="62">
+            <ConstantValue UId="64">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="65" />
+      </Component>
+      <Token Text="." UId="66" />
+      <Component Name="piecestodo" UId="67" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="68" />
+  <Blank Num="1" UId="69" />
+  <Token Text="AND" UId="70" />
+  <Blank Num="1" UId="71" />
+  <Token Text="(" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="io_myprodfromPC" UId="75">
+        <Token Text="[" UId="76" />
+        <Access Scope="LiteralConstant" UId="77">
+          <Constant UId="78">
+            <ConstantValue UId="80">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="81" />
+      </Component>
+      <Token Text="." UId="82" />
+      <Component Name="piecestodo" UId="83" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="84" />
+  <Token Text="&gt;" UId="85" />
+  <Blank Num="1" UId="86" />
+  <Access Scope="LiteralConstant" UId="87">
+    <Constant UId="88">
+      <ConstantValue UId="90">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="91" />
+  <Blank Num="1" UId="92" />
+  <Token Text="THEN" UId="93" />
+  <NewLine Num="1" UId="94" />
+  <Blank Num="8" UId="95" />
+  <NewLine Num="1" UId="96" />
+  <Blank Num="8" UId="97" />
+  <NewLine Num="1" UId="98" />
+  <Blank Num="8" UId="99" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="100">
+    <Text UId="101">salvataggio ID e pezzi fatti della riga appena completata: serve al PC per impostare correttamente i pezzi fatti</Text>
+  </LineComment>
+  <NewLine Num="1" UId="102" />
+  <Blank Num="8" UId="103" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="104">
+    <Text UId="105">nelle righe eliminate</Text>
+  </LineComment>
+  <NewLine Num="1" UId="106" />
+  <Blank Num="8" UId="107" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="108">
+    <Text UId="109">spostamento delle righe </Text>
+  </LineComment>
+  <NewLine Num="1" UId="110" />
+  <Blank Num="8" UId="111" />
+  <Token Text="FOR" UId="112" />
+  <Blank Num="1" UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="s_index_5" UId="116" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="117" />
+  <Token Text=":=" UId="118" />
+  <Blank Num="1" UId="119" />
+  <Access Scope="LiteralConstant" UId="120">
+    <Constant UId="121">
+      <ConstantValue UId="123">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="124" />
+  <Token Text="TO" UId="125" />
+  <Blank Num="1" UId="126" />
+  <Access Scope="GlobalConstant" UId="127">
+    <Constant Name="NumRigheProduzione" UId="128" />
+  </Access>
+  <Blank Num="1" UId="131" />
+  <Token Text="-" UId="132" />
+  <Blank Num="1" UId="133" />
+  <Access Scope="LiteralConstant" UId="134">
+    <Constant UId="135">
+      <ConstantValue UId="137">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="138" />
+  <Token Text="DO" UId="139" />
+  <NewLine Num="1" UId="140" />
+  <Blank Num="12" UId="141" />
+  <Access Scope="LocalVariable" UId="142">
+    <Symbol UId="143">
+      <Component Name="io_StoricoRigheProdEliminate" UId="144">
+        <Token Text="[" UId="145" />
+        <Access Scope="GlobalConstant" UId="146">
+          <Constant UId="147">
+            <ConstantValue UId="149">NumRigheProduzione</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="150" />
+        <Token Text="-" UId="151" />
+        <Blank Num="1" UId="152" />
+        <Access Scope="LocalVariable" UId="153">
+          <Symbol UId="154">
+            <Component Name="s_index_5" UId="155" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="156" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="157" />
+  <Token Text=":=" UId="158" />
+  <Blank Num="1" UId="159" />
+  <Access Scope="LocalVariable" UId="160">
+    <Symbol UId="161">
+      <Component Name="io_StoricoRigheProdEliminate" UId="162">
+        <Token Text="[" UId="163" />
+        <Access Scope="GlobalConstant" UId="164">
+          <Constant UId="165">
+            <ConstantValue UId="167">NumRigheProduzione</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="168" />
+        <Token Text="-" UId="169" />
+        <Blank Num="1" UId="170" />
+        <Access Scope="LocalVariable" UId="171">
+          <Symbol UId="172">
+            <Component Name="s_index_5" UId="173" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="174" />
+        <Token Text="-" UId="175" />
+        <Blank Num="1" UId="176" />
+        <Access Scope="LiteralConstant" UId="177">
+          <Constant UId="178">
+            <ConstantValue UId="180">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="181" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="182" />
+  <NewLine Num="1" UId="183" />
+  <Blank Num="8" UId="184" />
+  <Token Text="END_FOR" UId="185" />
+  <Token Text=";" UId="186" />
+  <NewLine Num="1" UId="187" />
+  <Blank Num="8" UId="188" />
+  <NewLine Num="1" UId="189" />
+  <Blank Num="8" UId="190" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="191">
+    <Text UId="192">salvataggio ID e pezzi fatti prima di eliminare la riga di produzione</Text>
+  </LineComment>
+  <NewLine Num="1" UId="193" />
+  <Blank Num="8" UId="194" />
+  <Access Scope="LocalVariable" UId="195">
+    <Symbol UId="196">
+      <Component Name="io_StoricoRigheProdEliminate" UId="197">
+        <Token Text="[" UId="198" />
+        <Access Scope="LiteralConstant" UId="199">
+          <Constant UId="200">
+            <ConstantValue UId="202">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="203" />
+      </Component>
+      <Token Text="." UId="204" />
+      <Component Name="ID" UId="205" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="206" />
+  <Token Text=":=" UId="207" />
+  <Blank Num="1" UId="208" />
+  <Access Scope="LocalVariable" UId="209">
+    <Symbol UId="210">
+      <Component Name="io_myprodfromPC" UId="211">
+        <Token Text="[" UId="212" />
+        <Access Scope="LiteralConstant" UId="213">
+          <Constant UId="214">
+            <ConstantValue UId="216">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="217" />
+      </Component>
+      <Token Text="." UId="218" />
+      <Component Name="ID" UId="219" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="220" />
+  <NewLine Num="1" UId="221" />
+  <Blank Num="8" UId="222" />
+  <Access Scope="LocalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="io_StoricoRigheProdEliminate" UId="225">
+        <Token Text="[" UId="226" />
+        <Access Scope="LiteralConstant" UId="227">
+          <Constant UId="228">
+            <ConstantValue UId="230">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="231" />
+      </Component>
+      <Token Text="." UId="232" />
+      <Component Name="pzfatti" UId="233" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="234" />
+  <Token Text=":=" UId="235" />
+  <Blank Num="1" UId="236" />
+  <Access Scope="LocalVariable" UId="237">
+    <Symbol UId="238">
+      <Component Name="io_myprodfromPLC" UId="239">
+        <Token Text="[" UId="240" />
+        <Access Scope="LiteralConstant" UId="241">
+          <Constant UId="242">
+            <ConstantValue UId="244">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="245" />
+      </Component>
+      <Token Text="." UId="246" />
+      <Component Name="pzfatti" UId="247" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="248" />
+  <NewLine Num="1" UId="249" />
+  <Blank Num="8" UId="250" />
+  <NewLine Num="1" UId="251" />
+  <Blank Num="8" UId="252" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="253">
+    <Text UId="254">cancella pezzi fatti</Text>
+  </LineComment>
+  <NewLine Num="1" UId="255" />
+  <Blank Num="8" UId="256" />
+  <Access Scope="LocalVariable" UId="257">
+    <Symbol UId="258">
+      <Component Name="io_myprodfromPLC" UId="259">
+        <Token Text="[" UId="260" />
+        <Access Scope="LiteralConstant" UId="261">
+          <Constant UId="262">
+            <ConstantValue UId="264">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="265" />
+      </Component>
+      <Token Text="." UId="266" />
+      <Component Name="pzfatti" UId="267" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="268" />
+  <Token Text=":=" UId="269" />
+  <Blank Num="1" UId="270" />
+  <Access Scope="LiteralConstant" UId="271">
+    <Constant UId="272">
+      <ConstantValue UId="274">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="275" />
+  <NewLine Num="1" UId="276" />
+  <Blank Num="8" UId="277" />
+  <NewLine Num="1" UId="278" />
+  <Blank Num="8" UId="279" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="280">
+    <Text UId="281">salvataggio nuovi dati</Text>
+  </LineComment>
+  <NewLine Num="1" UId="282" />
+  <Blank Num="8" UId="283" />
+  <NewLine Num="1" UId="284" />
+  <Blank Num="8" UId="285" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="286">
+    <Text UId="287">sposta le righe di produzione</Text>
+  </LineComment>
+  <NewLine Num="1" UId="288" />
+  <Blank Num="8" UId="289" />
+  <Token Text="FOR" UId="290" />
+  <Blank Num="1" UId="291" />
+  <Access Scope="LocalVariable" UId="292">
+    <Symbol UId="293">
+      <Component Name="s_index_5" UId="294" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="295" />
+  <Token Text=":=" UId="296" />
+  <Blank Num="1" UId="297" />
+  <Access Scope="LiteralConstant" UId="298">
+    <Constant UId="299">
+      <ConstantValue UId="301">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="302" />
+  <Token Text="TO" UId="303" />
+  <Blank Num="1" UId="304" />
+  <Access Scope="GlobalConstant" UId="305">
+    <Constant Name="NumRigheProduzione" UId="306" />
+  </Access>
+  <Blank Num="1" UId="309" />
+  <Token Text="-" UId="310" />
+  <Blank Num="1" UId="311" />
+  <Access Scope="LiteralConstant" UId="312">
+    <Constant UId="313">
+      <ConstantValue UId="315">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="316" />
+  <Token Text="DO" UId="317" />
+  <NewLine Num="1" UId="318" />
+  <Blank Num="12" UId="319" />
+  <Access Scope="LocalVariable" UId="320">
+    <Symbol UId="321">
+      <Component Name="io_myprodfromPC" UId="322">
+        <Token Text="[" UId="323" />
+        <Access Scope="LocalVariable" UId="324">
+          <Symbol UId="325">
+            <Component Name="s_index_5" UId="326" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="327" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="328" />
+  <Token Text=":=" UId="329" />
+  <Blank Num="1" UId="330" />
+  <Access Scope="LocalVariable" UId="331">
+    <Symbol UId="332">
+      <Component Name="io_myprodfromPC" UId="333">
+        <Token Text="[" UId="334" />
+        <Access Scope="LocalVariable" UId="335">
+          <Symbol UId="336">
+            <Component Name="s_index_5" UId="337" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="338" />
+        <Token Text="+" UId="339" />
+        <Blank Num="1" UId="340" />
+        <Access Scope="LiteralConstant" UId="341">
+          <Constant UId="342">
+            <ConstantValue UId="344">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="345" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="346" />
+  <NewLine Num="1" UId="347" />
+  <Blank Num="12" UId="348" />
+  <Access Scope="LocalVariable" UId="349">
+    <Symbol UId="350">
+      <Component Name="io_myprodfromPLC" UId="351">
+        <Token Text="[" UId="352" />
+        <Access Scope="LocalVariable" UId="353">
+          <Symbol UId="354">
+            <Component Name="s_index_5" UId="355" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="356" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="357" />
+  <Token Text=":=" UId="358" />
+  <Blank Num="1" UId="359" />
+  <Access Scope="LocalVariable" UId="360">
+    <Symbol UId="361">
+      <Component Name="io_myprodfromPLC" UId="362">
+        <Token Text="[" UId="363" />
+        <Access Scope="LocalVariable" UId="364">
+          <Symbol UId="365">
+            <Component Name="s_index_5" UId="366" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="367" />
+        <Token Text="+" UId="368" />
+        <Blank Num="1" UId="369" />
+        <Access Scope="LiteralConstant" UId="370">
+          <Constant UId="371">
+            <ConstantValue UId="373">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="374" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="375" />
+  <NewLine Num="1" UId="376" />
+  <Blank Num="8" UId="377" />
+  <Token Text="END_FOR" UId="378" />
+  <Token Text=";" UId="379" />
+  <NewLine Num="1" UId="380" />
+  <Blank Num="8" UId="381" />
+  <NewLine Num="1" UId="382" />
+  <Blank Num="8" UId="383" />
+  <Access Scope="LocalVariable" UId="384">
+    <Symbol UId="385">
+      <Component Name="io_myprodfromPC" UId="386">
+        <Token Text="[" UId="387" />
+        <Access Scope="GlobalConstant" UId="388">
+          <Constant UId="389">
+            <ConstantValue UId="391">NumRigheProduzione</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="392" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="393" />
+  <Token Text=":=" UId="394" />
+  <Blank Num="1" UId="395" />
+  <Access Scope="LocalVariable" UId="396">
+    <Symbol UId="397">
+      <Component Name="s_RigaProduzioneNULL" UId="398" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="399" />
+  <NewLine Num="1" UId="400" />
+  <Blank Num="8" UId="401" />
+  <NewLine Num="1" UId="402" />
+  <Blank Num="4" UId="403" />
+  <Token Text="END_IF" UId="404" />
+  <Token Text=";" UId="405" />
+  <NewLine Num="1" UId="406" />
+  <Token Text="END_IF" UId="407" />
+  <Token Text=";" UId="408" />
+  <NewLine Num="1" UId="409" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Elimina righe terminate (attenzione le elimino solo da parte PLC )</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="i_richTrasfListaPrd" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="o_OkTrasfListaPrd" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23" />
+    <Part Name="Coil" UId="24" />
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="27">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Ok trasferimento lista</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="i_lista_compilata" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="AND" UId="29" />
+  <Blank Num="1" UId="30" />
+  <Access Scope="LocalVariable" UId="31">
+    <Symbol UId="32">
+      <Component Name="io_cancella_pezzi" UId="33" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="34" />
+  <Token Text="THEN" UId="35" />
+  <NewLine Num="1" UId="36" />
+  <Blank Num="4" UId="37" />
+  <Token Text="FOR" UId="38" />
+  <Blank Num="1" UId="39" />
+  <Access Scope="LocalVariable" UId="40">
+    <Symbol UId="41">
+      <Component Name="s_index_7" UId="42" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="43" />
+  <Token Text=":=" UId="44" />
+  <Blank Num="1" UId="45" />
+  <Access Scope="LiteralConstant" UId="46">
+    <Constant UId="47">
+      <ConstantValue UId="49">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="50" />
+  <Token Text="TO" UId="51" />
+  <Blank Num="1" UId="52" />
+  <Access Scope="GlobalConstant" UId="53">
+    <Constant Name="NumRigheProduzione" UId="54" />
+  </Access>
+  <Blank Num="1" UId="57" />
+  <Token Text="DO" UId="58" />
+  <NewLine Num="1" UId="59" />
+  <Blank Num="8" UId="60" />
+  <Access Scope="LocalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="io_myprodfromPLC" UId="63">
+        <Token Text="[" UId="64" />
+        <Access Scope="LocalVariable" UId="65">
+          <Symbol UId="66">
+            <Component Name="s_index_7" UId="67" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="68" />
+      </Component>
+      <Token Text="." UId="69" />
+      <Component Name="pzfatti" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank Num="1" UId="73" />
+  <Access Scope="LiteralConstant" UId="74">
+    <Constant UId="75">
+      <ConstantValue UId="77">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="78" />
+  <NewLine Num="1" UId="79" />
+  <Blank Num="8" UId="80" />
+  <Access Scope="LocalVariable" UId="81">
+    <Symbol UId="82">
+      <Component Name="io_myprodfromPLC" UId="83">
+        <Token Text="[" UId="84" />
+        <Access Scope="LocalVariable" UId="85">
+          <Symbol UId="86">
+            <Component Name="s_index_7" UId="87" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="88" />
+      </Component>
+      <Token Text="." UId="89" />
+      <Component Name="pzinseritinelriordinoquote" UId="90" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="91" />
+  <Token Text=":=" UId="92" />
+  <Blank Num="1" UId="93" />
+  <Access Scope="LiteralConstant" UId="94">
+    <Constant UId="95">
+      <ConstantValue UId="97">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="98" />
+  <NewLine Num="1" UId="99" />
+  <Blank Num="4" UId="100" />
+  <Token Text="END_FOR" UId="101" />
+  <Token Text=";" UId="102" />
+  <NewLine Num="1" UId="103" />
+  <Token Text="END_IF" UId="104" />
+  <Token Text=";" UId="105" />
+  <NewLine Num="2" UId="106" />
+  <Access Scope="LocalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="io_cancella_pezzi" UId="109" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="110" />
+  <Token Text=":=" UId="111" />
+  <Blank Num="1" UId="112" />
+  <Access Scope="LiteralConstant" UId="113">
+    <Constant UId="114">
+      <ConstantValue UId="116">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="117" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Cancella pezzi fatti</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Cancella pezzi fatti</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <Token Text="FOR" UId="22" />
+  <Blank Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="s_index_7" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank Num="1" UId="29" />
+  <Access Scope="LiteralConstant" UId="30">
+    <Constant UId="31">
+      <ConstantValue UId="33">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="34" />
+  <Token Text="TO" UId="35" />
+  <Blank Num="1" UId="36" />
+  <Access Scope="GlobalConstant" UId="37">
+    <Constant Name="NumRigheProduzione" UId="38" />
+  </Access>
+  <Blank Num="1" UId="41" />
+  <Token Text="DO" UId="42" />
+  <NewLine Num="1" UId="43" />
+  <Blank Num="8" UId="44" />
+  <NewLine Num="1" UId="45" />
+  <Blank Num="8" UId="46" />
+  <Token Text="IF" UId="47" />
+  <Blank Num="1" UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="io_myprodfromPCupdate" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LocalVariable" UId="53">
+          <Symbol UId="54">
+            <Component Name="s_index_7" UId="55" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="56" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="57" />
+  <Token Text="&gt;" UId="58" />
+  <Blank Num="1" UId="59" />
+  <Access Scope="LiteralConstant" UId="60">
+    <Constant UId="61">
+      <ConstantValue UId="63">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="64" />
+  <Token Text="AND" UId="65" />
+  <Blank Num="1" UId="66" />
+  <Access Scope="LocalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="io_myprodfromPCupdate" UId="69">
+        <Token Text="[" UId="70" />
+        <Access Scope="LocalVariable" UId="71">
+          <Symbol UId="72">
+            <Component Name="s_index_7" UId="73" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="74" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="75" />
+  <Token Text="&gt;" UId="76" />
+  <Blank Num="1" UId="77" />
+  <Access Scope="LocalVariable" UId="78">
+    <Symbol UId="79">
+      <Component Name="io_myprodfromPLC" UId="80">
+        <Token Text="[" UId="81" />
+        <Access Scope="LocalVariable" UId="82">
+          <Symbol UId="83">
+            <Component Name="s_index_7" UId="84" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+      <Token Text="." UId="86" />
+      <Component Name="pzinseritinelriordinoquote" UId="87" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="88" />
+  <Token Text="THEN" UId="89" />
+  <NewLine Num="1" UId="90" />
+  <Blank Num="12" UId="91" />
+  <Access Scope="LocalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="io_myprodfromPC" UId="94">
+        <Token Text="[" UId="95" />
+        <Access Scope="LocalVariable" UId="96">
+          <Symbol UId="97">
+            <Component Name="s_index_7" UId="98" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="99" />
+      </Component>
+      <Token Text="." UId="100" />
+      <Component Name="piecestodo" UId="101" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="102" />
+  <Token Text=":=" UId="103" />
+  <Blank Num="1" UId="104" />
+  <Access Scope="LocalVariable" UId="105">
+    <Symbol UId="106">
+      <Component Name="io_myprodfromPCupdate" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LocalVariable" UId="109">
+          <Symbol UId="110">
+            <Component Name="s_index_7" UId="111" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="112" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="113" />
+  <NewLine Num="1" UId="114" />
+  <Blank Num="8" UId="115" />
+  <Token Text="END_IF" UId="116" />
+  <Token Text=";" UId="117" />
+  <NewLine Num="1" UId="118" />
+  <Blank Num="8" UId="119" />
+  <Access Scope="LocalVariable" UId="120">
+    <Symbol UId="121">
+      <Component Name="io_myprodfromPCupdate" UId="122">
+        <Token Text="[" UId="123" />
+        <Access Scope="LocalVariable" UId="124">
+          <Symbol UId="125">
+            <Component Name="s_index_7" UId="126" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="127" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="128" />
+  <Token Text=":=" UId="129" />
+  <Blank Num="1" UId="130" />
+  <Access Scope="LiteralConstant" UId="131">
+    <Constant UId="132">
+      <ConstantValue UId="134">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="135" />
+  <NewLine Num="1" UId="136" />
+  <Blank Num="8" UId="137" />
+  <NewLine Num="1" UId="138" />
+  <Blank Num="4" UId="139" />
+  <Token Text="END_FOR" UId="140" />
+  <Token Text=";" UId="141" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Controllo se sono stati modificati i pezzi da fare in pagina di produzione e aggiorno le righe di produzione con i nuovi pezzi</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Aggiornamento pezzi da fare durante la marcia</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Aggiornamento pezzi da fare durante la marcia</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="4A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="s_firstScan_Done" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="THEN" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <NewLine Num="1" UId="32" />
+  <Blank Num="4" UId="33" />
+  <Token Text="FOR" UId="34" />
+  <Blank Num="1" UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="s_index_0" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank Num="1" UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="46" />
+  <Token Text="TO" UId="47" />
+  <Blank Num="1" UId="48" />
+  <Access Scope="GlobalConstant" UId="49">
+    <Constant Name="NumRigheProduzione" UId="50" />
+  </Access>
+  <Blank Num="1" UId="53" />
+  <Token Text="DO" UId="54" />
+  <NewLine Num="1" UId="55" />
+  <Blank Num="8" UId="56" />
+  <Access Scope="LocalVariable" UId="57">
+    <Symbol UId="58">
+      <Component Name="io_myprodfromPC" UId="59">
+        <Token Text="[" UId="60" />
+        <Access Scope="LocalVariable" UId="61">
+          <Symbol UId="62">
+            <Component Name="s_index_0" UId="63" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="64" />
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="ID" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="67" />
+  <Token Text=":=" UId="68" />
+  <Blank Num="1" UId="69" />
+  <Access Scope="LocalVariable" UId="70">
+    <Symbol UId="71">
+      <Component Name="s_ID_righe_produzione" UId="72">
+        <Token Text="[" UId="73" />
+        <Access Scope="LocalVariable" UId="74">
+          <Symbol UId="75">
+            <Component Name="s_index_0" UId="76" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="77" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="78" />
+  <NewLine Num="1" UId="79" />
+  <Blank Num="4" UId="80" />
+  <Token Text="END_FOR" UId="81" />
+  <Token Text=";" UId="82" />
+  <NewLine Num="1" UId="83" />
+  <Blank Num="4" UId="84" />
+  <NewLine Num="1" UId="85" />
+  <Blank Num="4" UId="86" />
+  <Access Scope="LocalVariable" UId="87">
+    <Symbol UId="88">
+      <Component Name="io_rich_nuovo_trasferimento" UId="89" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="90" />
+  <Token Text=":=" UId="91" />
+  <Blank Num="1" UId="92" />
+  <Access Scope="LiteralConstant" UId="93">
+    <Constant UId="94">
+      <ConstantValue UId="96">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="97" />
+  <NewLine Num="1" UId="98" />
+  <Blank Num="4" UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="s_firstScan_Done" UId="102" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="103" />
+  <Token Text=":=" UId="104" />
+  <Blank Num="1" UId="105" />
+  <Access Scope="LiteralConstant" UId="106">
+    <Constant UId="107">
+      <ConstantValue UId="109">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="110" />
+  <NewLine Num="1" UId="111" />
+  <Blank Num="4" UId="112" />
+  <NewLine Num="1" UId="113" />
+  <Token Text="END_IF" UId="114" />
+  <Token Text=";" UId="115" />
+  <NewLine Num="2" UId="116" />
+  <Token Text="IF" UId="117" />
+  <Blank Num="1" UId="118" />
+  <Access Scope="LocalVariable" UId="119">
+    <Symbol UId="120">
+      <Component Name="s_firstScan_Done" UId="121" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="122" />
+  <Token Text="AND" UId="123" />
+  <Blank Num="1" UId="124" />
+  <Token Text="NOT" UId="125" />
+  <Blank Num="1" UId="126" />
+  <Access Scope="LocalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="io_rich_nuovo_trasferimento" UId="129" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="130" />
+  <Token Text="THEN" UId="131" />
+  <NewLine Num="1" UId="132" />
+  <Blank Num="4" UId="133" />
+  <Token Text="FOR" UId="134" />
+  <Blank Num="1" UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="s_index_0" UId="138" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="139" />
+  <Token Text=":=" UId="140" />
+  <Blank Num="1" UId="141" />
+  <Access Scope="LiteralConstant" UId="142">
+    <Constant UId="143">
+      <ConstantValue UId="145">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="146" />
+  <Token Text="TO" UId="147" />
+  <Blank Num="1" UId="148" />
+  <Access Scope="GlobalConstant" UId="149">
+    <Constant Name="NumRigheProduzione" UId="150" />
+  </Access>
+  <Blank Num="1" UId="153" />
+  <Token Text="DO" UId="154" />
+  <NewLine Num="1" UId="155" />
+  <Blank Num="8" UId="156" />
+  <Access Scope="LocalVariable" UId="157">
+    <Symbol UId="158">
+      <Component Name="s_ID_righe_produzione" UId="159">
+        <Token Text="[" UId="160" />
+        <Access Scope="LocalVariable" UId="161">
+          <Symbol UId="162">
+            <Component Name="s_index_0" UId="163" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="164" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="165" />
+  <Token Text=":=" UId="166" />
+  <Blank Num="1" UId="167" />
+  <Access Scope="LocalVariable" UId="168">
+    <Symbol UId="169">
+      <Component Name="io_myprodfromPC" UId="170">
+        <Token Text="[" UId="171" />
+        <Access Scope="LocalVariable" UId="172">
+          <Symbol UId="173">
+            <Component Name="s_index_0" UId="174" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="175" />
+      </Component>
+      <Token Text="." UId="176" />
+      <Component Name="ID" UId="177" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="178" />
+  <NewLine Num="1" UId="179" />
+  <Blank Num="4" UId="180" />
+  <Token Text="END_FOR" UId="181" />
+  <Token Text=";" UId="182" />
+  <NewLine Num="1" UId="183" />
+  <Blank Num="4" UId="184" />
+  <Access Scope="LocalVariable" UId="185">
+    <Symbol UId="186">
+      <Component Name="s_primoTrasferimentoEseguito" UId="187" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="188" />
+  <Token Text=":=" UId="189" />
+  <Blank Num="1" UId="190" />
+  <Access Scope="LiteralConstant" UId="191">
+    <Constant UId="192">
+      <ConstantValue UId="194">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="195" />
+  <NewLine Num="1" UId="196" />
+  <Token Text="END_IF" UId="197" />
+  <Token Text=";" UId="198" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="4C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Memoria ID prima riga per riallineamento all'accensione</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="51" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="article" />
+        <Component Name="general" />
+        <Component Name="lenght" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="i_correttore" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="o_LunghezzaAttuale" />
+      </Symbol>
+    </Access>
+    <Part Name="Mul" UId="24" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <Powerrail />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="in1" />
+    </Wire>
+    <Wire UId="27">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in2" />
+    </Wire>
+    <Wire UId="28">
+      <NameCon UId="24" Name="out" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="52" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="53" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="54" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="55" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="56" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="57" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Quote lavorazione attuale</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="58" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_myprodfromPLC" UId="25">
+        <Token Text="[" UId="26" />
+        <Access Scope="LiteralConstant" UId="27">
+          <Constant UId="28">
+            <ConstantValue UId="30">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="31" />
+      </Component>
+      <Token Text="." UId="32" />
+      <Component Name="pzfatti" UId="33" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="34" />
+  <Token Text="&gt;" UId="35" />
+  <Blank Num="1" UId="36" />
+  <Access Scope="LocalVariable" UId="37">
+    <Symbol UId="38">
+      <Component Name="io_myprodfromPC" UId="39">
+        <Token Text="[" UId="40" />
+        <Access Scope="LiteralConstant" UId="41">
+          <Constant UId="42">
+            <ConstantValue UId="44">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="45" />
+      </Component>
+      <Token Text="." UId="46" />
+      <Component Name="piecestodo" UId="47" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="48" />
+  <Token Text="-" UId="49" />
+  <Blank Num="1" UId="50" />
+  <Access Scope="LiteralConstant" UId="51">
+    <Constant UId="52">
+      <ConstantValue UId="54">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="55" />
+  <Token Text="THEN" UId="56" />
+  <NewLine Num="1" UId="57" />
+  <Blank Num="4" UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="s_CambioRigaProduzione" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="62" />
+  <Token Text=":=" UId="63" />
+  <Blank Num="1" UId="64" />
+  <Access Scope="LiteralConstant" UId="65">
+    <Constant UId="66">
+      <ConstantValue UId="68">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="69" />
+  <NewLine Num="1" UId="70" />
+  <Token Text="ELSE" UId="71" />
+  <NewLine Num="1" UId="72" />
+  <Blank Num="4" UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="s_CambioRigaProduzione" UId="76" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="77" />
+  <Token Text=":=" UId="78" />
+  <Blank Num="1" UId="79" />
+  <Access Scope="LiteralConstant" UId="80">
+    <Constant UId="81">
+      <ConstantValue UId="83">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="84" />
+  <NewLine Num="1" UId="85" />
+  <Token Text="END_IF" UId="86" />
+  <Token Text=";" UId="87" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="59" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="5C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="5D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>calcolo cambio riga</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>calcolo cambio riga</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="5F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="s_CambioRigaProduzione" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="article" />
+        <Component Name="general" />
+        <Component Name="lenght" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="i_correttore" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="o_LunghezzaSuccessiva" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="s_CambioRigaProduzione" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="io_myprodfromPC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="article" />
+        <Component Name="general" />
+        <Component Name="lenght" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="i_correttore" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="o_LunghezzaSuccessiva" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="29" />
+    <Part Name="Mul" UId="30" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Mul" UId="32" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="33">
+      <Powerrail />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="en" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="in1" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="in2" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="30" Name="out" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="25" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="en" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="26" />
+      <NameCon UId="32" Name="in1" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="27" />
+      <NameCon UId="32" Name="in2" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="32" Name="out" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="60" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="61" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="62" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="63" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="64" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="65" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Quote lavorazione successiva</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="66" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <Access Scope="LocalVariable" UId="22">
+    <Symbol UId="23">
+      <Component Name="s_appMaterialeNec" UId="24" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="25" />
+  <Token Text=":=" UId="26" />
+  <Blank Num="1" UId="27" />
+  <Access Scope="LiteralConstant" UId="28">
+    <Constant UId="29">
+      <ConstantValue UId="31">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="32" />
+  <NewLine Num="1" UId="33" />
+  <Blank Num="4" UId="34" />
+  <Token Text="FOR" UId="35" />
+  <Blank Num="1" UId="36" />
+  <Access Scope="LocalVariable" UId="37">
+    <Symbol UId="38">
+      <Component Name="s_index_0" UId="39" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="40" />
+  <Token Text=":=" UId="41" />
+  <Blank Num="1" UId="42" />
+  <Access Scope="LiteralConstant" UId="43">
+    <Constant UId="44">
+      <ConstantValue UId="46">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="47" />
+  <Token Text="TO" UId="48" />
+  <Blank Num="1" UId="49" />
+  <Access Scope="GlobalConstant" UId="50">
+    <Constant Name="NumRigheProduzione" UId="51" />
+  </Access>
+  <Blank Num="1" UId="54" />
+  <Token Text="DO" UId="55" />
+  <NewLine Num="1" UId="56" />
+  <Blank Num="8" UId="57" />
+  <Access Scope="LocalVariable" UId="58">
+    <Symbol UId="59">
+      <Component Name="s_MaterialeNecessario" UId="60">
+        <Token Text="[" UId="61" />
+        <Access Scope="LocalVariable" UId="62">
+          <Symbol UId="63">
+            <Component Name="s_index_0" UId="64" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="65" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="66" />
+  <Token Text=":=" UId="67" />
+  <Blank Num="1" UId="68" />
+  <Token Text="(" UId="69" />
+  <Token Text="(" UId="70" />
+  <Access Scope="LocalVariable" UId="71">
+    <Symbol UId="72">
+      <Component Name="io_myprodfromPC" UId="73">
+        <Token Text="[" UId="74" />
+        <Access Scope="LocalVariable" UId="75">
+          <Symbol UId="76">
+            <Component Name="s_index_0" UId="77" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="78" />
+      </Component>
+      <Token Text="." UId="79" />
+      <Component Name="piecestodo" UId="80" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="81" />
+  <Token Text="-" UId="82" />
+  <Blank Num="1" UId="83" />
+  <Access Scope="LocalVariable" UId="84">
+    <Symbol UId="85">
+      <Component Name="io_myprodfromPLC" UId="86">
+        <Token Text="[" UId="87" />
+        <Access Scope="LocalVariable" UId="88">
+          <Symbol UId="89">
+            <Component Name="s_index_0" UId="90" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="91" />
+      </Component>
+      <Token Text="." UId="92" />
+      <Component Name="pzfatti" UId="93" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="94" />
+  <Blank Num="1" UId="95" />
+  <Token Text="*" UId="96" />
+  <Blank Num="1" UId="97" />
+  <Access Scope="LocalVariable" UId="98">
+    <Symbol UId="99">
+      <Component Name="io_myprodfromPC" UId="100">
+        <Token Text="[" UId="101" />
+        <Access Scope="LocalVariable" UId="102">
+          <Symbol UId="103">
+            <Component Name="s_index_0" UId="104" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="105" />
+      </Component>
+      <Token Text="." UId="106" />
+      <Component Name="article" UId="107" />
+      <Token Text="." UId="108" />
+      <Component Name="general" UId="109" />
+      <Token Text="." UId="110" />
+      <Component Name="lenght" UId="111" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="112" />
+  <Token Text=";" UId="113" />
+  <NewLine Num="1" UId="114" />
+  <Blank Num="8" UId="115" />
+  <Access Scope="LocalVariable" UId="116">
+    <Symbol UId="117">
+      <Component Name="s_appMaterialeNec" UId="118" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="119" />
+  <Token Text=":=" UId="120" />
+  <Blank Num="1" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="s_appMaterialeNec" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text="+" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LocalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="s_MaterialeNecessario" UId="130">
+        <Token Text="[" UId="131" />
+        <Access Scope="LocalVariable" UId="132">
+          <Symbol UId="133">
+            <Component Name="s_index_0" UId="134" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="135" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="136" />
+  <NewLine Num="1" UId="137" />
+  <Blank Num="8" UId="138" />
+  <Token Text="IF" UId="139" />
+  <Blank Num="1" UId="140" />
+  <Access Scope="LocalVariable" UId="141">
+    <Symbol UId="142">
+      <Component Name="s_index_0" UId="143" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="144" />
+  <Token Text="=" UId="145" />
+  <Blank Num="1" UId="146" />
+  <Access Scope="GlobalConstant" UId="147">
+    <Constant Name="NumRigheProduzione" UId="148" />
+  </Access>
+  <Blank Num="1" UId="151" />
+  <Token Text="THEN" UId="152" />
+  <NewLine Num="1" UId="153" />
+  <Blank Num="12" UId="154" />
+  <Access Scope="LocalVariable" UId="155">
+    <Symbol UId="156">
+      <Component Name="o_MaterialeNecessario" UId="157" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="158" />
+  <Token Text=":=" UId="159" />
+  <Blank Num="1" UId="160" />
+  <Access Scope="LocalVariable" UId="161">
+    <Symbol UId="162">
+      <Component Name="s_appMaterialeNec" UId="163" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="164" />
+  <NewLine Num="1" UId="165" />
+  <Blank Num="8" UId="166" />
+  <Token Text="END_IF" UId="167" />
+  <Token Text=";" UId="168" />
+  <NewLine Num="1" UId="169" />
+  <Blank Num="4" UId="170" />
+  <Token Text="END_FOR" UId="171" />
+  <Token Text=";" UId="172" />
+  <NewLine Num="1" UId="173" />
+  <Blank Num="4" UId="174" />
+  <NewLine Num="1" UId="175" />
+  <Blank Num="3" UId="176" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="67" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="68" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="69" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="6B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="6C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>lamiera totale necessaria per eseguire la produzione</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="6D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="6E" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6F" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

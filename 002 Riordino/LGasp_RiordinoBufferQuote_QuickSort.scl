@@ -1,0 +1,172 @@
+﻿FUNCTION_BLOCK "LGasp_RiordinoBufferQuote_QuickSort"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      i_MergeAbilitato { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := false;   // Abilita merge quote
+   END_VAR
+
+   VAR_OUTPUT RETAIN
+      sort { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Messaggio per l'ordinamento finito.
+   END_VAR
+
+   VAR_IN_OUT 
+      ArrayOrdinato : Array[1.."NumQuotePunzonatura"] of "LGasp_typeBufferQuote";
+      io_n_quote_da_riordinare : DInt;
+      io_start { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+   END_VAR
+
+   VAR 
+      stack_count { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Stack index
+      stack { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..32] of DInt;
+      ContatoreSinistro { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // contatore a sinistra
+      ContatoreDestro { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // contatore a destra
+      pivot { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : LReal;   // valore medio
+      i { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // indice per il gruppo destra
+      j { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // indice per il gruppo sinistra
+      AnelloInterno_Terminato { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // anello interno terminato
+      Sort_InCorso { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // anello esterno terminato
+      status { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      i1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      i2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      i3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      s_index_6 : Int;
+      s_BufferQuotaNULL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_SetPoint := 'False'} : "LGasp_typeBufferQuote";   // tipo dato NULL
+   END_VAR
+
+   VAR_TEMP 
+      tmp : "LGasp_typeBufferQuote";   // memoria di cache
+   END_VAR
+
+
+BEGIN
+	//Quicksort. 
+	//28.05.2021    lcg    V1.1    Correzione errore uscita "Sort" non era ritentiva, all'accensione dava errore fine quote
+	//28.01.2022    lcg    V1.2    Inserito il merge della posizione degli stampi e la gestione dell'array delle opzioni
+	//02/03/2022    A.donà  V1.3   Corretto il merge tra le quote inserendo ultimaquotapezzo al posto di quotadicoda 210100012  
+	IF #io_start THEN
+	    
+	    #sort := false;
+	    #ContatoreSinistro := 1;
+	    #ContatoreDestro := #io_n_quote_da_riordinare;
+	    #stack_count := 1; // inizializzo lo stack
+	    #Sort_InCorso := TRUE;
+	    
+	    WHILE #Sort_InCorso DO
+	        IF #ContatoreSinistro < #ContatoreDestro THEN
+	            #pivot := #ArrayOrdinato[(#ContatoreDestro + #ContatoreSinistro) / 2].quota.quotax;
+	            #i := #ContatoreSinistro - 1;
+	            #j := #ContatoreDestro + 1;
+	            
+	            //     
+	            #AnelloInterno_Terminato := false;
+	            REPEAT
+	                REPEAT // Disporre nel gruppo giusto
+	                    #i := #i + 1;
+	                UNTIL #ArrayOrdinato[#i].quota.quotax >= #pivot OR NOT (#i < #ContatoreDestro) END_REPEAT;
+	                
+	                REPEAT // sistemare nel gruppo di sinistra
+	                    #j := #j - 1;
+	                UNTIL #ArrayOrdinato[#j].quota.quotax <= #pivot OR NOT (#j > #ContatoreSinistro) END_REPEAT;
+	                
+	                IF #i >= #j THEN
+	                    #AnelloInterno_Terminato := TRUE;
+	                ELSE
+	                    #tmp := #ArrayOrdinato[#j];
+	                    #ArrayOrdinato[#j] := #ArrayOrdinato[#i];
+	                    #ArrayOrdinato[#i] := #tmp;
+	                END_IF;
+	                
+	            UNTIL #AnelloInterno_Terminato END_REPEAT;
+	            
+	            // Modifica stack
+	            #stack[#stack_count] := #ContatoreDestro;
+	            IF #stack_count < 32 THEN
+	                #stack_count := #stack_count + 1;
+	            ELSE
+	                #Sort_InCorso := false;
+	                #sort := FALSE;
+	            END_IF;
+	            
+	            #ContatoreDestro := MAX(IN1 := #ContatoreSinistro, IN2 := #i - 1);
+	            
+	        ELSE
+	            
+	            IF #stack_count = 1 THEN
+	                #Sort_InCorso := false;
+	            ELSE
+	                
+	                #ContatoreSinistro := #ContatoreDestro + 1;
+	                
+	                #stack_count := #stack_count - 1;
+	                #ContatoreDestro := #stack[#stack_count];
+	            END_IF;
+	            
+	        END_IF;
+	        
+	    END_WHILE;
+	   
+	
+	    
+	    // merge della prossima quota
+	    IF #i_MergeAbilitato THEN
+	        WHILE   #ArrayOrdinato[1].quota.print = #ArrayOrdinato[2].quota.print AND
+	                ABS(#ArrayOrdinato[1].quota.quotax - #ArrayOrdinato[2].quota.quotax) < 0.001 AND
+	                #ArrayOrdinato[1].quota.quotay = #ArrayOrdinato[2].quota.quotay AND
+	                #ArrayOrdinato[1].quota.quotax <> -1.0 AND
+	                #ArrayOrdinato[2].quota.quotax <> -1.0 DO
+	                
+	                // memorizza informazione passoinfinito per non perderla nel merge
+	                IF #ArrayOrdinato[1].quota.infinitystep THEN
+	                    #ArrayOrdinato[2].quota.infinitystep := TRUE;
+	                END_IF;
+	                IF #ArrayOrdinato[2].quota.infinitystep THEN
+	                    #ArrayOrdinato[1].quota.infinitystep := TRUE;
+	                END_IF;
+	                
+	                // tengo le informazioni generali della quota che è un taglio di coda
+	                //IF #ArrayOrdinato[2].quota.state.quotatagliocoda THEN
+	                IF #ArrayOrdinato[2].quota.state.ultimaquotapezzo THEN
+	                    #ArrayOrdinato[1].general := #ArrayOrdinato[2].general;
+	                    #ArrayOrdinato[1].ID := #ArrayOrdinato[2].ID;
+	                    #ArrayOrdinato[1].general.options := #ArrayOrdinato[2].general.options;
+	                    #ArrayOrdinato[1].general.name := #ArrayOrdinato[1].general.name;
+	                END_IF;
+	                
+	                // or di tutti i bit delle lavorazioni 
+	                FOR #i2 := 1 TO 16 DO
+	                    #ArrayOrdinato[1].quota.mouldea[#i2] := #ArrayOrdinato[1].quota.mouldea[#i2] OR #ArrayOrdinato[2].quota.mouldea[#i2];
+	                    #ArrayOrdinato[1].quota.mouldeb[#i2] := #ArrayOrdinato[1].quota.mouldeb[#i2] OR #ArrayOrdinato[2].quota.mouldeb[#i2];
+	                    #ArrayOrdinato[1].quota.mouldec[#i2] := #ArrayOrdinato[1].quota.mouldec[#i2] OR #ArrayOrdinato[2].quota.mouldec[#i2];
+	                    #ArrayOrdinato[1].quota.moulded[#i2] := #ArrayOrdinato[1].quota.moulded[#i2] OR #ArrayOrdinato[2].quota.moulded[#i2];
+	                END_FOR;
+	                
+	                //passaggio posizioni stampi se <> 0
+	                FOR #i2 := 1 TO 16 DO
+	                    IF #ArrayOrdinato[2].quota.moulde_pos[#i2]>0.0 THEN
+	                        #ArrayOrdinato[1].quota.moulde_pos[#i2] := #ArrayOrdinato[2].quota.moulde_pos[#i2];
+	                    END_IF;
+	                END_FOR;
+	                
+	                
+	                #ArrayOrdinato[1].quota.state.ultimaquotapezzo := #ArrayOrdinato[1].quota.state.ultimaquotapezzo OR #ArrayOrdinato[2].quota.state.ultimaquotapezzo;
+	                #ArrayOrdinato[1].quota.state.quotavalida := #ArrayOrdinato[1].quota.state.quotavalida OR #ArrayOrdinato[2].quota.state.quotavalida;
+	                #ArrayOrdinato[1].quota.state.quotataglio := #ArrayOrdinato[1].quota.state.quotataglio OR #ArrayOrdinato[2].quota.state.quotataglio;
+	                
+	                FOR #s_index_6 := 2 TO "NumQuotePunzonatura" - 1 DO
+	                    #ArrayOrdinato[#s_index_6] := #ArrayOrdinato[#s_index_6 + 1];
+	                END_FOR;
+	                #ArrayOrdinato["NumQuotePunzonatura"] := #s_BufferQuotaNULL;
+	                
+	                #io_n_quote_da_riordinare := #io_n_quote_da_riordinare - 1;
+	        END_WHILE;
+	    END_IF;
+	    
+	    IF #Sort_InCorso = FALSE THEN
+	        #io_start := false;
+	        #sort := TRUE;
+	    END_IF;
+	    
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

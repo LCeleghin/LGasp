@@ -1,0 +1,3394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="i_reset_allarmi" Datatype="Bool" Accessibility="Public" />
+    <Member Name="i_listaprofila_pezzofatto" Datatype="&quot;LGasp_typePzoListaProfila&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="name" Datatype="WString[30]" />
+          <Member Name="NumeroPezzo" Datatype="DInt" />
+          <Member Name="lenght" Datatype="LReal" />
+          <Member Name="cutoffset" Datatype="LReal" />
+          <Member Name="wastepiece" Datatype="Bool" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+          </Member>
+          <Member Name="options" Datatype="Array[1..16] of Bool" />
+          <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+          <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+          <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="o_listaVuota" Datatype="Bool" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="it-IT">lista profila vuota</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="o_all_lista_profila_piena" Datatype="Bool" Accessibility="Public" />
+  </Section>
+  <Section Name="InOut">
+    <Member Name="io_InserisciScartoInListaProfila" Datatype="Bool" Accessibility="Public" />
+    <Member Name="io_InserisciPezzoInListaProfila" Datatype="Bool" Accessibility="Public" />
+    <Member Name="io_cancella_lista" Datatype="Bool" Accessibility="Public" />
+    <Member Name="io_recupero_lista_profila" Datatype="Bool" Accessibility="Public" />
+    <Member Name="io_togli_pzo_da_lista" Datatype="Bool" Accessibility="Public" />
+    <Member Name="io_lista_pzi" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of &quot;LGasp_typePzoListaProfila&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="name" Datatype="WString[30]" />
+          <Member Name="NumeroPezzo" Datatype="DInt" />
+          <Member Name="lenght" Datatype="LReal" />
+          <Member Name="cutoffset" Datatype="LReal" />
+          <Member Name="wastepiece" Datatype="Bool" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+          </Member>
+          <Member Name="options" Datatype="Array[1..16] of Bool" />
+          <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+          <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+          <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_lista_pzi_backup" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of &quot;LGasp_typePzoListaProfila&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="name" Datatype="WString[30]" />
+          <Member Name="NumeroPezzo" Datatype="DInt" />
+          <Member Name="lenght" Datatype="LReal" />
+          <Member Name="cutoffset" Datatype="LReal" />
+          <Member Name="wastepiece" Datatype="Bool" />
+          <Member Name="info" Datatype="Struct">
+            <Member Name="collo" Datatype="Int" />
+            <Member Name="workorder" Datatype="DInt" />
+          </Member>
+          <Member Name="options" Datatype="Array[1..16] of Bool" />
+          <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+          <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+          <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="io_nome_lista_pzi" Datatype="Array[1..&quot;NumMaxPezziProfila&quot;] of WString[30]" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="it-IT">array letto dal PC</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">array letto dal PC</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="index" Datatype="Int" />
+    <Member Name="RigaProduzione_in_lavoro" Datatype="DInt" />
+    <Member Name="t_listaVuota" Datatype="Bool" />
+    <Member Name="index1" Datatype="Int" />
+    <Member Name="index2" Datatype="Int" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>LGasp_GestioneListaProfila</Name>
+      <Namespace />
+      <Number>10300</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22">================================================================================</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="24">
+    <Text UId="25"> Gasparini Spa</Text>
+  </LineComment>
+  <NewLine Num="1" UId="26" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="27">
+    <Text UId="28">--------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="29" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="30">
+    <Text UId="31"> Libreria: LGasp_GestioneListaProfila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="32" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="33">
+    <Text UId="34"> Funzionalità: Funzione globale per gestione lista profila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="35" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="36">
+    <Text UId="37"> Commessa in cui è stata testata: 200100305</Text>
+  </LineComment>
+  <NewLine Num="1" UId="38" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="39">
+    <Text UId="40"> Programmatore di riferimento per test: XXXXXX</Text>
+  </LineComment>
+  <NewLine Num="1" UId="41" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="42">
+    <Text UId="43">--------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="44" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="45">
+    <Text UId="46"> Change log table:</Text>
+  </LineComment>
+  <NewLine Num="1" UId="47" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="48">
+    <Text UId="49"> Versione     Data           Autore          Modifiche</Text>
+  </LineComment>
+  <NewLine Num="1" UId="50" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="51">
+    <Text UId="52">                             M.Dorella       modificata la gestione dello scarto, adesso si possono</Text>
+  </LineComment>
+  <NewLine Num="1" UId="53" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="54">
+    <Text UId="55">                                             avere piu'scarti in lista profila non consecutivi</Text>
+  </LineComment>
+  <NewLine Num="1" UId="56" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="57">
+    <Text UId="58">              24.01.2022     Lcg             Aggiunta la possibilità di recuperare la lista profila. quando si cancella la lista profila</Text>
+  </LineComment>
+  <NewLine Num="1" UId="59" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="60">
+    <Text UId="61">                                             viene fatto un backup. questo è recuperabile se la lista profila è vuota.</Text>
+  </LineComment>
+  <NewLine Num="1" UId="62" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="63">
+    <Text UId="64">              01.04.2022      Lcg            Inserimento nome articolo in lista profila (210100012)</Text>
+  </LineComment>
+  <NewLine Num="1" UId="65" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="66">
+    <Text UId="67">              06.10.2022      Lcg            Inserita la gestione delle nuove variabili "opzioni" (Bito 210100099) </Text>
+  </LineComment>
+  <NewLine Num="1" UId="68" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="69">
+    <Text UId="70">              29.03.2023      Lcg            Corretto errore che quando si elimina un pezzo da lista profila veniva messo ID a 0 e non -1 (220100026)      </Text>
+  </LineComment>
+  <NewLine Num="1" UId="71" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="72">
+    <Text UId="73">-------------------------------------------------------------------------------</Text>
+  </LineComment>
+  <NewLine Num="1" UId="74" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="75">
+    <Text UId="76">================================================================================</Text>
+  </LineComment>
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Descrizione</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_InserisciScartoInListaProfila" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="THEN" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <NewLine Num="1" UId="32" />
+  <Blank Num="4" UId="33" />
+  <Token Text="FOR" UId="34" />
+  <Blank Num="1" UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="index1" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank Num="1" UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="46" />
+  <Token Text="TO" UId="47" />
+  <Blank Num="1" UId="48" />
+  <Access Scope="GlobalConstant" UId="49">
+    <Constant Name="NumMaxPezziProfila" UId="50" />
+  </Access>
+  <Blank Num="1" UId="53" />
+  <Token Text="-" UId="54" />
+  <Blank Num="1" UId="55" />
+  <Access Scope="LiteralConstant" UId="56">
+    <Constant UId="57">
+      <ConstantValue UId="59">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="60" />
+  <Token Text="DO" UId="61" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="62">
+    <Text UId="63">se la lunghezza successiva e' =-1 significa che e' gia' l'ultimo pezzo scarto e non lo inserisco un'altra volta </Text>
+  </LineComment>
+  <NewLine Num="1" UId="64" />
+  <Blank Num="8" UId="65" />
+  <Token Text="IF" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="io_lista_pzi" UId="70">
+        <Token Text="[" UId="71" />
+        <Access Scope="LocalVariable" UId="72">
+          <Symbol UId="73">
+            <Component Name="index1" UId="74" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="75" />
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="wastepiece" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="78" />
+  <Token Text="=" UId="79" />
+  <Blank Num="1" UId="80" />
+  <Access Scope="LiteralConstant" UId="81">
+    <Constant UId="82">
+      <ConstantValue UId="84">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="85" />
+  <Token Text="AND" UId="86" />
+  <Blank Num="1" UId="87" />
+  <Access Scope="LocalVariable" UId="88">
+    <Symbol UId="89">
+      <Component Name="io_lista_pzi" UId="90">
+        <Token Text="[" UId="91" />
+        <Access Scope="LocalVariable" UId="92">
+          <Symbol UId="93">
+            <Component Name="index1" UId="94" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="95" />
+        <Token Text="+" UId="96" />
+        <Blank Num="1" UId="97" />
+        <Access Scope="LiteralConstant" UId="98">
+          <Constant UId="99">
+            <ConstantValue UId="101">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="102" />
+      </Component>
+      <Token Text="." UId="103" />
+      <Component Name="lenght" UId="104" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text="=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="LiteralConstant" UId="108">
+    <Constant UId="109">
+      <ConstantValue UId="111">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="112" />
+  <Token Text="THEN" UId="113" />
+  <NewLine Num="1" UId="114" />
+  <Blank Num="12" UId="115" />
+  <Access Scope="LocalVariable" UId="116">
+    <Symbol UId="117">
+      <Component Name="io_InserisciScartoInListaProfila" UId="118" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="119" />
+  <Token Text=":=" UId="120" />
+  <Blank Num="1" UId="121" />
+  <Access Scope="LiteralConstant" UId="122">
+    <Constant UId="123">
+      <ConstantValue UId="125">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="126" />
+  <NewLine Num="1" UId="127" />
+  <Blank Num="12" UId="128" />
+  <Token Text="RETURN" UId="129" />
+  <Token Text=";" UId="130" />
+  <NewLine Num="1" UId="131" />
+  <Blank Num="8" UId="132" />
+  <Token Text="END_IF" UId="133" />
+  <Token Text=";" UId="134" />
+  <NewLine Num="1" UId="135" />
+  <Blank Num="4" UId="136" />
+  <Token Text="END_FOR" UId="137" />
+  <Token Text=";" UId="138" />
+  <NewLine Num="1" UId="139" />
+  <Blank Num="4" UId="140" />
+  <NewLine Num="1" UId="141" />
+  <Blank Num="4" UId="142" />
+  <Token Text="FOR" UId="143" />
+  <Blank Num="1" UId="144" />
+  <Access Scope="LocalVariable" UId="145">
+    <Symbol UId="146">
+      <Component Name="index" UId="147" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="148" />
+  <Token Text=":=" UId="149" />
+  <Blank Num="1" UId="150" />
+  <Access Scope="LiteralConstant" UId="151">
+    <Constant UId="152">
+      <ConstantValue UId="154">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="155" />
+  <Token Text="TO" UId="156" />
+  <Blank Num="1" UId="157" />
+  <Access Scope="GlobalConstant" UId="158">
+    <Constant Name="NumMaxPezziProfila" UId="159" />
+  </Access>
+  <Blank Num="1" UId="162" />
+  <Token Text="DO" UId="163" />
+  <NewLine Num="1" UId="164" />
+  <Blank Num="8" UId="165" />
+  <NewLine Num="1" UId="166" />
+  <Blank Num="16" UId="167" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="168">
+    <Text UId="169">inserimento scarto</Text>
+  </LineComment>
+  <NewLine Num="1" UId="170" />
+  <Blank Num="8" UId="171" />
+  <Token Text="IF" UId="172" />
+  <Blank Num="1" UId="173" />
+  <Access Scope="LocalVariable" UId="174">
+    <Symbol UId="175">
+      <Component Name="io_lista_pzi" UId="176">
+        <Token Text="[" UId="177" />
+        <Access Scope="LocalVariable" UId="178">
+          <Symbol UId="179">
+            <Component Name="index" UId="180" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="181" />
+      </Component>
+      <Token Text="." UId="182" />
+      <Component Name="lenght" UId="183" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="184" />
+  <Token Text="=" UId="185" />
+  <Blank Num="1" UId="186" />
+  <Access Scope="LiteralConstant" UId="187">
+    <Constant UId="188">
+      <ConstantValue UId="190">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="191" />
+  <Token Text="THEN" UId="192" />
+  <NewLine Num="1" UId="193" />
+  <Blank Num="12" UId="194" />
+  <Access Scope="LocalVariable" UId="195">
+    <Symbol UId="196">
+      <Component Name="io_lista_pzi" UId="197">
+        <Token Text="[" UId="198" />
+        <Access Scope="LocalVariable" UId="199">
+          <Symbol UId="200">
+            <Component Name="index" UId="201" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="202" />
+      </Component>
+      <Token Text="." UId="203" />
+      <Component Name="ID" UId="204" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="205" />
+  <Token Text=":=" UId="206" />
+  <Blank Num="1" UId="207" />
+  <Access Scope="LiteralConstant" UId="208">
+    <Constant UId="209">
+      <ConstantValue UId="211">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="212" />
+  <NewLine Num="1" UId="213" />
+  <Blank Num="12" UId="214" />
+  <Access Scope="LocalVariable" UId="215">
+    <Symbol UId="216">
+      <Component Name="io_lista_pzi" UId="217">
+        <Token Text="[" UId="218" />
+        <Access Scope="LocalVariable" UId="219">
+          <Symbol UId="220">
+            <Component Name="index" UId="221" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="222" />
+      </Component>
+      <Token Text="." UId="223" />
+      <Component Name="name" UId="224" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="225" />
+  <Token Text=":=" UId="226" />
+  <Blank Num="1" UId="227" />
+  <Access Scope="TypedConstant" UId="228">
+    <Constant UId="229">
+      <ConstantValue UId="230">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="231" />
+  <NewLine Num="1" UId="232" />
+  <Blank Num="12" UId="233" />
+  <Access Scope="LocalVariable" UId="234">
+    <Symbol UId="235">
+      <Component Name="io_lista_pzi" UId="236">
+        <Token Text="[" UId="237" />
+        <Access Scope="LocalVariable" UId="238">
+          <Symbol UId="239">
+            <Component Name="index" UId="240" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="241" />
+      </Component>
+      <Token Text="." UId="242" />
+      <Component Name="lenght" UId="243" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="244" />
+  <Token Text=":=" UId="245" />
+  <Blank Num="1" UId="246" />
+  <Access Scope="LiteralConstant" UId="247">
+    <Constant UId="248">
+      <ConstantValue UId="250">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="251" />
+  <NewLine Num="1" UId="252" />
+  <Blank Num="12" UId="253" />
+  <Access Scope="LocalVariable" UId="254">
+    <Symbol UId="255">
+      <Component Name="io_lista_pzi" UId="256">
+        <Token Text="[" UId="257" />
+        <Access Scope="LocalVariable" UId="258">
+          <Symbol UId="259">
+            <Component Name="index" UId="260" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="261" />
+      </Component>
+      <Token Text="." UId="262" />
+      <Component Name="cutoffset" UId="263" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="264" />
+  <Token Text=":=" UId="265" />
+  <Blank Num="1" UId="266" />
+  <Access Scope="LiteralConstant" UId="267">
+    <Constant UId="268">
+      <ConstantValue UId="270">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="271" />
+  <NewLine Num="1" UId="272" />
+  <Blank Num="12" UId="273" />
+  <Access Scope="LocalVariable" UId="274">
+    <Symbol UId="275">
+      <Component Name="io_lista_pzi" UId="276">
+        <Token Text="[" UId="277" />
+        <Access Scope="LocalVariable" UId="278">
+          <Symbol UId="279">
+            <Component Name="index" UId="280" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="281" />
+      </Component>
+      <Token Text="." UId="282" />
+      <Component Name="NumeroPezzo" UId="283" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="284" />
+  <Token Text=":=" UId="285" />
+  <Blank Num="1" UId="286" />
+  <Access Scope="LiteralConstant" UId="287">
+    <Constant UId="288">
+      <ConstantValue UId="290">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="291" />
+  <NewLine Num="1" UId="292" />
+  <Blank Num="12" UId="293" />
+  <Access Scope="LocalVariable" UId="294">
+    <Symbol UId="295">
+      <Component Name="io_lista_pzi" UId="296">
+        <Token Text="[" UId="297" />
+        <Access Scope="LocalVariable" UId="298">
+          <Symbol UId="299">
+            <Component Name="index" UId="300" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="301" />
+      </Component>
+      <Token Text="." UId="302" />
+      <Component Name="wastepiece" UId="303" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="304" />
+  <Token Text=":=" UId="305" />
+  <Blank Num="1" UId="306" />
+  <Access Scope="LiteralConstant" UId="307">
+    <Constant UId="308">
+      <ConstantValue UId="310">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="311" />
+  <NewLine Num="1" UId="312" />
+  <Blank Num="12" UId="313" />
+  <NewLine Num="1" UId="314" />
+  <Blank Num="12" UId="315" />
+  <Token Text="FOR" UId="316" />
+  <Blank Num="1" UId="317" />
+  <Access Scope="LocalVariable" UId="318">
+    <Symbol UId="319">
+      <Component Name="index2" UId="320" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="321" />
+  <Token Text=":=" UId="322" />
+  <Blank Num="1" UId="323" />
+  <Access Scope="LiteralConstant" UId="324">
+    <Constant UId="325">
+      <ConstantValue UId="327">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="328" />
+  <Token Text="TO" UId="329" />
+  <Blank Num="1" UId="330" />
+  <Access Scope="LiteralConstant" UId="331">
+    <Constant UId="332">
+      <ConstantValue UId="334">16</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="335" />
+  <Token Text="DO" UId="336" />
+  <NewLine Num="1" UId="337" />
+  <Blank Num="16" UId="338" />
+  <Access Scope="LocalVariable" UId="339">
+    <Symbol UId="340">
+      <Component Name="io_lista_pzi" UId="341">
+        <Token Text="[" UId="342" />
+        <Access Scope="LocalVariable" UId="343">
+          <Symbol UId="344">
+            <Component Name="index" UId="345" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="346" />
+      </Component>
+      <Token Text="." UId="347" />
+      <Component Name="options" UId="348">
+        <Token Text="[" UId="349" />
+        <Access Scope="LocalVariable" UId="350">
+          <Symbol UId="351">
+            <Component Name="index2" UId="352" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="353" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="354" />
+  <Token Text=":=" UId="355" />
+  <Blank Num="1" UId="356" />
+  <Access Scope="LiteralConstant" UId="357">
+    <Constant UId="358">
+      <ConstantValue UId="360">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="361" />
+  <NewLine Num="1" UId="362" />
+  <Blank Num="12" UId="363" />
+  <Token Text="END_FOR" UId="364" />
+  <Token Text=";" UId="365" />
+  <NewLine Num="1" UId="366" />
+  <Blank Num="12" UId="367" />
+  <NewLine Num="1" UId="368" />
+  <Blank Num="12" UId="369" />
+  <Access Scope="LocalVariable" UId="370">
+    <Symbol UId="371">
+      <Component Name="io_lista_pzi" UId="372">
+        <Token Text="[" UId="373" />
+        <Access Scope="LocalVariable" UId="374">
+          <Symbol UId="375">
+            <Component Name="index" UId="376" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="377" />
+      </Component>
+      <Token Text="." UId="378" />
+      <Component Name="options_dint" UId="379">
+        <Token Text="[" UId="380" />
+        <Access Scope="LiteralConstant" UId="381">
+          <Constant UId="382">
+            <ConstantValue UId="384">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="385" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="386" />
+  <Token Text=":=" UId="387" />
+  <Blank Num="1" UId="388" />
+  <Access Scope="LiteralConstant" UId="389">
+    <Constant UId="390">
+      <ConstantValue UId="392">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="393" />
+  <NewLine Num="1" UId="394" />
+  <Blank Num="12" UId="395" />
+  <Access Scope="LocalVariable" UId="396">
+    <Symbol UId="397">
+      <Component Name="io_lista_pzi" UId="398">
+        <Token Text="[" UId="399" />
+        <Access Scope="LocalVariable" UId="400">
+          <Symbol UId="401">
+            <Component Name="index" UId="402" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="403" />
+      </Component>
+      <Token Text="." UId="404" />
+      <Component Name="options_dint" UId="405">
+        <Token Text="[" UId="406" />
+        <Access Scope="LiteralConstant" UId="407">
+          <Constant UId="408">
+            <ConstantValue UId="410">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="411" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="412" />
+  <Token Text=":=" UId="413" />
+  <Blank Num="1" UId="414" />
+  <Access Scope="LiteralConstant" UId="415">
+    <Constant UId="416">
+      <ConstantValue UId="418">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="419" />
+  <NewLine Num="1" UId="420" />
+  <Blank Num="12" UId="421" />
+  <Access Scope="LocalVariable" UId="422">
+    <Symbol UId="423">
+      <Component Name="io_lista_pzi" UId="424">
+        <Token Text="[" UId="425" />
+        <Access Scope="LocalVariable" UId="426">
+          <Symbol UId="427">
+            <Component Name="index" UId="428" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="429" />
+      </Component>
+      <Token Text="." UId="430" />
+      <Component Name="options_dint" UId="431">
+        <Token Text="[" UId="432" />
+        <Access Scope="LiteralConstant" UId="433">
+          <Constant UId="434">
+            <ConstantValue UId="436">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="437" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="438" />
+  <Token Text=":=" UId="439" />
+  <Blank Num="1" UId="440" />
+  <Access Scope="LiteralConstant" UId="441">
+    <Constant UId="442">
+      <ConstantValue UId="444">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="445" />
+  <NewLine Num="1" UId="446" />
+  <Blank Num="12" UId="447" />
+  <NewLine Num="1" UId="448" />
+  <Blank Num="12" UId="449" />
+  <Access Scope="LocalVariable" UId="450">
+    <Symbol UId="451">
+      <Component Name="io_lista_pzi" UId="452">
+        <Token Text="[" UId="453" />
+        <Access Scope="LocalVariable" UId="454">
+          <Symbol UId="455">
+            <Component Name="index" UId="456" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="457" />
+      </Component>
+      <Token Text="." UId="458" />
+      <Component Name="options_lreal" UId="459">
+        <Token Text="[" UId="460" />
+        <Access Scope="LiteralConstant" UId="461">
+          <Constant UId="462">
+            <ConstantValue UId="464">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="465" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="466" />
+  <Token Text=":=" UId="467" />
+  <Blank Num="1" UId="468" />
+  <Access Scope="LiteralConstant" UId="469">
+    <Constant UId="470">
+      <ConstantValue UId="472">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="473" />
+  <NewLine Num="1" UId="474" />
+  <Blank Num="12" UId="475" />
+  <Access Scope="LocalVariable" UId="476">
+    <Symbol UId="477">
+      <Component Name="io_lista_pzi" UId="478">
+        <Token Text="[" UId="479" />
+        <Access Scope="LocalVariable" UId="480">
+          <Symbol UId="481">
+            <Component Name="index" UId="482" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="483" />
+      </Component>
+      <Token Text="." UId="484" />
+      <Component Name="options_lreal" UId="485">
+        <Token Text="[" UId="486" />
+        <Access Scope="LiteralConstant" UId="487">
+          <Constant UId="488">
+            <ConstantValue UId="490">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="491" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="492" />
+  <Token Text=":=" UId="493" />
+  <Blank Num="1" UId="494" />
+  <Access Scope="LiteralConstant" UId="495">
+    <Constant UId="496">
+      <ConstantValue UId="498">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="499" />
+  <NewLine Num="1" UId="500" />
+  <Blank Num="12" UId="501" />
+  <Access Scope="LocalVariable" UId="502">
+    <Symbol UId="503">
+      <Component Name="io_lista_pzi" UId="504">
+        <Token Text="[" UId="505" />
+        <Access Scope="LocalVariable" UId="506">
+          <Symbol UId="507">
+            <Component Name="index" UId="508" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="509" />
+      </Component>
+      <Token Text="." UId="510" />
+      <Component Name="options_lreal" UId="511">
+        <Token Text="[" UId="512" />
+        <Access Scope="LiteralConstant" UId="513">
+          <Constant UId="514">
+            <ConstantValue UId="516">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="517" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="518" />
+  <Token Text=":=" UId="519" />
+  <Blank Num="1" UId="520" />
+  <Access Scope="LiteralConstant" UId="521">
+    <Constant UId="522">
+      <ConstantValue UId="524">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="525" />
+  <NewLine Num="1" UId="526" />
+  <Blank Num="12" UId="527" />
+  <NewLine Num="1" UId="528" />
+  <Blank Num="12" UId="529" />
+  <Access Scope="LocalVariable" UId="530">
+    <Symbol UId="531">
+      <Component Name="io_lista_pzi" UId="532">
+        <Token Text="[" UId="533" />
+        <Access Scope="LocalVariable" UId="534">
+          <Symbol UId="535">
+            <Component Name="index" UId="536" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="537" />
+      </Component>
+      <Token Text="." UId="538" />
+      <Component Name="options_str" UId="539">
+        <Token Text="[" UId="540" />
+        <Access Scope="LiteralConstant" UId="541">
+          <Constant UId="542">
+            <ConstantValue UId="544">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="545" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="546" />
+  <Token Text=":=" UId="547" />
+  <Blank Num="1" UId="548" />
+  <Access Scope="TypedConstant" UId="549">
+    <Constant UId="550">
+      <ConstantValue UId="551">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="552" />
+  <NewLine Num="1" UId="553" />
+  <Blank Num="12" UId="554" />
+  <Access Scope="LocalVariable" UId="555">
+    <Symbol UId="556">
+      <Component Name="io_lista_pzi" UId="557">
+        <Token Text="[" UId="558" />
+        <Access Scope="LocalVariable" UId="559">
+          <Symbol UId="560">
+            <Component Name="index" UId="561" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="562" />
+      </Component>
+      <Token Text="." UId="563" />
+      <Component Name="options_str" UId="564">
+        <Token Text="[" UId="565" />
+        <Access Scope="LiteralConstant" UId="566">
+          <Constant UId="567">
+            <ConstantValue UId="569">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="570" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="571" />
+  <Token Text=":=" UId="572" />
+  <Blank Num="1" UId="573" />
+  <Access Scope="TypedConstant" UId="574">
+    <Constant UId="575">
+      <ConstantValue UId="576">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="577" />
+  <NewLine Num="1" UId="578" />
+  <Blank Num="12" UId="579" />
+  <Access Scope="LocalVariable" UId="580">
+    <Symbol UId="581">
+      <Component Name="io_lista_pzi" UId="582">
+        <Token Text="[" UId="583" />
+        <Access Scope="LocalVariable" UId="584">
+          <Symbol UId="585">
+            <Component Name="index" UId="586" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="587" />
+      </Component>
+      <Token Text="." UId="588" />
+      <Component Name="options_str" UId="589">
+        <Token Text="[" UId="590" />
+        <Access Scope="LiteralConstant" UId="591">
+          <Constant UId="592">
+            <ConstantValue UId="594">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="595" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="596" />
+  <Token Text=":=" UId="597" />
+  <Blank Num="1" UId="598" />
+  <Access Scope="TypedConstant" UId="599">
+    <Constant UId="600">
+      <ConstantValue UId="601">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="602" />
+  <NewLine Num="1" UId="603" />
+  <Blank Num="12" UId="604" />
+  <NewLine Num="1" UId="605" />
+  <Blank Num="12" UId="606" />
+  <Token Text="EXIT" UId="607" />
+  <Token Text=";" UId="608" />
+  <NewLine Num="1" UId="609" />
+  <Blank Num="12" UId="610" />
+  <NewLine Num="1" UId="611" />
+  <Blank Num="12" UId="612" />
+  <NewLine Num="1" UId="613" />
+  <Blank Num="8" UId="614" />
+  <Token Text="END_IF" UId="615" />
+  <Token Text=";" UId="616" />
+  <NewLine Num="1" UId="617" />
+  <Blank Num="12" UId="618" />
+  <NewLine Num="1" UId="619" />
+  <Blank Num="12" UId="620" />
+  <Token Text="IF" UId="621" />
+  <Blank Num="1" UId="622" />
+  <Access Scope="LocalVariable" UId="623">
+    <Symbol UId="624">
+      <Component Name="index" UId="625" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="626" />
+  <Token Text="=" UId="627" />
+  <Blank Num="1" UId="628" />
+  <Access Scope="GlobalConstant" UId="629">
+    <Constant Name="NumMaxPezziProfila" UId="630" />
+  </Access>
+  <Blank Num="1" UId="633" />
+  <Token Text="THEN" UId="634" />
+  <NewLine Num="1" UId="635" />
+  <Blank Num="16" UId="636" />
+  <Access Scope="LocalVariable" UId="637">
+    <Symbol UId="638">
+      <Component Name="o_all_lista_profila_piena" UId="639" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="640" />
+  <Token Text=":=" UId="641" />
+  <Blank Num="1" UId="642" />
+  <Access Scope="LiteralConstant" UId="643">
+    <Constant UId="644">
+      <ConstantValue UId="646">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="647" />
+  <NewLine Num="1" UId="648" />
+  <Blank Num="12" UId="649" />
+  <Token Text="END_IF" UId="650" />
+  <Token Text=";" UId="651" />
+  <NewLine Num="1" UId="652" />
+  <Blank Num="4" UId="653" />
+  <Token Text="END_FOR" UId="654" />
+  <Token Text=";" UId="655" />
+  <NewLine Num="1" UId="656" />
+  <Blank Num="4" UId="657" />
+  <Access Scope="LocalVariable" UId="658">
+    <Symbol UId="659">
+      <Component Name="io_InserisciScartoInListaProfila" UId="660" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="661" />
+  <Token Text=":=" UId="662" />
+  <Blank Num="1" UId="663" />
+  <Access Scope="LiteralConstant" UId="664">
+    <Constant UId="665">
+      <ConstantValue UId="667">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="668" />
+  <NewLine Num="1" UId="669" />
+  <Token Text="END_IF" UId="670" />
+  <Token Text=";" UId="671" />
+  <NewLine Num="2" UId="672" />
+  <Token Text="IF" UId="673" />
+  <Blank Num="1" UId="674" />
+  <Access Scope="LocalVariable" UId="675">
+    <Symbol UId="676">
+      <Component Name="i_reset_allarmi" UId="677" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="678" />
+  <Token Text="THEN" UId="679" />
+  <NewLine Num="1" UId="680" />
+  <Blank Num="4" UId="681" />
+  <Access Scope="LocalVariable" UId="682">
+    <Symbol UId="683">
+      <Component Name="o_all_lista_profila_piena" UId="684" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="685" />
+  <Token Text=":=" UId="686" />
+  <Blank Num="1" UId="687" />
+  <Access Scope="LiteralConstant" UId="688">
+    <Constant UId="689">
+      <ConstantValue UId="691">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="692" />
+  <NewLine Num="1" UId="693" />
+  <Token Text="END_IF" UId="694" />
+  <Token Text=";" UId="695" />
+  <NewLine Num="1" UId="696" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>inserisci scarto in lista profila</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_InserisciPezzoInListaProfila" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="THEN" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <Token Text="FOR" UId="30" />
+  <Blank Num="1" UId="31" />
+  <Access Scope="LocalVariable" UId="32">
+    <Symbol UId="33">
+      <Component Name="index" UId="34" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank Num="1" UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="42" />
+  <Token Text="TO" UId="43" />
+  <Blank Num="1" UId="44" />
+  <Access Scope="GlobalConstant" UId="45">
+    <Constant Name="NumMaxPezziProfila" UId="46" />
+  </Access>
+  <Blank Num="1" UId="49" />
+  <Token Text="DO" UId="50" />
+  <NewLine Num="1" UId="51" />
+  <Blank Num="8" UId="52" />
+  <Token Text="IF" UId="53" />
+  <Blank Num="1" UId="54" />
+  <Access Scope="LocalVariable" UId="55">
+    <Symbol UId="56">
+      <Component Name="io_lista_pzi" UId="57">
+        <Token Text="[" UId="58" />
+        <Access Scope="LocalVariable" UId="59">
+          <Symbol UId="60">
+            <Component Name="index" UId="61" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="62" />
+      </Component>
+      <Token Text="." UId="63" />
+      <Component Name="lenght" UId="64" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="65" />
+  <Token Text="=" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="LiteralConstant" UId="68">
+    <Constant UId="69">
+      <ConstantValue UId="71">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="72" />
+  <Token Text="THEN" UId="73" />
+  <NewLine Num="1" UId="74" />
+  <Blank Num="12" UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="io_lista_pzi" UId="78">
+        <Token Text="[" UId="79" />
+        <Access Scope="LocalVariable" UId="80">
+          <Symbol UId="81">
+            <Component Name="index" UId="82" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="83" />
+      </Component>
+      <Token Text="." UId="84" />
+      <Component Name="ID" UId="85" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank Num="1" UId="88" />
+  <Access Scope="LocalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="i_listaprofila_pezzofatto" UId="91" />
+      <Token Text="." UId="92" />
+      <Component Name="ID" UId="93" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="94" />
+  <NewLine Num="1" UId="95" />
+  <Blank Num="12" UId="96" />
+  <NewLine Num="1" UId="97" />
+  <Blank Num="12" UId="98" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="99">
+    <Text UId="100">inserimento del nome articolo</Text>
+  </LineComment>
+  <NewLine Num="1" UId="101" />
+  <Blank Num="12" UId="102" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="103">
+    <Text UId="104">il nome dell'articolo è appoggiato su un array parallelo alla lista profila perchè in caso di trasferimento ad un altro plc</Text>
+  </LineComment>
+  <NewLine Num="1" UId="105" />
+  <Blank Num="12" UId="106" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="107">
+    <Text UId="108">con i-device, un dato wstring non può essere trasferito ma deve essere un array di char.</Text>
+  </LineComment>
+  <NewLine Num="1" UId="109" />
+  <Blank Num="12" UId="110" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="111">
+    <Text UId="112">Il pc legge l'array separato dalla lista profila. la linea con le modifiche iniziali è la 210100012</Text>
+  </LineComment>
+  <NewLine Num="1" UId="113" />
+  <Blank Num="12" UId="114" />
+  <Access Scope="LocalVariable" UId="115">
+    <Symbol UId="116">
+      <Component Name="io_lista_pzi" UId="117">
+        <Token Text="[" UId="118" />
+        <Access Scope="LocalVariable" UId="119">
+          <Symbol UId="120">
+            <Component Name="index" UId="121" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="122" />
+      </Component>
+      <Token Text="." UId="123" />
+      <Component Name="name" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LocalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="i_listaprofila_pezzofatto" UId="130" />
+      <Token Text="." UId="131" />
+      <Component Name="name" UId="132" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="133" />
+  <NewLine Num="1" UId="134" />
+  <Blank Num="12" UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="io_nome_lista_pzi" UId="138">
+        <Token Text="[" UId="139" />
+        <Access Scope="LocalVariable" UId="140">
+          <Symbol UId="141">
+            <Component Name="index" UId="142" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="143" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="144" />
+  <Token Text=":=" UId="145" />
+  <Blank Num="1" UId="146" />
+  <Access Scope="LocalVariable" UId="147">
+    <Symbol UId="148">
+      <Component Name="i_listaprofila_pezzofatto" UId="149" />
+      <Token Text="." UId="150" />
+      <Component Name="name" UId="151" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="152" />
+  <NewLine Num="1" UId="153" />
+  <Blank Num="12" UId="154" />
+  <NewLine Num="1" UId="155" />
+  <Blank Num="12" UId="156" />
+  <Access Scope="LocalVariable" UId="157">
+    <Symbol UId="158">
+      <Component Name="io_lista_pzi" UId="159">
+        <Token Text="[" UId="160" />
+        <Access Scope="LocalVariable" UId="161">
+          <Symbol UId="162">
+            <Component Name="index" UId="163" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="164" />
+      </Component>
+      <Token Text="." UId="165" />
+      <Component Name="lenght" UId="166" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="167" />
+  <Token Text=":=" UId="168" />
+  <Blank Num="1" UId="169" />
+  <Access Scope="LocalVariable" UId="170">
+    <Symbol UId="171">
+      <Component Name="i_listaprofila_pezzofatto" UId="172" />
+      <Token Text="." UId="173" />
+      <Component Name="lenght" UId="174" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="175" />
+  <NewLine Num="1" UId="176" />
+  <Blank Num="12" UId="177" />
+  <Access Scope="LocalVariable" UId="178">
+    <Symbol UId="179">
+      <Component Name="io_lista_pzi" UId="180">
+        <Token Text="[" UId="181" />
+        <Access Scope="LocalVariable" UId="182">
+          <Symbol UId="183">
+            <Component Name="index" UId="184" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="185" />
+      </Component>
+      <Token Text="." UId="186" />
+      <Component Name="cutoffset" UId="187" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="188" />
+  <Token Text=":=" UId="189" />
+  <Access Scope="LocalVariable" UId="190">
+    <Symbol UId="191">
+      <Component Name="i_listaprofila_pezzofatto" UId="192" />
+      <Token Text="." UId="193" />
+      <Component Name="cutoffset" UId="194" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="195" />
+  <NewLine Num="1" UId="196" />
+  <Blank Num="12" UId="197" />
+  <Access Scope="LocalVariable" UId="198">
+    <Symbol UId="199">
+      <Component Name="io_lista_pzi" UId="200">
+        <Token Text="[" UId="201" />
+        <Access Scope="LocalVariable" UId="202">
+          <Symbol UId="203">
+            <Component Name="index" UId="204" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="205" />
+      </Component>
+      <Token Text="." UId="206" />
+      <Component Name="NumeroPezzo" UId="207" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="208" />
+  <Token Text=":=" UId="209" />
+  <Blank Num="1" UId="210" />
+  <Access Scope="LocalVariable" UId="211">
+    <Symbol UId="212">
+      <Component Name="i_listaprofila_pezzofatto" UId="213" />
+      <Token Text="." UId="214" />
+      <Component Name="NumeroPezzo" UId="215" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="216" />
+  <NewLine Num="1" UId="217" />
+  <Blank Num="12" UId="218" />
+  <Access Scope="LocalVariable" UId="219">
+    <Symbol UId="220">
+      <Component Name="io_lista_pzi" UId="221">
+        <Token Text="[" UId="222" />
+        <Access Scope="LocalVariable" UId="223">
+          <Symbol UId="224">
+            <Component Name="index" UId="225" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="226" />
+      </Component>
+      <Token Text="." UId="227" />
+      <Component Name="wastepiece" UId="228" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="229" />
+  <Token Text=":=" UId="230" />
+  <Blank Num="1" UId="231" />
+  <Access Scope="LiteralConstant" UId="232">
+    <Constant UId="233">
+      <ConstantValue UId="235">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="236" />
+  <NewLine Num="1" UId="237" />
+  <Blank Num="12" UId="238" />
+  <NewLine Num="1" UId="239" />
+  <Blank Num="11" UId="240" />
+  <NewLine Num="1" UId="241" />
+  <Blank Num="12" UId="242" />
+  <Access Scope="LocalVariable" UId="243">
+    <Symbol UId="244">
+      <Component Name="io_lista_pzi" UId="245">
+        <Token Text="[" UId="246" />
+        <Access Scope="LocalVariable" UId="247">
+          <Symbol UId="248">
+            <Component Name="index" UId="249" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="250" />
+      </Component>
+      <Token Text="." UId="251" />
+      <Component Name="options" UId="252" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="253" />
+  <Token Text=":=" UId="254" />
+  <Blank Num="1" UId="255" />
+  <Access Scope="LocalVariable" UId="256">
+    <Symbol UId="257">
+      <Component Name="i_listaprofila_pezzofatto" UId="258" />
+      <Token Text="." UId="259" />
+      <Component Name="options" UId="260" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="261" />
+  <NewLine Num="1" UId="262" />
+  <Blank Num="12" UId="263" />
+  <Access Scope="LocalVariable" UId="264">
+    <Symbol UId="265">
+      <Component Name="io_lista_pzi" UId="266">
+        <Token Text="[" UId="267" />
+        <Access Scope="LocalVariable" UId="268">
+          <Symbol UId="269">
+            <Component Name="index" UId="270" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="271" />
+      </Component>
+      <Token Text="." UId="272" />
+      <Component Name="options_dint" UId="273" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="274" />
+  <Token Text=":=" UId="275" />
+  <Blank Num="1" UId="276" />
+  <Access Scope="LocalVariable" UId="277">
+    <Symbol UId="278">
+      <Component Name="i_listaprofila_pezzofatto" UId="279" />
+      <Token Text="." UId="280" />
+      <Component Name="options_dint" UId="281" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="282" />
+  <NewLine Num="1" UId="283" />
+  <Blank Num="12" UId="284" />
+  <Access Scope="LocalVariable" UId="285">
+    <Symbol UId="286">
+      <Component Name="io_lista_pzi" UId="287">
+        <Token Text="[" UId="288" />
+        <Access Scope="LocalVariable" UId="289">
+          <Symbol UId="290">
+            <Component Name="index" UId="291" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="292" />
+      </Component>
+      <Token Text="." UId="293" />
+      <Component Name="options_lreal" UId="294" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="295" />
+  <Token Text=":=" UId="296" />
+  <Blank Num="1" UId="297" />
+  <Access Scope="LocalVariable" UId="298">
+    <Symbol UId="299">
+      <Component Name="i_listaprofila_pezzofatto" UId="300" />
+      <Token Text="." UId="301" />
+      <Component Name="options_lreal" UId="302" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="303" />
+  <NewLine Num="1" UId="304" />
+  <Blank Num="12" UId="305" />
+  <Access Scope="LocalVariable" UId="306">
+    <Symbol UId="307">
+      <Component Name="io_lista_pzi" UId="308">
+        <Token Text="[" UId="309" />
+        <Access Scope="LocalVariable" UId="310">
+          <Symbol UId="311">
+            <Component Name="index" UId="312" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="313" />
+      </Component>
+      <Token Text="." UId="314" />
+      <Component Name="options_str" UId="315" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="316" />
+  <Token Text=":=" UId="317" />
+  <Blank Num="1" UId="318" />
+  <Access Scope="LocalVariable" UId="319">
+    <Symbol UId="320">
+      <Component Name="i_listaprofila_pezzofatto" UId="321" />
+      <Token Text="." UId="322" />
+      <Component Name="options_str" UId="323" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="324" />
+  <NewLine Num="1" UId="325" />
+  <Blank Num="12" UId="326" />
+  <NewLine Num="1" UId="327" />
+  <Blank Num="12" UId="328" />
+  <Token Text="EXIT" UId="329" />
+  <Token Text=";" UId="330" />
+  <NewLine Num="1" UId="331" />
+  <Blank Num="8" UId="332" />
+  <Token Text="END_IF" UId="333" />
+  <Token Text=";" UId="334" />
+  <NewLine Num="1" UId="335" />
+  <Blank Num="8" UId="336" />
+  <NewLine Num="1" UId="337" />
+  <Blank Num="8" UId="338" />
+  <Token Text="IF" UId="339" />
+  <Blank Num="1" UId="340" />
+  <Access Scope="LocalVariable" UId="341">
+    <Symbol UId="342">
+      <Component Name="index" UId="343" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="344" />
+  <Token Text="=" UId="345" />
+  <Blank Num="1" UId="346" />
+  <Access Scope="GlobalConstant" UId="347">
+    <Constant Name="NumMaxPezziProfila" UId="348" />
+  </Access>
+  <Blank Num="1" UId="351" />
+  <Token Text="THEN" UId="352" />
+  <NewLine Num="1" UId="353" />
+  <Blank Num="12" UId="354" />
+  <Access Scope="LocalVariable" UId="355">
+    <Symbol UId="356">
+      <Component Name="o_all_lista_profila_piena" UId="357" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="358" />
+  <Token Text=":=" UId="359" />
+  <Blank Num="1" UId="360" />
+  <Access Scope="LiteralConstant" UId="361">
+    <Constant UId="362">
+      <ConstantValue UId="364">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="365" />
+  <NewLine Num="1" UId="366" />
+  <Blank Num="8" UId="367" />
+  <Token Text="END_IF" UId="368" />
+  <Token Text=";" UId="369" />
+  <NewLine Num="1" UId="370" />
+  <Blank Num="4" UId="371" />
+  <Token Text="END_FOR" UId="372" />
+  <Token Text=";" UId="373" />
+  <NewLine Num="1" UId="374" />
+  <Blank Num="4" UId="375" />
+  <Access Scope="LocalVariable" UId="376">
+    <Symbol UId="377">
+      <Component Name="io_InserisciPezzoInListaProfila" UId="378" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="379" />
+  <Token Text=":=" UId="380" />
+  <Blank Num="1" UId="381" />
+  <Access Scope="LiteralConstant" UId="382">
+    <Constant UId="383">
+      <ConstantValue UId="385">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="386" />
+  <NewLine Num="1" UId="387" />
+  <Token Text="END_IF" UId="388" />
+  <Token Text=";" UId="389" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>inserisci pezzo buono in lista profila</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_cancella_lista" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="=" UId="27" />
+  <Blank Num="1" UId="28" />
+  <Access Scope="LiteralConstant" UId="29">
+    <Constant UId="30">
+      <ConstantValue UId="32">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text="THEN" UId="34" />
+  <NewLine Num="1" UId="35" />
+  <Blank Num="4" UId="36" />
+  <NewLine Num="1" UId="37" />
+  <Blank Num="4" UId="38" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="39">
+    <Text UId="40">backup della lista profila per possibile recupero</Text>
+  </LineComment>
+  <NewLine Num="1" UId="41" />
+  <Blank Num="4" UId="42" />
+  <Token Text="IF" UId="43" />
+  <Blank Num="1" UId="44" />
+  <Access Scope="LocalVariable" UId="45">
+    <Symbol UId="46">
+      <Component Name="io_lista_pzi" UId="47">
+        <Token Text="[" UId="48" />
+        <Access Scope="LiteralConstant" UId="49">
+          <Constant UId="50">
+            <ConstantValue UId="52">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="53" />
+      </Component>
+      <Token Text="." UId="54" />
+      <Component Name="ID" UId="55" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="56" />
+  <Token Text="&gt;" UId="57" />
+  <Blank Num="1" UId="58" />
+  <Access Scope="LiteralConstant" UId="59">
+    <Constant UId="60">
+      <ConstantValue UId="62">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text="THEN" UId="64" />
+  <NewLine Num="1" UId="65" />
+  <Blank Num="8" UId="66" />
+  <Access Scope="LocalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="io_lista_pzi_backup" UId="69" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="70" />
+  <Token Text=":=" UId="71" />
+  <Blank Num="1" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="io_lista_pzi" UId="75" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="76" />
+  <NewLine Num="1" UId="77" />
+  <Blank Num="4" UId="78" />
+  <Token Text="END_IF" UId="79" />
+  <Token Text=";" UId="80" />
+  <NewLine Num="1" UId="81" />
+  <Blank Num="4" UId="82" />
+  <NewLine Num="1" UId="83" />
+  <Blank Num="4" UId="84" />
+  <Access Scope="LocalVariable" UId="85">
+    <Symbol UId="86">
+      <Component Name="io_cancella_lista" UId="87" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="88" />
+  <Token Text=":=" UId="89" />
+  <Blank Num="1" UId="90" />
+  <Access Scope="LiteralConstant" UId="91">
+    <Constant UId="92">
+      <ConstantValue UId="94">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="95" />
+  <NewLine Num="1" UId="96" />
+  <Blank Num="4" UId="97" />
+  <NewLine Num="1" UId="98" />
+  <Blank Num="4" UId="99" />
+  <Token Text="FOR" UId="100" />
+  <Blank Num="1" UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="index" UId="104" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text=":=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="LiteralConstant" UId="108">
+    <Constant UId="109">
+      <ConstantValue UId="111">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="112" />
+  <Token Text="TO" UId="113" />
+  <Blank Num="1" UId="114" />
+  <Access Scope="GlobalConstant" UId="115">
+    <Constant Name="NumMaxPezziProfila" UId="116" />
+  </Access>
+  <Blank Num="1" UId="119" />
+  <Token Text="DO" UId="120" />
+  <NewLine Num="1" UId="121" />
+  <Blank Num="8" UId="122" />
+  <Access Scope="LocalVariable" UId="123">
+    <Symbol UId="124">
+      <Component Name="io_lista_pzi" UId="125">
+        <Token Text="[" UId="126" />
+        <Access Scope="LocalVariable" UId="127">
+          <Symbol UId="128">
+            <Component Name="index" UId="129" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="130" />
+      </Component>
+      <Token Text="." UId="131" />
+      <Component Name="ID" UId="132" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="133" />
+  <Token Text=":=" UId="134" />
+  <Blank Num="1" UId="135" />
+  <Access Scope="LiteralConstant" UId="136">
+    <Constant UId="137">
+      <ConstantValue UId="139">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="140" />
+  <NewLine Num="1" UId="141" />
+  <Blank Num="8" UId="142" />
+  <Access Scope="LocalVariable" UId="143">
+    <Symbol UId="144">
+      <Component Name="io_lista_pzi" UId="145">
+        <Token Text="[" UId="146" />
+        <Access Scope="LocalVariable" UId="147">
+          <Symbol UId="148">
+            <Component Name="index" UId="149" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="150" />
+      </Component>
+      <Token Text="." UId="151" />
+      <Component Name="name" UId="152" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="153" />
+  <Token Text=":=" UId="154" />
+  <Blank Num="1" UId="155" />
+  <Access Scope="TypedConstant" UId="156">
+    <Constant UId="157">
+      <ConstantValue UId="158">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="159" />
+  <NewLine Num="1" UId="160" />
+  <Blank Num="8" UId="161" />
+  <Access Scope="LocalVariable" UId="162">
+    <Symbol UId="163">
+      <Component Name="io_lista_pzi" UId="164">
+        <Token Text="[" UId="165" />
+        <Access Scope="LocalVariable" UId="166">
+          <Symbol UId="167">
+            <Component Name="index" UId="168" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="169" />
+      </Component>
+      <Token Text="." UId="170" />
+      <Component Name="lenght" UId="171" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="172" />
+  <Token Text=":=" UId="173" />
+  <Blank Num="1" UId="174" />
+  <Access Scope="LiteralConstant" UId="175">
+    <Constant UId="176">
+      <ConstantValue UId="178">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="179" />
+  <NewLine Num="1" UId="180" />
+  <Blank Num="8" UId="181" />
+  <Access Scope="LocalVariable" UId="182">
+    <Symbol UId="183">
+      <Component Name="io_lista_pzi" UId="184">
+        <Token Text="[" UId="185" />
+        <Access Scope="LocalVariable" UId="186">
+          <Symbol UId="187">
+            <Component Name="index" UId="188" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="189" />
+      </Component>
+      <Token Text="." UId="190" />
+      <Component Name="cutoffset" UId="191" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="192" />
+  <Token Text=":=" UId="193" />
+  <Blank Num="1" UId="194" />
+  <Access Scope="LiteralConstant" UId="195">
+    <Constant UId="196">
+      <ConstantValue UId="198">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="199" />
+  <NewLine Num="1" UId="200" />
+  <Blank Num="8" UId="201" />
+  <Access Scope="LocalVariable" UId="202">
+    <Symbol UId="203">
+      <Component Name="io_lista_pzi" UId="204">
+        <Token Text="[" UId="205" />
+        <Access Scope="LocalVariable" UId="206">
+          <Symbol UId="207">
+            <Component Name="index" UId="208" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="209" />
+      </Component>
+      <Token Text="." UId="210" />
+      <Component Name="NumeroPezzo" UId="211" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="212" />
+  <Token Text=":=" UId="213" />
+  <Blank Num="1" UId="214" />
+  <Access Scope="LiteralConstant" UId="215">
+    <Constant UId="216">
+      <ConstantValue UId="218">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="219" />
+  <NewLine Num="1" UId="220" />
+  <Blank Num="8" UId="221" />
+  <Access Scope="LocalVariable" UId="222">
+    <Symbol UId="223">
+      <Component Name="io_lista_pzi" UId="224">
+        <Token Text="[" UId="225" />
+        <Access Scope="LocalVariable" UId="226">
+          <Symbol UId="227">
+            <Component Name="index" UId="228" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="229" />
+      </Component>
+      <Token Text="." UId="230" />
+      <Component Name="wastepiece" UId="231" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="232" />
+  <Token Text=":=" UId="233" />
+  <Blank Num="1" UId="234" />
+  <Access Scope="LiteralConstant" UId="235">
+    <Constant UId="236">
+      <ConstantValue UId="238">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="239" />
+  <NewLine Num="1" UId="240" />
+  <Blank Num="8" UId="241" />
+  <NewLine Num="1" UId="242" />
+  <Blank Num="8" UId="243" />
+  <Token Text="FOR" UId="244" />
+  <Blank Num="1" UId="245" />
+  <Access Scope="LocalVariable" UId="246">
+    <Symbol UId="247">
+      <Component Name="index2" UId="248" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="249" />
+  <Token Text=":=" UId="250" />
+  <Blank Num="1" UId="251" />
+  <Access Scope="LiteralConstant" UId="252">
+    <Constant UId="253">
+      <ConstantValue UId="255">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="256" />
+  <Token Text="TO" UId="257" />
+  <Blank Num="1" UId="258" />
+  <Access Scope="LiteralConstant" UId="259">
+    <Constant UId="260">
+      <ConstantValue UId="262">16</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="263" />
+  <Token Text="DO" UId="264" />
+  <NewLine Num="1" UId="265" />
+  <Blank Num="12" UId="266" />
+  <Access Scope="LocalVariable" UId="267">
+    <Symbol UId="268">
+      <Component Name="io_lista_pzi" UId="269">
+        <Token Text="[" UId="270" />
+        <Access Scope="LocalVariable" UId="271">
+          <Symbol UId="272">
+            <Component Name="index" UId="273" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="274" />
+      </Component>
+      <Token Text="." UId="275" />
+      <Component Name="options" UId="276">
+        <Token Text="[" UId="277" />
+        <Access Scope="LocalVariable" UId="278">
+          <Symbol UId="279">
+            <Component Name="index2" UId="280" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="281" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="282" />
+  <Token Text=":=" UId="283" />
+  <Blank Num="1" UId="284" />
+  <Access Scope="LiteralConstant" UId="285">
+    <Constant UId="286">
+      <ConstantValue UId="288">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="289" />
+  <NewLine Num="1" UId="290" />
+  <Blank Num="8" UId="291" />
+  <Token Text="END_FOR" UId="292" />
+  <Token Text=";" UId="293" />
+  <NewLine Num="1" UId="294" />
+  <Blank Num="8" UId="295" />
+  <NewLine Num="1" UId="296" />
+  <Blank Num="8" UId="297" />
+  <Access Scope="LocalVariable" UId="298">
+    <Symbol UId="299">
+      <Component Name="io_lista_pzi" UId="300">
+        <Token Text="[" UId="301" />
+        <Access Scope="LocalVariable" UId="302">
+          <Symbol UId="303">
+            <Component Name="index" UId="304" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="305" />
+      </Component>
+      <Token Text="." UId="306" />
+      <Component Name="options_dint" UId="307">
+        <Token Text="[" UId="308" />
+        <Access Scope="LiteralConstant" UId="309">
+          <Constant UId="310">
+            <ConstantValue UId="312">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="313" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="314" />
+  <Token Text=":=" UId="315" />
+  <Blank Num="1" UId="316" />
+  <Access Scope="LiteralConstant" UId="317">
+    <Constant UId="318">
+      <ConstantValue UId="320">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="321" />
+  <NewLine Num="1" UId="322" />
+  <Blank Num="8" UId="323" />
+  <Access Scope="LocalVariable" UId="324">
+    <Symbol UId="325">
+      <Component Name="io_lista_pzi" UId="326">
+        <Token Text="[" UId="327" />
+        <Access Scope="LocalVariable" UId="328">
+          <Symbol UId="329">
+            <Component Name="index" UId="330" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="331" />
+      </Component>
+      <Token Text="." UId="332" />
+      <Component Name="options_dint" UId="333">
+        <Token Text="[" UId="334" />
+        <Access Scope="LiteralConstant" UId="335">
+          <Constant UId="336">
+            <ConstantValue UId="338">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="339" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="340" />
+  <Token Text=":=" UId="341" />
+  <Blank Num="1" UId="342" />
+  <Access Scope="LiteralConstant" UId="343">
+    <Constant UId="344">
+      <ConstantValue UId="346">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="347" />
+  <NewLine Num="1" UId="348" />
+  <Blank Num="8" UId="349" />
+  <Access Scope="LocalVariable" UId="350">
+    <Symbol UId="351">
+      <Component Name="io_lista_pzi" UId="352">
+        <Token Text="[" UId="353" />
+        <Access Scope="LocalVariable" UId="354">
+          <Symbol UId="355">
+            <Component Name="index" UId="356" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="357" />
+      </Component>
+      <Token Text="." UId="358" />
+      <Component Name="options_dint" UId="359">
+        <Token Text="[" UId="360" />
+        <Access Scope="LiteralConstant" UId="361">
+          <Constant UId="362">
+            <ConstantValue UId="364">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="365" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="366" />
+  <Token Text=":=" UId="367" />
+  <Blank Num="1" UId="368" />
+  <Access Scope="LiteralConstant" UId="369">
+    <Constant UId="370">
+      <ConstantValue UId="372">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="373" />
+  <NewLine Num="1" UId="374" />
+  <Blank Num="8" UId="375" />
+  <NewLine Num="1" UId="376" />
+  <Blank Num="8" UId="377" />
+  <Access Scope="LocalVariable" UId="378">
+    <Symbol UId="379">
+      <Component Name="io_lista_pzi" UId="380">
+        <Token Text="[" UId="381" />
+        <Access Scope="LocalVariable" UId="382">
+          <Symbol UId="383">
+            <Component Name="index" UId="384" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="385" />
+      </Component>
+      <Token Text="." UId="386" />
+      <Component Name="options_lreal" UId="387">
+        <Token Text="[" UId="388" />
+        <Access Scope="LiteralConstant" UId="389">
+          <Constant UId="390">
+            <ConstantValue UId="392">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="393" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="394" />
+  <Token Text=":=" UId="395" />
+  <Blank Num="1" UId="396" />
+  <Access Scope="LiteralConstant" UId="397">
+    <Constant UId="398">
+      <ConstantValue UId="400">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="401" />
+  <NewLine Num="1" UId="402" />
+  <Blank Num="8" UId="403" />
+  <Access Scope="LocalVariable" UId="404">
+    <Symbol UId="405">
+      <Component Name="io_lista_pzi" UId="406">
+        <Token Text="[" UId="407" />
+        <Access Scope="LocalVariable" UId="408">
+          <Symbol UId="409">
+            <Component Name="index" UId="410" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="411" />
+      </Component>
+      <Token Text="." UId="412" />
+      <Component Name="options_lreal" UId="413">
+        <Token Text="[" UId="414" />
+        <Access Scope="LiteralConstant" UId="415">
+          <Constant UId="416">
+            <ConstantValue UId="418">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="419" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="420" />
+  <Token Text=":=" UId="421" />
+  <Blank Num="1" UId="422" />
+  <Access Scope="LiteralConstant" UId="423">
+    <Constant UId="424">
+      <ConstantValue UId="426">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="427" />
+  <NewLine Num="1" UId="428" />
+  <Blank Num="8" UId="429" />
+  <Access Scope="LocalVariable" UId="430">
+    <Symbol UId="431">
+      <Component Name="io_lista_pzi" UId="432">
+        <Token Text="[" UId="433" />
+        <Access Scope="LocalVariable" UId="434">
+          <Symbol UId="435">
+            <Component Name="index" UId="436" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="437" />
+      </Component>
+      <Token Text="." UId="438" />
+      <Component Name="options_lreal" UId="439">
+        <Token Text="[" UId="440" />
+        <Access Scope="LiteralConstant" UId="441">
+          <Constant UId="442">
+            <ConstantValue UId="444">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="445" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="446" />
+  <Token Text=":=" UId="447" />
+  <Blank Num="1" UId="448" />
+  <Access Scope="LiteralConstant" UId="449">
+    <Constant UId="450">
+      <ConstantValue UId="452">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="453" />
+  <NewLine Num="1" UId="454" />
+  <Blank Num="8" UId="455" />
+  <NewLine Num="1" UId="456" />
+  <Blank Num="8" UId="457" />
+  <Access Scope="LocalVariable" UId="458">
+    <Symbol UId="459">
+      <Component Name="io_lista_pzi" UId="460">
+        <Token Text="[" UId="461" />
+        <Access Scope="LocalVariable" UId="462">
+          <Symbol UId="463">
+            <Component Name="index" UId="464" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="465" />
+      </Component>
+      <Token Text="." UId="466" />
+      <Component Name="options_str" UId="467">
+        <Token Text="[" UId="468" />
+        <Access Scope="LiteralConstant" UId="469">
+          <Constant UId="470">
+            <ConstantValue UId="472">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="473" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="474" />
+  <Token Text=":=" UId="475" />
+  <Blank Num="1" UId="476" />
+  <Access Scope="TypedConstant" UId="477">
+    <Constant UId="478">
+      <ConstantValue UId="479">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="480" />
+  <NewLine Num="1" UId="481" />
+  <Blank Num="8" UId="482" />
+  <Access Scope="LocalVariable" UId="483">
+    <Symbol UId="484">
+      <Component Name="io_lista_pzi" UId="485">
+        <Token Text="[" UId="486" />
+        <Access Scope="LocalVariable" UId="487">
+          <Symbol UId="488">
+            <Component Name="index" UId="489" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="490" />
+      </Component>
+      <Token Text="." UId="491" />
+      <Component Name="options_str" UId="492">
+        <Token Text="[" UId="493" />
+        <Access Scope="LiteralConstant" UId="494">
+          <Constant UId="495">
+            <ConstantValue UId="497">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="498" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="499" />
+  <Token Text=":=" UId="500" />
+  <Blank Num="1" UId="501" />
+  <Access Scope="TypedConstant" UId="502">
+    <Constant UId="503">
+      <ConstantValue UId="504">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="505" />
+  <NewLine Num="1" UId="506" />
+  <Blank Num="8" UId="507" />
+  <Access Scope="LocalVariable" UId="508">
+    <Symbol UId="509">
+      <Component Name="io_lista_pzi" UId="510">
+        <Token Text="[" UId="511" />
+        <Access Scope="LocalVariable" UId="512">
+          <Symbol UId="513">
+            <Component Name="index" UId="514" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="515" />
+      </Component>
+      <Token Text="." UId="516" />
+      <Component Name="options_str" UId="517">
+        <Token Text="[" UId="518" />
+        <Access Scope="LiteralConstant" UId="519">
+          <Constant UId="520">
+            <ConstantValue UId="522">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="523" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="524" />
+  <Token Text=":=" UId="525" />
+  <Blank Num="1" UId="526" />
+  <Access Scope="TypedConstant" UId="527">
+    <Constant UId="528">
+      <ConstantValue UId="529">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="530" />
+  <NewLine Num="1" UId="531" />
+  <Blank Num="4" UId="532" />
+  <Token Text="END_FOR" UId="533" />
+  <Token Text=";" UId="534" />
+  <NewLine Num="1" UId="535" />
+  <Token Text="END_IF" UId="536" />
+  <Token Text=";" UId="537" />
+  <NewLine Num="1" UId="538" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>svuota lista</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_recupero_lista_profila" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="THEN" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <Access Scope="LocalVariable" UId="32">
+    <Symbol UId="33">
+      <Component Name="io_recupero_lista_profila" UId="34" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank Num="1" UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="1" UId="43" />
+  <Blank Num="4" UId="44" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="45">
+    <Text UId="46">recupero la lista profila se il backup è valido e la lista è vuota</Text>
+  </LineComment>
+  <NewLine Num="1" UId="47" />
+  <Blank Num="4" UId="48" />
+  <Token Text="IF" UId="49" />
+  <Blank Num="1" UId="50" />
+  <Access Scope="LocalVariable" UId="51">
+    <Symbol UId="52">
+      <Component Name="io_lista_pzi_backup" UId="53">
+        <Token Text="[" UId="54" />
+        <Access Scope="LiteralConstant" UId="55">
+          <Constant UId="56">
+            <ConstantValue UId="58">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="59" />
+      </Component>
+      <Token Text="." UId="60" />
+      <Component Name="ID" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="62" />
+  <Token Text="&gt;" UId="63" />
+  <Blank Num="1" UId="64" />
+  <Access Scope="LiteralConstant" UId="65">
+    <Constant UId="66">
+      <ConstantValue UId="68">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="69" />
+  <Token Text="AND" UId="70" />
+  <Blank Num="1" UId="71" />
+  <Access Scope="LocalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="io_lista_pzi" UId="74">
+        <Token Text="[" UId="75" />
+        <Access Scope="LiteralConstant" UId="76">
+          <Constant UId="77">
+            <ConstantValue UId="79">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="80" />
+      </Component>
+      <Token Text="." UId="81" />
+      <Component Name="ID" UId="82" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="83" />
+  <Token Text="=" UId="84" />
+  <Blank Num="1" UId="85" />
+  <Access Scope="LiteralConstant" UId="86">
+    <Constant UId="87">
+      <ConstantValue UId="89">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="90" />
+  <Token Text="THEN" UId="91" />
+  <NewLine Num="1" UId="92" />
+  <Blank Num="8" UId="93" />
+  <Access Scope="LocalVariable" UId="94">
+    <Symbol UId="95">
+      <Component Name="io_lista_pzi" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="97" />
+  <Token Text=":=" UId="98" />
+  <Blank Num="1" UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="io_lista_pzi_backup" UId="102" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="103" />
+  <NewLine Num="1" UId="104" />
+  <Blank Num="4" UId="105" />
+  <Token Text="END_IF" UId="106" />
+  <Token Text=";" UId="107" />
+  <NewLine Num="1" UId="108" />
+  <Blank Num="4" UId="109" />
+  <NewLine Num="1" UId="110" />
+  <Token Text="END_IF" UId="111" />
+  <Token Text=";" UId="112" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Recupero lista profila</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="io_togli_pzo_da_lista" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="THEN" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="io_togli_pzo_da_lista" UId="32" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text=":=" UId="34" />
+  <Blank Num="1" UId="35" />
+  <Access Scope="LiteralConstant" UId="36">
+    <Constant UId="37">
+      <ConstantValue UId="39">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="40" />
+  <NewLine Num="1" UId="41" />
+  <Blank Num="4" UId="42" />
+  <NewLine Num="1" UId="43" />
+  <Blank Num="4" UId="44" />
+  <Token Text="FOR" UId="45" />
+  <Blank Num="1" UId="46" />
+  <Access Scope="LocalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="index" UId="49" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="50" />
+  <Token Text=":=" UId="51" />
+  <Blank Num="1" UId="52" />
+  <Access Scope="LiteralConstant" UId="53">
+    <Constant UId="54">
+      <ConstantValue UId="56">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="57" />
+  <Token Text="TO" UId="58" />
+  <Blank Num="1" UId="59" />
+  <Access Scope="GlobalConstant" UId="60">
+    <Constant Name="NumMaxPezziProfila" UId="61" />
+  </Access>
+  <Blank Num="1" UId="64" />
+  <Token Text="-" UId="65" />
+  <Blank Num="1" UId="66" />
+  <Access Scope="LiteralConstant" UId="67">
+    <Constant UId="68">
+      <ConstantValue UId="70">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="71" />
+  <Token Text="DO" UId="72" />
+  <NewLine Num="1" UId="73" />
+  <Blank Num="8" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="io_lista_pzi" UId="77">
+        <Token Text="[" UId="78" />
+        <Access Scope="LocalVariable" UId="79">
+          <Symbol UId="80">
+            <Component Name="index" UId="81" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="82" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="83" />
+  <Token Text=":=" UId="84" />
+  <Blank Num="1" UId="85" />
+  <Access Scope="LocalVariable" UId="86">
+    <Symbol UId="87">
+      <Component Name="io_lista_pzi" UId="88">
+        <Token Text="[" UId="89" />
+        <Access Scope="LocalVariable" UId="90">
+          <Symbol UId="91">
+            <Component Name="index" UId="92" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="93" />
+        <Token Text="+" UId="94" />
+        <Blank Num="1" UId="95" />
+        <Access Scope="LiteralConstant" UId="96">
+          <Constant UId="97">
+            <ConstantValue UId="99">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="100" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="101" />
+  <NewLine Num="1" UId="102" />
+  <Blank Num="8" UId="103" />
+  <Token Text="IF" UId="104" />
+  <Blank Num="1" UId="105" />
+  <Access Scope="LocalVariable" UId="106">
+    <Symbol UId="107">
+      <Component Name="io_lista_pzi" UId="108">
+        <Token Text="[" UId="109" />
+        <Access Scope="LocalVariable" UId="110">
+          <Symbol UId="111">
+            <Component Name="index" UId="112" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="113" />
+        <Token Text="+" UId="114" />
+        <Blank Num="1" UId="115" />
+        <Access Scope="LiteralConstant" UId="116">
+          <Constant UId="117">
+            <ConstantValue UId="119">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="120" />
+      </Component>
+      <Token Text="." UId="121" />
+      <Component Name="lenght" UId="122" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="123" />
+  <Token Text="=" UId="124" />
+  <Blank Num="1" UId="125" />
+  <Access Scope="LiteralConstant" UId="126">
+    <Constant UId="127">
+      <ConstantValue UId="129">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="130" />
+  <Token Text="THEN" UId="131" />
+  <NewLine Num="1" UId="132" />
+  <Blank Num="12" UId="133" />
+  <Token Text="EXIT" UId="134" />
+  <Token Text=";" UId="135" />
+  <NewLine Num="1" UId="136" />
+  <Blank Num="8" UId="137" />
+  <Token Text="END_IF" UId="138" />
+  <Token Text=";" UId="139" />
+  <NewLine Num="1" UId="140" />
+  <Blank Num="4" UId="141" />
+  <Token Text="END_FOR" UId="142" />
+  <Token Text=";" UId="143" />
+  <NewLine Num="1" UId="144" />
+  <Blank Num="4" UId="145" />
+  <NewLine Num="1" UId="146" />
+  <Blank Num="4" UId="147" />
+  <Access Scope="LocalVariable" UId="148">
+    <Symbol UId="149">
+      <Component Name="io_lista_pzi" UId="150">
+        <Token Text="[" UId="151" />
+        <Access Scope="GlobalConstant" UId="152">
+          <Constant UId="153">
+            <ConstantValue UId="155">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="156" />
+      </Component>
+      <Token Text="." UId="157" />
+      <Component Name="ID" UId="158" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="159" />
+  <Token Text=":=" UId="160" />
+  <Blank Num="1" UId="161" />
+  <Access Scope="LiteralConstant" UId="162">
+    <Constant UId="163">
+      <ConstantValue UId="165">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="166" />
+  <NewLine Num="1" UId="167" />
+  <Blank Num="4" UId="168" />
+  <Access Scope="LocalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="io_lista_pzi" UId="171">
+        <Token Text="[" UId="172" />
+        <Access Scope="LocalVariable" UId="173">
+          <Symbol UId="174">
+            <Component Name="index" UId="175" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="176" />
+      </Component>
+      <Token Text="." UId="177" />
+      <Component Name="name" UId="178" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="179" />
+  <Token Text=":=" UId="180" />
+  <Blank Num="1" UId="181" />
+  <Access Scope="TypedConstant" UId="182">
+    <Constant UId="183">
+      <ConstantValue UId="184">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="185" />
+  <NewLine Num="1" UId="186" />
+  <Blank Num="4" UId="187" />
+  <Access Scope="LocalVariable" UId="188">
+    <Symbol UId="189">
+      <Component Name="io_lista_pzi" UId="190">
+        <Token Text="[" UId="191" />
+        <Access Scope="GlobalConstant" UId="192">
+          <Constant UId="193">
+            <ConstantValue UId="195">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="196" />
+      </Component>
+      <Token Text="." UId="197" />
+      <Component Name="lenght" UId="198" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="199" />
+  <Token Text=":=" UId="200" />
+  <Blank Num="1" UId="201" />
+  <Access Scope="LiteralConstant" UId="202">
+    <Constant UId="203">
+      <ConstantValue UId="205">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="206" />
+  <NewLine Num="1" UId="207" />
+  <Blank Num="4" UId="208" />
+  <Access Scope="LocalVariable" UId="209">
+    <Symbol UId="210">
+      <Component Name="io_lista_pzi" UId="211">
+        <Token Text="[" UId="212" />
+        <Access Scope="GlobalConstant" UId="213">
+          <Constant UId="214">
+            <ConstantValue UId="216">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="217" />
+      </Component>
+      <Token Text="." UId="218" />
+      <Component Name="cutoffset" UId="219" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="220" />
+  <Token Text=":=" UId="221" />
+  <Blank Num="1" UId="222" />
+  <Access Scope="LiteralConstant" UId="223">
+    <Constant UId="224">
+      <ConstantValue UId="226">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="227" />
+  <NewLine Num="1" UId="228" />
+  <Blank Num="4" UId="229" />
+  <Access Scope="LocalVariable" UId="230">
+    <Symbol UId="231">
+      <Component Name="io_lista_pzi" UId="232">
+        <Token Text="[" UId="233" />
+        <Access Scope="GlobalConstant" UId="234">
+          <Constant UId="235">
+            <ConstantValue UId="237">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="238" />
+      </Component>
+      <Token Text="." UId="239" />
+      <Component Name="NumeroPezzo" UId="240" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="241" />
+  <Token Text=":=" UId="242" />
+  <Blank Num="1" UId="243" />
+  <Access Scope="LiteralConstant" UId="244">
+    <Constant UId="245">
+      <ConstantValue UId="247">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="248" />
+  <NewLine Num="1" UId="249" />
+  <Blank Num="4" UId="250" />
+  <Access Scope="LocalVariable" UId="251">
+    <Symbol UId="252">
+      <Component Name="io_lista_pzi" UId="253">
+        <Token Text="[" UId="254" />
+        <Access Scope="GlobalConstant" UId="255">
+          <Constant UId="256">
+            <ConstantValue UId="258">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="259" />
+      </Component>
+      <Token Text="." UId="260" />
+      <Component Name="wastepiece" UId="261" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="262" />
+  <Token Text=":=" UId="263" />
+  <Blank Num="1" UId="264" />
+  <Access Scope="LiteralConstant" UId="265">
+    <Constant UId="266">
+      <ConstantValue UId="268">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="269" />
+  <NewLine Num="1" UId="270" />
+  <Blank Num="4" UId="271" />
+  <NewLine Num="1" UId="272" />
+  <Blank Num="4" UId="273" />
+  <Token Text="FOR" UId="274" />
+  <Blank Num="1" UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="index2" UId="278" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="279" />
+  <Token Text=":=" UId="280" />
+  <Blank Num="1" UId="281" />
+  <Access Scope="LiteralConstant" UId="282">
+    <Constant UId="283">
+      <ConstantValue UId="285">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="286" />
+  <Token Text="TO" UId="287" />
+  <Blank Num="1" UId="288" />
+  <Access Scope="LiteralConstant" UId="289">
+    <Constant UId="290">
+      <ConstantValue UId="292">16</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="293" />
+  <Token Text="DO" UId="294" />
+  <NewLine Num="1" UId="295" />
+  <Blank Num="8" UId="296" />
+  <Access Scope="LocalVariable" UId="297">
+    <Symbol UId="298">
+      <Component Name="io_lista_pzi" UId="299">
+        <Token Text="[" UId="300" />
+        <Access Scope="GlobalConstant" UId="301">
+          <Constant UId="302">
+            <ConstantValue UId="304">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="305" />
+      </Component>
+      <Token Text="." UId="306" />
+      <Component Name="options" UId="307">
+        <Token Text="[" UId="308" />
+        <Access Scope="LocalVariable" UId="309">
+          <Symbol UId="310">
+            <Component Name="index2" UId="311" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="312" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="313" />
+  <Token Text=":=" UId="314" />
+  <Blank Num="1" UId="315" />
+  <Access Scope="LiteralConstant" UId="316">
+    <Constant UId="317">
+      <ConstantValue UId="319">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="320" />
+  <NewLine Num="1" UId="321" />
+  <Blank Num="4" UId="322" />
+  <Token Text="END_FOR" UId="323" />
+  <Token Text=";" UId="324" />
+  <NewLine Num="1" UId="325" />
+  <Blank Num="4" UId="326" />
+  <Access Scope="LocalVariable" UId="327">
+    <Symbol UId="328">
+      <Component Name="io_lista_pzi" UId="329">
+        <Token Text="[" UId="330" />
+        <Access Scope="GlobalConstant" UId="331">
+          <Constant UId="332">
+            <ConstantValue UId="334">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="335" />
+      </Component>
+      <Token Text="." UId="336" />
+      <Component Name="options_dint" UId="337">
+        <Token Text="[" UId="338" />
+        <Access Scope="LiteralConstant" UId="339">
+          <Constant UId="340">
+            <ConstantValue UId="342">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="343" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="344" />
+  <Token Text=":=" UId="345" />
+  <Blank Num="1" UId="346" />
+  <Access Scope="LiteralConstant" UId="347">
+    <Constant UId="348">
+      <ConstantValue UId="350">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="351" />
+  <NewLine Num="1" UId="352" />
+  <Blank Num="4" UId="353" />
+  <Access Scope="LocalVariable" UId="354">
+    <Symbol UId="355">
+      <Component Name="io_lista_pzi" UId="356">
+        <Token Text="[" UId="357" />
+        <Access Scope="GlobalConstant" UId="358">
+          <Constant UId="359">
+            <ConstantValue UId="361">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="362" />
+      </Component>
+      <Token Text="." UId="363" />
+      <Component Name="options_dint" UId="364">
+        <Token Text="[" UId="365" />
+        <Access Scope="LiteralConstant" UId="366">
+          <Constant UId="367">
+            <ConstantValue UId="369">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="370" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="371" />
+  <Token Text=":=" UId="372" />
+  <Blank Num="1" UId="373" />
+  <Access Scope="LiteralConstant" UId="374">
+    <Constant UId="375">
+      <ConstantValue UId="377">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="378" />
+  <NewLine Num="1" UId="379" />
+  <Blank Num="4" UId="380" />
+  <Access Scope="LocalVariable" UId="381">
+    <Symbol UId="382">
+      <Component Name="io_lista_pzi" UId="383">
+        <Token Text="[" UId="384" />
+        <Access Scope="GlobalConstant" UId="385">
+          <Constant UId="386">
+            <ConstantValue UId="388">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="389" />
+      </Component>
+      <Token Text="." UId="390" />
+      <Component Name="options_dint" UId="391">
+        <Token Text="[" UId="392" />
+        <Access Scope="LiteralConstant" UId="393">
+          <Constant UId="394">
+            <ConstantValue UId="396">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="397" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="398" />
+  <Token Text=":=" UId="399" />
+  <Blank Num="1" UId="400" />
+  <Access Scope="LiteralConstant" UId="401">
+    <Constant UId="402">
+      <ConstantValue UId="404">-1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="405" />
+  <NewLine Num="1" UId="406" />
+  <Blank Num="4" UId="407" />
+  <NewLine Num="1" UId="408" />
+  <Blank Num="4" UId="409" />
+  <Access Scope="LocalVariable" UId="410">
+    <Symbol UId="411">
+      <Component Name="io_lista_pzi" UId="412">
+        <Token Text="[" UId="413" />
+        <Access Scope="GlobalConstant" UId="414">
+          <Constant UId="415">
+            <ConstantValue UId="417">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="418" />
+      </Component>
+      <Token Text="." UId="419" />
+      <Component Name="options_lreal" UId="420">
+        <Token Text="[" UId="421" />
+        <Access Scope="LiteralConstant" UId="422">
+          <Constant UId="423">
+            <ConstantValue UId="425">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="426" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="427" />
+  <Token Text=":=" UId="428" />
+  <Blank Num="1" UId="429" />
+  <Access Scope="LiteralConstant" UId="430">
+    <Constant UId="431">
+      <ConstantValue UId="433">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="434" />
+  <NewLine Num="1" UId="435" />
+  <Blank Num="4" UId="436" />
+  <Access Scope="LocalVariable" UId="437">
+    <Symbol UId="438">
+      <Component Name="io_lista_pzi" UId="439">
+        <Token Text="[" UId="440" />
+        <Access Scope="GlobalConstant" UId="441">
+          <Constant UId="442">
+            <ConstantValue UId="444">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="445" />
+      </Component>
+      <Token Text="." UId="446" />
+      <Component Name="options_lreal" UId="447">
+        <Token Text="[" UId="448" />
+        <Access Scope="LiteralConstant" UId="449">
+          <Constant UId="450">
+            <ConstantValue UId="452">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="453" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="454" />
+  <Token Text=":=" UId="455" />
+  <Blank Num="1" UId="456" />
+  <Access Scope="LiteralConstant" UId="457">
+    <Constant UId="458">
+      <ConstantValue UId="460">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="461" />
+  <NewLine Num="1" UId="462" />
+  <Blank Num="4" UId="463" />
+  <Access Scope="LocalVariable" UId="464">
+    <Symbol UId="465">
+      <Component Name="io_lista_pzi" UId="466">
+        <Token Text="[" UId="467" />
+        <Access Scope="GlobalConstant" UId="468">
+          <Constant UId="469">
+            <ConstantValue UId="471">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="472" />
+      </Component>
+      <Token Text="." UId="473" />
+      <Component Name="options_lreal" UId="474">
+        <Token Text="[" UId="475" />
+        <Access Scope="LiteralConstant" UId="476">
+          <Constant UId="477">
+            <ConstantValue UId="479">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="480" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="481" />
+  <Token Text=":=" UId="482" />
+  <Blank Num="1" UId="483" />
+  <Access Scope="LiteralConstant" UId="484">
+    <Constant UId="485">
+      <ConstantValue UId="487">-1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="488" />
+  <NewLine Num="1" UId="489" />
+  <Blank Num="4" UId="490" />
+  <NewLine Num="1" UId="491" />
+  <Blank Num="4" UId="492" />
+  <Access Scope="LocalVariable" UId="493">
+    <Symbol UId="494">
+      <Component Name="io_lista_pzi" UId="495">
+        <Token Text="[" UId="496" />
+        <Access Scope="GlobalConstant" UId="497">
+          <Constant UId="498">
+            <ConstantValue UId="500">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="501" />
+      </Component>
+      <Token Text="." UId="502" />
+      <Component Name="options_str" UId="503">
+        <Token Text="[" UId="504" />
+        <Access Scope="LiteralConstant" UId="505">
+          <Constant UId="506">
+            <ConstantValue UId="508">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="509" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="510" />
+  <Token Text=":=" UId="511" />
+  <Blank Num="1" UId="512" />
+  <Access Scope="TypedConstant" UId="513">
+    <Constant UId="514">
+      <ConstantValue UId="515">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="516" />
+  <NewLine Num="1" UId="517" />
+  <Blank Num="4" UId="518" />
+  <Access Scope="LocalVariable" UId="519">
+    <Symbol UId="520">
+      <Component Name="io_lista_pzi" UId="521">
+        <Token Text="[" UId="522" />
+        <Access Scope="GlobalConstant" UId="523">
+          <Constant UId="524">
+            <ConstantValue UId="526">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="527" />
+      </Component>
+      <Token Text="." UId="528" />
+      <Component Name="options_str" UId="529">
+        <Token Text="[" UId="530" />
+        <Access Scope="LiteralConstant" UId="531">
+          <Constant UId="532">
+            <ConstantValue UId="534">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="535" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="536" />
+  <Token Text=":=" UId="537" />
+  <Blank Num="1" UId="538" />
+  <Access Scope="TypedConstant" UId="539">
+    <Constant UId="540">
+      <ConstantValue UId="541">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="542" />
+  <NewLine Num="1" UId="543" />
+  <Blank Num="4" UId="544" />
+  <Access Scope="LocalVariable" UId="545">
+    <Symbol UId="546">
+      <Component Name="io_lista_pzi" UId="547">
+        <Token Text="[" UId="548" />
+        <Access Scope="GlobalConstant" UId="549">
+          <Constant UId="550">
+            <ConstantValue UId="552">NumMaxPezziProfila</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="553" />
+      </Component>
+      <Token Text="." UId="554" />
+      <Component Name="options_str" UId="555">
+        <Token Text="[" UId="556" />
+        <Access Scope="LiteralConstant" UId="557">
+          <Constant UId="558">
+            <ConstantValue UId="560">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="561" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="562" />
+  <Token Text=":=" UId="563" />
+  <Blank Num="1" UId="564" />
+  <Access Scope="TypedConstant" UId="565">
+    <Constant UId="566">
+      <ConstantValue UId="567">WSTRING#''</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="568" />
+  <NewLine Num="1" UId="569" />
+  <Token Text="END_IF" UId="570" />
+  <Token Text=";" UId="571" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>togli pezzo da lista profila</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="t_listaVuota" UId="23" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="24" />
+  <Token Text=":=" UId="25" />
+  <Blank Num="1" UId="26" />
+  <Access Scope="LiteralConstant" UId="27">
+    <Constant UId="28">
+      <ConstantValue UId="30">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="31" />
+  <NewLine Num="1" UId="32" />
+  <Token Text="FOR" UId="33" />
+  <Blank Num="1" UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="index" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="38" />
+  <Token Text=":=" UId="39" />
+  <Blank Num="1" UId="40" />
+  <Access Scope="LiteralConstant" UId="41">
+    <Constant UId="42">
+      <ConstantValue UId="44">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="45" />
+  <Token Text="TO" UId="46" />
+  <Blank Num="1" UId="47" />
+  <Access Scope="GlobalConstant" UId="48">
+    <Constant Name="NumMaxPezziProfila" UId="49" />
+  </Access>
+  <Blank Num="1" UId="52" />
+  <Token Text="DO" UId="53" />
+  <NewLine Num="1" UId="54" />
+  <Blank Num="4" UId="55" />
+  <Token Text="IF" UId="56" />
+  <Blank Num="1" UId="57" />
+  <Access Scope="LiteralConstant" UId="58">
+    <Constant UId="59">
+      <ConstantValue UId="61">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="62" />
+  <Token Text="&lt;&gt;" UId="63" />
+  <Blank Num="1" UId="64" />
+  <Access Scope="LocalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="io_lista_pzi" UId="67">
+        <Token Text="[" UId="68" />
+        <Access Scope="LocalVariable" UId="69">
+          <Symbol UId="70">
+            <Component Name="index" UId="71" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="72" />
+      </Component>
+      <Token Text="." UId="73" />
+      <Component Name="ID" UId="74" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="75" />
+  <Token Text="THEN" UId="76" />
+  <NewLine Num="1" UId="77" />
+  <Blank Num="8" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="t_listaVuota" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank Num="1" UId="84" />
+  <Access Scope="LiteralConstant" UId="85">
+    <Constant UId="86">
+      <ConstantValue UId="88">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="89" />
+  <NewLine Num="1" UId="90" />
+  <Blank Num="8" UId="91" />
+  <Token Text="EXIT" UId="92" />
+  <Token Text=";" UId="93" />
+  <NewLine Num="1" UId="94" />
+  <Blank Num="4" UId="95" />
+  <Token Text="END_IF" UId="96" />
+  <Token Text=";" UId="97" />
+  <NewLine Num="1" UId="98" />
+  <Token Text="END_FOR" UId="99" />
+  <Token Text=";" UId="100" />
+  <NewLine Num="1" UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="o_listaVuota" UId="104" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text=":=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="LocalVariable" UId="108">
+    <Symbol UId="109">
+      <Component Name="t_listaVuota" UId="110" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="111" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Info lista vuota</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="35" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="36" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="37" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text>Gestione lista profila</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>
