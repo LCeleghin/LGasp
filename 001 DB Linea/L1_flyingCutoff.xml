@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="data" Datatype="&quot;LGasp_flyingCutoff&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="state" Datatype="Struct">
+            <Member Name="automatic" Datatype="Bool" />
+            <Member Name="fault" Datatype="Bool" />
+            <Member Name="fcpos" Datatype="Bool" />
+            <Member Name="fcneg" Datatype="Bool" />
+            <Member Name="sync" Datatype="Bool" />
+            <Member Name="home" Datatype="Bool" />
+            <Member Name="programvalid" Datatype="Bool" />
+            <Member Name="posok" Datatype="Bool" />
+          </Member>
+          <Member Name="RM_position" Datatype="Real" />
+          <Member Name="motor_position" Datatype="Real" />
+          <Member Name="cutlength" Datatype="Real" />
+          <Member Name="maskwindow" Datatype="Real" />
+          <Member Name="cutoffset" Datatype="Real" />
+          <Member Name="numLaser" Datatype="Real" />
+          <Member Name="lengthdone" Datatype="Real" />
+          <Member Name="enableChangeLaser" Datatype="Bool" />
+          <Member Name="laser1" Datatype="Struct">
+            <Member Name="name" Datatype="WString" />
+            <Member Name="enable" Datatype="Bool" />
+            <Member Name="stateON" Datatype="Bool" />
+          </Member>
+          <Member Name="laser2" Datatype="Struct">
+            <Member Name="name" Datatype="WString" />
+            <Member Name="enable" Datatype="Bool" />
+            <Member Name="stateON" Datatype="Bool" />
+          </Member>
+          <Member Name="laser3" Datatype="Struct">
+            <Member Name="name" Datatype="WString" />
+            <Member Name="enable" Datatype="Bool" />
+            <Member Name="stateON" Datatype="Bool" />
+          </Member>
+          <Member Name="numpos" Datatype="Int" />
+          <Member Name="poshome" Datatype="Struct">
+            <Member Name="start" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="pos" Datatype="Array[1..4] of Struct">
+            <Member Name="start" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_flyingCutoff</Name>
+      <Namespace />
+      <Number>22</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="data" Datatype="&quot;LGasp_taglioValvProp&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="nomeprogramma" Datatype="WString[30]" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="num_pressa" Datatype="Int" />
+          <Member Name="num_pressa_old" Datatype="Int" />
+          <Member Name="scrittura_prg" Datatype="Bool" />
+          <Member Name="pms" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="pmi" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="pos_cambiostampo" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_discesa" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_salita" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_manuale" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="accelerazione" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="decelerazione" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="area_peh" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="inerzia_pos" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="inerzia_neg" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="forza" Datatype="Struct">
+            <Member Name="enable" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="vis" Datatype="Struct">
+            <Member Name="nome" Datatype="WString[30]" />
+            <Member Name="temposalita" Datatype="LReal" />
+            <Member Name="tempodiscesa" Datatype="LReal" />
+            <Member Name="tempototale" Datatype="LReal" />
+            <Member Name="posattuale" Datatype="LReal" />
+            <Member Name="pms_max" Datatype="LReal" />
+            <Member Name="pmi_max" Datatype="LReal" />
+            <Member Name="pmi_ciclo" Datatype="LReal" />
+            <Member Name="speed_max" Datatype="LReal" />
+            <Member Name="speedattuale" Datatype="LReal" />
+            <Member Name="forza_max" Datatype="LReal" />
+            <Member Name="forzaattuale" Datatype="LReal" />
+            <Member Name="controlloForzaON" Datatype="Bool" />
+            <Member Name="peh" Datatype="Bool" />
+            <Member Name="pms" Datatype="Bool" />
+            <Member Name="pmi" Datatype="Bool" />
+            <Member Name="flt" Datatype="Bool" />
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="prg" Datatype="Array[1..&quot;N_PrgValvole&quot;] of &quot;LGasp_taglioValvProp&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="nomeprogramma" Datatype="WString[30]" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="num_pressa" Datatype="Int" />
+          <Member Name="num_pressa_old" Datatype="Int" />
+          <Member Name="scrittura_prg" Datatype="Bool" />
+          <Member Name="pms" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="pmi" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="pos_cambiostampo" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_discesa" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_salita" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="speed_manuale" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="accelerazione" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="decelerazione" Datatype="Struct">
+            <Member Name="enablevis" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="area_peh" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="inerzia_pos" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="inerzia_neg" Datatype="Struct">
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="forza" Datatype="Struct">
+            <Member Name="enable" Datatype="Bool" />
+            <Member Name="limitemin" Datatype="LReal" />
+            <Member Name="limitemax" Datatype="LReal" />
+            <Member Name="valore" Datatype="LReal" />
+          </Member>
+          <Member Name="vis" Datatype="Struct">
+            <Member Name="nome" Datatype="WString[30]" />
+            <Member Name="temposalita" Datatype="LReal" />
+            <Member Name="tempodiscesa" Datatype="LReal" />
+            <Member Name="tempototale" Datatype="LReal" />
+            <Member Name="posattuale" Datatype="LReal" />
+            <Member Name="pms_max" Datatype="LReal" />
+            <Member Name="pmi_max" Datatype="LReal" />
+            <Member Name="pmi_ciclo" Datatype="LReal" />
+            <Member Name="speed_max" Datatype="LReal" />
+            <Member Name="speedattuale" Datatype="LReal" />
+            <Member Name="forza_max" Datatype="LReal" />
+            <Member Name="forzaattuale" Datatype="LReal" />
+            <Member Name="controlloForzaON" Datatype="Bool" />
+            <Member Name="peh" Datatype="Bool" />
+            <Member Name="pms" Datatype="Bool" />
+            <Member Name="pmi" Datatype="Bool" />
+            <Member Name="flt" Datatype="Bool" />
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_taglioValvProp</Name>
+      <Namespace />
+      <Number>13</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

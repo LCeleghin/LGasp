@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="data" Datatype="&quot;LGasp_type_Prg_Impilaggio&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="nomeprogramma" Datatype="WString[30]" />
+          <Member Name="ID" Datatype="DInt" />
+          <Member Name="Tipoimpilaggio" Datatype="DInt" />
+          <Member Name="DeltaX" Datatype="LReal" />
+          <Member Name="DeltaY" Datatype="LReal" />
+          <Member Name="DeltaZ" Datatype="LReal" />
+          <Member Name="NrPzMaxPacco" Datatype="DInt" />
+          <Member Name="X_MaxPacco" Datatype="LReal" />
+          <Member Name="Y_MaxPacco" Datatype="LReal" />
+          <Member Name="Z_MaxPacco" Datatype="LReal" />
+          <Member Name="PesoTotMaxPacco" Datatype="LReal" />
+          <Member Name="PesoLineareMaxPacco" Datatype="LReal" />
+          <Member Name="Opzioni" Datatype="Array[1..16] of Bool" />
+          <Member Name="Opzione1" Datatype="Int" />
+          <Member Name="Opzione2" Datatype="String" />
+          <Member Name="Opzione3" Datatype="Real" />
+          <Member Name="Correttori" Datatype="Array[1..20] of LReal" />
+          <Member Name="Limiti" Datatype="Struct">
+            <Member Name="DeltaX_min" Datatype="LReal" />
+            <Member Name="DeltaX_max" Datatype="LReal" />
+            <Member Name="DeltaY_min" Datatype="LReal" />
+            <Member Name="DeltaY_max" Datatype="LReal" />
+            <Member Name="DeltaZ_min" Datatype="LReal" />
+            <Member Name="DeltaZ_max" Datatype="LReal" />
+            <Member Name="NrPzMaxPacco_min" Datatype="DInt" />
+            <Member Name="NrPzMaxPacco_max" Datatype="DInt" />
+            <Member Name="X_MaxPacco_min" Datatype="LReal" />
+            <Member Name="X_MaxPacco_max" Datatype="LReal" />
+            <Member Name="Y_MaxPacco_min" Datatype="LReal" />
+            <Member Name="Y_MaxPacco_max" Datatype="LReal" />
+            <Member Name="Z_MaxPacco_min" Datatype="LReal" />
+            <Member Name="Z_MaxPacco_max" Datatype="LReal" />
+            <Member Name="PesoTotMaxPacco_min" Datatype="LReal" />
+            <Member Name="PesoTotMaxPacco_max" Datatype="LReal" />
+            <Member Name="PesoLineareMaxPacco_min" Datatype="LReal" />
+            <Member Name="PesoLineareMaxPacco_max" Datatype="LReal" />
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_prgImpilaggio</Name>
+      <Namespace />
+      <Number>12</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

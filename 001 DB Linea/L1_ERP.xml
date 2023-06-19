@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="erp" Datatype="&quot;LGasp_TypeERP&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="eventlog_PLC_PC_bool" Datatype="Array[1..32] of Bool" />
+          <Member Name="eventlog_PLC_PC" Datatype="DWord" />
+          <Member Name="eventlog_PC_PLC" Datatype="Array[1..32] of Bool" />
+          <Member Name="dati_PLC_PC" Datatype="&quot;LGasp_TypeData_toERP&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="ID_inizio_ODL" Datatype="DInt" />
+                <Member Name="ID_fine_ODL" Datatype="DInt" />
+                <Member Name="ID_fine_pacco" Datatype="DInt" />
+                <Member Name="ID_pezzo_tagliato" Datatype="DInt" />
+                <Member Name="ID_articolo_terminato" Datatype="DInt" />
+                <Member Name="lunghezza_pezzo_tagliato" Datatype="LReal" />
+                <Member Name="lunghezza_articolo_terminato" Datatype="LReal" />
+                <Member Name="coilsetup" Datatype="Array[1..4] of &quot;LGasp_TypeCoil_fromERP&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="CoilCode" Datatype="WString[30]" />
+                      <Member Name="MaterialType" Datatype="WString[30]" />
+                      <Member Name="Width" Datatype="LReal" />
+                      <Member Name="Thickness" Datatype="LReal" />
+                      <Member Name="Weight" Datatype="LReal" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="dati_PC_PLC" Datatype="&quot;LGasp_TypeData_fromERP&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="operator" Datatype="WString[30]" />
+                <Member Name="coilsetup" Datatype="Array[1..4] of &quot;LGasp_TypeCoil_fromERP&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="CoilCode" Datatype="WString[30]" />
+                      <Member Name="MaterialType" Datatype="WString[30]" />
+                      <Member Name="Width" Datatype="LReal" />
+                      <Member Name="Thickness" Datatype="LReal" />
+                      <Member Name="Weight" Datatype="LReal" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_ERP</Name>
+      <Namespace />
+      <Number>36</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

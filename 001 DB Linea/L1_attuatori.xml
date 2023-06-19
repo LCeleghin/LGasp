@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="stz_cmd" Datatype="Array[1..&quot;N_STAZIONI&quot;] of &quot;LGasp_CmdAttuatori&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">N_STAZIONI non inferiore a 20 altrimenti il PC va in errore</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="attuatore" Datatype="Array[1..&quot;N_MaxAttuatoriStz&quot;] of &quot;LGasp_typeCmdAttuatore&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="nome" Datatype="WString[12]" />
+                <Member Name="tipo" Datatype="Int" />
+                <Member Name="savecorr" Datatype="Bool" />
+                <Member Name="qset" Datatype="LReal" />
+                <Member Name="corr" Datatype="LReal" />
+                <Member Name="cmdhmi" Datatype="&quot;LGasp_typeCmdManAttuatore&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="startcicloman" Datatype="Bool" />
+                      <Member Name="jogpos" Datatype="Bool" />
+                      <Member Name="jogneg" Datatype="Bool" />
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="cmdauto" Datatype="&quot;LGasp_typeCmdAutoAttuatore&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="startcicloauto" Datatype="Bool" />
+                      <Member Name="autopos" Datatype="Bool" />
+                      <Member Name="autoneg" Datatype="Bool" />
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="sync" Datatype="&quot;LGasp_typeSyncAttuatore&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="qsync" Datatype="LReal" />
+                      <Member Name="cmdsync" Datatype="Bool" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="stz_stato" Datatype="Array[1..&quot;N_STAZIONI&quot;] of &quot;LGasp_StatoAttuatori&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">N_STAZIONI non inferiore a 20 altrimenti il PC va in errore</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="attuatore" Datatype="Array[1..&quot;N_MaxAttuatoriStz&quot;] of &quot;LGasp_typeStatoAttuatore&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="qatt" Datatype="LReal" />
+                <Member Name="tatt" Datatype="LReal" />
+                <Member Name="satt" Datatype="LReal" />
+                <Member Name="fcpos" Datatype="Bool" />
+                <Member Name="fcneg" Datatype="Bool" />
+                <Member Name="flt" Datatype="Bool" />
+                <Member Name="peh" Datatype="Bool" />
+                <Member Name="timepos" Datatype="Time" />
+                <Member Name="timeneg" Datatype="Time" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_attuatori</Name>
+      <Namespace />
+      <Number>2</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

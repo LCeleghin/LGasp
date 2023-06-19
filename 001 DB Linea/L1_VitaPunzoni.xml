@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Punzonatura" Datatype="Struct" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">vita punzoni banco di punzonatura</MultiLanguageText>
+      </Comment>
+      <Member Name="Stampo" Datatype="Array[1..32] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Cassetto" Datatype="Array[1..64] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="Plotter" Datatype="Struct" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">vita punzoni cassetti del plotter</MultiLanguageText>
+      </Comment>
+      <Member Name="Cassetto" Datatype="Array[1..32] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="Taglio" Datatype="Struct" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">vita punzoni postpunzonatura o taglio al volo</MultiLanguageText>
+      </Comment>
+      <Member Name="Stampo" Datatype="Array[1..16] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+        <Comment>
+          <MultiLanguageText Lang="it-IT">vita punzoni taglio </MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Cassetto" Datatype="Array[1..16] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="Generico" Datatype="Struct" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">vita punzoni stampi vari</MultiLanguageText>
+      </Comment>
+      <Member Name="Stampo" Datatype="Array[1..16] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Cassetto" Datatype="Array[1..16] of DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_VitaPunzoni</Name>
+      <Namespace />
+      <Number>40</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

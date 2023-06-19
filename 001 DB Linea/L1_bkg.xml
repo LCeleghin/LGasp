@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="plcpc" Datatype="&quot;LGasp_type_Bck_visualizzazioni&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="visbool00" Datatype="Array[1..32] of Bool">
+            <Subelement Path="8">
+              <Comment>
+                <MultiLanguageText Lang="it-IT">Abilitazione operazioni compilazione</MultiLanguageText>
+              </Comment>
+            </Subelement>
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="it-IT">richiesta esecuzione allargatura per semiauto</MultiLanguageText>
+              </Comment>
+            </Subelement>
+          </Member>
+          <Member Name="visbool01" Datatype="Array[1..32] of Bool" />
+          <Member Name="visbool02" Datatype="Array[1..32] of Bool" />
+          <Member Name="visbool03" Datatype="Array[1..32] of Bool" />
+          <Member Name="vis00" Datatype="DWord" />
+          <Member Name="vis01" Datatype="DWord" />
+          <Member Name="vis02" Datatype="DWord" />
+          <Member Name="vis03" Datatype="DWord" />
+          <Member Name="visint" Datatype="Array[1..32] of Int" />
+          <Member Name="visdint" Datatype="Array[1..32] of DInt" />
+          <Member Name="vislreal" Datatype="Array[1..32] of LReal" />
+          <Member Name="visstring" Datatype="Array[1..32] of WString" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="pcplc" Datatype="&quot;LGasp_type_Bck_comandi&quot;" Remanence="Retain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="cmdbool00" Datatype="Array[1..32] of Bool" />
+          <Member Name="cmdbool01" Datatype="Array[1..32] of Bool">
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="it-IT">risposta esecuzione allargatura per semiauto</MultiLanguageText>
+              </Comment>
+            </Subelement>
+          </Member>
+          <Member Name="cmdbool02" Datatype="Array[1..32] of Bool" />
+          <Member Name="cmdbool3" Datatype="Array[1..32] of Bool" />
+          <Member Name="cmdint" Datatype="Array[1..32] of Int" />
+          <Member Name="cmddint" Datatype="Array[1..32] of DInt" />
+          <Member Name="cmdlreal" Datatype="Array[1..32] of LReal">
+            <Subelement Path="1">
+              <StartValue>0.8</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <Comment>
+                <MultiLanguageText Lang="it-IT">Correttore lunghezze mm</MultiLanguageText>
+              </Comment>
+              <StartValue>1.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="cmdstring" Datatype="Array[1..32] of WString" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>L1_bkg</Name>
+      <Namespace />
+      <Number>5</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>
