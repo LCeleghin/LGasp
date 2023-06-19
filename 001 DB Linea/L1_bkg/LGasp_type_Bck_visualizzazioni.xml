@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="visbool00" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Trasferimento lista produzione in corso</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="2">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">trasferimento valori DS</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="4">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Risposta pulsante PC svuotamento premuto</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="5">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Richiesta invio nuove righe di produzione</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="6">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">1 = Blocco modifiche righe di produzione/linea in marcia</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="7">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Risposta lista compilata</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="8">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">abilitazione operazioni compilazione</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="9">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Abilita pulsante cancelli pezzi fatti</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="10">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Blocco totale modifica righe produzione</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="11">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Blocco input valore override profila</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="15">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Richiesta visualizzazione finestra inserimento lamiera</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="17">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Richiesta salvataggio correttori profila</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="19">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Approntamento profila eseguito</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="20">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Abilitazione comando sincronizzazione profila</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="21">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Abilitazione pulsante comando svuotamento scarico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="22">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Risposta svuotamento scarico in corso</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="23">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Visualizzazione quota rimanente dell'ultimo pezzo da fare dopo l'allarme di fine lamiera (210100006/7 insieme a real 4)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="30">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Svuotamento in corso</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="32">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Abilitazione pulsante svuotamento su PC</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="visbool01" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="10">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Richiesta posizionamento stampo mobile P04 (210100012)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="visbool02" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="visbool03" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="vis00" Datatype="DWord">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="vis01" Datatype="DWord">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="vis02" Datatype="DWord">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="vis03" Datatype="DWord">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="visint" Datatype="Array[1..32] of Int">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="visdint" Datatype="Array[1..32] of DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Totalizzatore assoluto pezzi fatti</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="vislreal" Datatype="Array[1..32] of LReal">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Velocità linea  (m/min)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="2">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Produttività linea (pz/min)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="3">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Quota dopo lama (mm)  210100008</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="4">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Quota rimanente dell'ultimo pezzo da fare dopo l'allarme di fine lamiera (210100006/7 insieme a bool 23)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="5">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Conteggio lunghezza materiale lavorato (km)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="6">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Conteggio Ore linea accesa</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="7">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Conteggio Ore linea in automatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="visstring" Datatype="Array[1..32] of WString">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Nome prodotto in lavoro</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="2">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">Nome prodotto in caricamento (durante approntamento linea)</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>LGasp_type_Bck_visualizzazioni</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

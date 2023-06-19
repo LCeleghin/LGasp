@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="eventlog_PLC_PC_bool" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_emergenza</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="2">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_emergenza</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="3">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_manuale</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="4">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_manuale</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="5">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_semiautomatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="6">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_semiautomatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="7">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_automatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="8">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_automatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="9">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">marcia_macchina</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="10">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">arresto_macchina</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="11">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">inizio_ODL</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="12">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">fIne_ODL</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="13">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">fIne_pacco</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="14">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">arresto_macchina_da_pulsante</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="15">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">pezzo_tagliato</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="16">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">articolo_terminato</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="17">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">profila in marcia</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="18">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">profila ferma</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="19">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">pezzo tagliato scarto</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="20">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_19</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="21">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_20</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="22">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_21</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="23">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_22</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="24">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_23</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="25">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_24</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="26">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_25</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="27">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_26</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="28">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_27</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="29">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_28</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="30">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_29</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="31">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_30</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="32">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_31</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="eventlog_PLC_PC" Datatype="DWord">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="eventlog_PC_PLC" Datatype="Array[1..32] of Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_emergenza</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="2">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_emergenza</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="3">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_manuale</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="4">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_manuale</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="5">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_semiautomatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="6">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_semiautomatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="7">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FP_automatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="8">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">FN_automatico</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="9">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">marcia_macchina</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="10">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">arresto_macchina</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="11">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">inizio_ODL</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="12">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">fIne_ODL</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="13">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">fIne_pacco</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="14">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">arresto_macchina_da_pulsante</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="15">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">pezzo_tagliato</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="16">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">articolo_terminato</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="17">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">profila in marcia</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="18">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">profila ferma</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="19">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">pezzo tagliato scarto</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="20">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_19</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="21">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_20</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="22">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_21</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="23">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_22</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="24">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_23</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="25">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_24</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="26">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_25</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="27">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_26</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="28">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_27</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="29">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_28</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="30">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_29</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="31">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_30</MultiLanguageText>
+        </Comment>
+      </Subelement>
+      <Subelement Path="32">
+        <Comment>
+          <MultiLanguageText Lang="it-IT">bool_31</MultiLanguageText>
+        </Comment>
+      </Subelement>
+    </Member>
+    <Member Name="dati_PLC_PC" Datatype="&quot;LGasp_TypeData_toERP&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="ID_inizio_ODL" Datatype="DInt" />
+          <Member Name="ID_fine_ODL" Datatype="DInt" />
+          <Member Name="ID_fine_pacco" Datatype="DInt" />
+          <Member Name="ID_pezzo_tagliato" Datatype="DInt" />
+          <Member Name="ID_articolo_terminato" Datatype="DInt" />
+          <Member Name="lunghezza_pezzo_tagliato" Datatype="LReal" />
+          <Member Name="lunghezza_articolo_terminato" Datatype="LReal" />
+          <Member Name="coilsetup" Datatype="Array[1..4] of &quot;LGasp_TypeCoil_fromERP&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="CoilCode" Datatype="WString[30]" />
+                <Member Name="MaterialType" Datatype="WString[30]" />
+                <Member Name="Width" Datatype="LReal" />
+                <Member Name="Thickness" Datatype="LReal" />
+                <Member Name="Weight" Datatype="LReal" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="dati_PC_PLC" Datatype="&quot;LGasp_TypeData_fromERP&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="operator" Datatype="WString[30]" />
+          <Member Name="coilsetup" Datatype="Array[1..4] of &quot;LGasp_TypeCoil_fromERP&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="CoilCode" Datatype="WString[30]" />
+                <Member Name="MaterialType" Datatype="WString[30]" />
+                <Member Name="Width" Datatype="LReal" />
+                <Member Name="Thickness" Datatype="LReal" />
+                <Member Name="Weight" Datatype="LReal" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>LGasp_TypeERP</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

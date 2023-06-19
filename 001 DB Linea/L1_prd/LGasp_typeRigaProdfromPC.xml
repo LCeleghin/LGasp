@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="piecestodo" Datatype="DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">Pezzi da fare</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ID" Datatype="DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">ID riga di produzione</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="tipoarticolo" Datatype="DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">tipo articolo</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="info" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="it-IT">info varie variabili da macchina a macchina</MultiLanguageText>
+      </Comment>
+      <Member Name="collo" Datatype="Int">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="workorder" Datatype="DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="IDERP" Datatype="DInt">
+        <AttributeList>
+          <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="article" Datatype="&quot;LGasp_typeArticolo&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="general" Datatype="&quot;LGasp_typeArticoloGenerale&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="name" Datatype="WString[30]" />
+                <Member Name="lenght" Datatype="LReal" />
+                <Member Name="nominal_lenght" Datatype="LReal" />
+                <Member Name="cutoffset" Datatype="LReal" />
+                <Member Name="options" Datatype="Array[1..16] of Bool" />
+                <Member Name="options_str" Datatype="Array[1..3] of WString[20]" />
+                <Member Name="options_lreal" Datatype="Array[1..3] of LReal" />
+                <Member Name="options_dint" Datatype="Array[1..3] of DInt" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="prepunchingquota" Datatype="Array[1..&quot;NumPunzonateArticolo&quot;] of &quot;LGasp_typeQuota&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="quotax" Datatype="LReal" />
+                <Member Name="quotay" Datatype="LReal" />
+                <Member Name="rifcor_y" Datatype="Int" />
+                <Member Name="quotaz" Datatype="LReal" />
+                <Member Name="gradi" Datatype="LReal" />
+                <Member Name="mouldea" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldeb" Datatype="Array[1..16] of Bool" />
+                <Member Name="mouldec" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulded" Datatype="Array[1..16] of Bool" />
+                <Member Name="moulde_pos" Datatype="Array[1..16] of LReal" />
+                <Member Name="state" Datatype="Struct">
+                  <Member Name="ultimaquotapezzo" Datatype="Bool" />
+                  <Member Name="quotavalida" Datatype="Bool" />
+                  <Member Name="quotataglio" Datatype="Bool" />
+                  <Member Name="quotatagliocoda" Datatype="Bool" />
+                  <Member Name="quotatagliotesta" Datatype="Bool" />
+                  <Member Name="bool_5" Datatype="Bool" />
+                  <Member Name="bool_6" Datatype="Bool" />
+                  <Member Name="bool_7" Datatype="Bool" />
+                  <Member Name="bool_8" Datatype="Bool" />
+                  <Member Name="bool_9" Datatype="Bool" />
+                  <Member Name="bool_10" Datatype="Bool" />
+                  <Member Name="bool_11" Datatype="Bool" />
+                  <Member Name="bool_12" Datatype="Bool" />
+                  <Member Name="bool_13" Datatype="Bool" />
+                  <Member Name="bool_14" Datatype="Bool" />
+                  <Member Name="bool_15" Datatype="Bool" />
+                  <Member Name="bool_16" Datatype="Bool" />
+                  <Member Name="bool_17" Datatype="Bool" />
+                  <Member Name="bool_18" Datatype="Bool" />
+                  <Member Name="bool_19" Datatype="Bool" />
+                  <Member Name="bool_20" Datatype="Bool" />
+                  <Member Name="bool_21" Datatype="Bool" />
+                  <Member Name="bool_22" Datatype="Bool" />
+                  <Member Name="bool_23" Datatype="Bool" />
+                  <Member Name="bool_24" Datatype="Bool" />
+                  <Member Name="bool_25" Datatype="Bool" />
+                  <Member Name="bool_26" Datatype="Bool" />
+                  <Member Name="bool_27" Datatype="Bool" />
+                  <Member Name="bool_28" Datatype="Bool" />
+                  <Member Name="bool_29" Datatype="Bool" />
+                  <Member Name="bool_30" Datatype="Bool" />
+                  <Member Name="bool_31" Datatype="Bool" />
+                </Member>
+                <Member Name="infinitystep" Datatype="Bool" />
+                <Member Name="print" Datatype="&quot;LGasp_typeStampante&quot;">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="testostampa" Datatype="WString[20]" />
+                      <Member Name="layoutStampa" Datatype="WString[20]" />
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>LGasp_typeRigaProdfromPC</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>
